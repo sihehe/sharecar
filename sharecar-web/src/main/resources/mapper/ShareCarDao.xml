@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hehe.sharecar.dao.ShareCarDao">
+
+    <resultMap id="BaseResultMap" type="cn.hehe.sharecar.entity.ShareCar">
+        <!--@Table share_car-->
+        <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="typeId" column="TYPE_ID" jdbcType="INTEGER"/>
+        <result property="name" column="NAME" jdbcType="VARCHAR"/>
+        <result property="factoryOwn" column="FACTORY_OWN" jdbcType="VARCHAR"/>
+        <result property="plate" column="PLATE" jdbcType="VARCHAR"/>
+        <result property="style" column="STYLE" jdbcType="VARCHAR"/>
+        <result property="gearbox" column="GEARBOX" jdbcType="VARCHAR"/>
+        <result property="seats" column="SEATS" jdbcType="INTEGER"/>
+        <result property="length" column="LENGTH" jdbcType="NUMERIC"/>
+        <result property="width" column="WIDTH" jdbcType="NUMERIC"/>
+        <result property="hight" column="HIGHT" jdbcType="NUMERIC"/>
+        <result property="weight" column="WEIGHT" jdbcType="NUMERIC"/>
+        <result property="engineType" column="ENGINE_TYPE" jdbcType="VARCHAR"/>
+        <result property="engineHorsepower" column="ENGINE_HORSEPOWER" jdbcType="VARCHAR"/>
+        <result property="displacement" column="DISPLACEMENT" jdbcType="VARCHAR"/>
+        <result property="fuelType" column="FUEL_TYPE" jdbcType="VARCHAR"/>
+        <result property="region" column="REGION" jdbcType="VARCHAR"/>
+        <result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR"/>
+        <result property="imageInfo" column="IMAGE_INFO" jdbcType="VARCHAR"/>
+        <result property="descr" column="DESCR" jdbcType="VARCHAR"/>
+        <result property="isDel" column="IS_DEL" jdbcType="CHAR"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        ID, TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE, GEARBOX, SEATS, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL
+    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          <include refid="baseColumn"/>
+        from share_car
+        where ID = #{id}
+    </select>
+
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="baseColumn"/>
+        from share_car
+        <where>
+            <if test="id != null">
+                and ID = #{id}
+            </if>
+            <if test="typeId != null">
+                and TYPE_ID = #{typeId}
+            </if>
+            <if test="name != null and name != ''">
+                and NAME like concat('%',#{name},'%')
+            </if>
+            <if test="factoryOwn != null and factoryOwn != ''">
+                and FACTORY_OWN = #{factoryOwn}
+            </if>
+            <if test="plate != null and plate != ''">
+                and PLATE = #{plate}
+            </if>
+            <if test="style != null and style != ''">
+                and STYLE = #{style}
+            </if>
+            <if test="gearbox != null and gearbox != ''">
+                and GEARBOX = #{gearbox}
+            </if>
+            <if test="seats != null">
+                and SEATS = #{seats}
+            </if>
+            <if test="length != null">
+                and LENGTH = #{length}
+            </if>
+            <if test="width != null">
+                and WIDTH = #{width}
+            </if>
+            <if test="hight != null">
+                and HIGHT = #{hight}
+            </if>
+            <if test="weight != null">
+                and WEIGHT = #{weight}
+            </if>
+            <if test="engineType != null and engineType != ''">
+                and ENGINE_TYPE = #{engineType}
+            </if>
+            <if test="engineHorsepower != null and engineHorsepower != ''">
+                and ENGINE_HORSEPOWER = #{engineHorsepower}
+            </if>
+            <if test="displacement != null and displacement != ''">
+                and DISPLACEMENT = #{displacement}
+            </if>
+            <if test="fuelType != null and fuelType != ''">
+                and FUEL_TYPE = #{fuelType}
+            </if>
+            <if test="region != null and region != ''">
+                and REGION = #{region}
+            </if>
+            <if test="ownerId != null and ownerId != ''">
+                and OWNER_ID = #{ownerId}
+            </if>
+            <if test="imageInfo != null and imageInfo != ''">
+                and IMAGE_INFO = #{imageInfo}
+            </if>
+            <if test="descr != null and descr != ''">
+                and DESCR = #{descr}
+            </if>
+            <if test="isDel != null and isDel != ''">
+                and IS_DEL = #{isDel}
+            </if>
+        </where>
+    </select>
+
+    <select id="styleList" resultType="java.lang.String">
+        select distinct STYLE from share_car
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into share_car(TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE, GEARBOX, SEATS, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL)
+        values (#{typeId}, #{name}, #{factoryOwn}, #{plate}, #{style}, #{gearbox}, #{seats}, #{length}, #{width}, #{hight}, #{weight}, #{engineType}, #{engineHorsepower}, #{displacement}, #{fuelType}, #{region}, #{ownerId}, #{imageInfo}, #{descr},#{idDel})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share_car
+        <set>
+            <if test="typeId != null">
+                TYPE_ID = #{typeId},
+            </if>
+            <if test="name != null and name != ''">
+                NAME = #{name},
+            </if>
+            <if test="factoryOwn != null and factoryOwn != ''">
+                FACTORY_OWN = #{factoryOwn},
+            </if>
+            <if test="plate != null and plate != ''">
+                PLATE = #{plate},
+            </if>
+            <if test="style != null and style != ''">
+                STYLE = #{style},
+            </if>
+            <if test="gearbox != null and gearbox != ''">
+                GEARBOX = #{gearbox},
+            </if>
+            <if test="seats != null">
+                SEATS = #{seats},
+            </if>
+            <if test="length != null">
+                LENGTH = #{length},
+            </if>
+            <if test="width != null">
+                WIDTH = #{width},
+            </if>
+            <if test="hight != null">
+                HIGHT = #{hight},
+            </if>
+            <if test="weight != null">
+                WEIGHT = #{weight},
+            </if>
+            <if test="engineType != null and engineType != ''">
+                ENGINE_TYPE = #{engineType},
+            </if>
+            <if test="engineHorsepower != null and engineHorsepower != ''">
+                ENGINE_HORSEPOWER = #{engineHorsepower},
+            </if>
+            <if test="displacement != null and displacement != ''">
+                DISPLACEMENT = #{displacement},
+            </if>
+            <if test="fuelType != null and fuelType != ''">
+                FUEL_TYPE = #{fuelType},
+            </if>
+            <if test="region != null and region != ''">
+                REGION = #{region},
+            </if>
+            <if test="ownerId != null and ownerId != ''">
+                OWNER_ID = #{ownerId},
+            </if>
+            <if test="imageInfo != null and imageInfo != ''">
+                IMAGE_INFO = #{imageInfo},
+            </if>
+            <if test="descr != null and descr != ''">
+                DESCR = #{descr},
+            </if>
+            <if test="isDel != null and isDel != ''">
+                IS_DEL = #{isDel},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        update share_car set IS_DEL = 'Y' where ID = #{id}
+    </delete>
+
+</mapper>
