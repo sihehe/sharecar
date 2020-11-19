@@ -28,7 +28,7 @@ import java.util.Objects;
  */
 @Controller
 @RequestMapping("/carManager")
-public class ShareCarController {
+public class CarManagerController {
     /**
      * 服务对象
      */
@@ -45,6 +45,12 @@ public class ShareCarController {
     @RequestMapping("/carManager-add")
     public String carManagerAdd() {
         return "carManager/carManager-add";
+    }
+
+
+    @RequestMapping("/upload")
+    public String upload() {
+        return "carManager/upload";
     }
 
     @PostMapping("/carList")
@@ -72,6 +78,24 @@ public class ShareCarController {
         shareCarService.insert(shareCar);
         return ResultUtils.success();
     }
+
+    @PostMapping("/updateCar")
+    @ResponseBody
+    public Result updateCar(@RequestBody ShareCar shareCar) {
+        Result fail = ResultUtils.fail();
+        if(Objects.isNull(shareCar)){
+            fail.setMsg("传入参数为空");
+            return fail;
+        }
+        Integer id = shareCar.getId();
+        if(Objects.isNull(id)){
+            fail.setMsg("传入参数为空");
+            return fail;
+        }
+        shareCarService.update(shareCar);
+        return ResultUtils.success();
+    }
+
 
 
     @PostMapping("/carDetails")

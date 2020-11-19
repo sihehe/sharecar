@@ -12,10 +12,8 @@ function deleteInfo(e) {
             console.log(data);
             var params = {
                 query: {
-                    data: {
-                        name: $('#queryName').val(),
-                        style: $('#queryStyle').val()
-                    }
+                    name: $('#queryName').val(),
+                    style: $('#queryStyle').val()
                 }
             }
             $('#tableDemo').bootstrapTable('refresh', params);
@@ -103,7 +101,75 @@ function init() {
                         content: "carManager-add",
                         yes: function (index, layero) {
                         //    更新
-
+                            // 父页面获取子页面的iframe
+                            var frameId = $(layero).find("iframe").attr("id");
+                            // 父页面获取子页面指定的id数据
+                            var name = $(window.frames[frameId].document).find("#name").val();
+                            var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
+                            var plate = $(window.frames[frameId].document).find("#plate").val();
+                            var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
+                            var region = $(window.frames[frameId].document).find("#region").val();
+                            var style = $(window.frames[frameId].document).find("#style").val();
+                            var seats = $(window.frames[frameId].document).find("#seats").val();
+                            var color = $(window.frames[frameId].document).find("#color").val();
+                            var door = $(window.frames[frameId].document).find("#door").val();
+                            var length = $(window.frames[frameId].document).find("#length").val();
+                            var width = $(window.frames[frameId].document).find("#width").val();
+                            var hight = $(window.frames[frameId].document).find("#hight").val();
+                            var weight = $(window.frames[frameId].document).find("#weight").val();
+                            var engineType = $(window.frames[frameId].document).find("#engineType").val();
+                            var gearbox = $(window.frames[frameId].document).find("#gearbox").val();
+                            var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
+                            var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
+                            var displacement = $(window.frames[frameId].document).find("#displacement").val();
+                            var car = {
+                                id: id,
+                                name:name,
+                                factoryOwn:factoryOwn,
+                                plate:plate,
+                                ownerId:ownerId,
+                                region:region,
+                                style:style,
+                                seats:seats,
+                                color:color,
+                                door:door,
+                                length:length,
+                                width:width,
+                                hight:hight,
+                                weight:weight,
+                                engineType:engineType,
+                                gearbox:gearbox,
+                                fuelType:fuelType,
+                                engineHorsepower:engineHorsepower,
+                                displacement:displacement
+                            };
+                        //    向后端传输数据
+                            $.ajax({
+                                url: "updateCar",
+                                type: "POST",
+                                dataType: 'json',
+                                contentType: 'application/json;charset=UTF-8',
+                                data: JSON.stringify(car),
+                                success:function (res) {
+                                    if(res.status){
+                                    //    成功
+                                        layer.close(index);
+                                        var params = {
+                                            query: {
+                                                name: $('#queryName').val(),
+                                                style: $('#queryStyle').val()
+                                            }
+                                        };
+                                        $('#tableDemo').bootstrapTable('refresh', params);
+                                    }else{
+                                    //    失败
+                                        layer.alert(res.msg);
+                                    }
+                                },
+                                error:function (res) {
+                                    layer.alert("系统异常,请重试!");
+                                }
+                            })
                         },
                         btn2: function (index, layero) {
                             /*console.log(index);
@@ -277,6 +343,18 @@ $('#btn_add').click(function () {
                         console.log(res);
                         if(res.status){
                             layer.close(index);
+                            var params = {
+                                query: {
+                                    name: $('#queryName').val(),
+                                    style: $('#queryStyle').val()
+                                }
+                            };
+                            var params = {
+                                query: {
+                                    name: $('#queryName').val(),
+                                    style: $('#queryStyle').val()
+                                }
+                            };
                             $('#tableDemo').bootstrapTable('refresh', params);
                         }else{
                             layer.error(res.msg);
