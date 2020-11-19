@@ -10,8 +10,10 @@
         <result property="factoryOwn" column="FACTORY_OWN" jdbcType="VARCHAR"/>
         <result property="plate" column="PLATE" jdbcType="VARCHAR"/>
         <result property="style" column="STYLE" jdbcType="VARCHAR"/>
+        <result property="color" column="COLOR" jdbcType="VARCHAR"/>
         <result property="gearbox" column="GEARBOX" jdbcType="VARCHAR"/>
         <result property="seats" column="SEATS" jdbcType="INTEGER"/>
+        <result property="door" column="DOOR" jdbcType="INTEGER"/>
         <result property="length" column="LENGTH" jdbcType="NUMERIC"/>
         <result property="width" column="WIDTH" jdbcType="NUMERIC"/>
         <result property="hight" column="HIGHT" jdbcType="NUMERIC"/>
@@ -28,7 +30,7 @@
     </resultMap>
 
     <sql id="baseColumn">
-        ID, TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE, GEARBOX, SEATS, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL
+        ID, TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL
     </sql>
 
     <!--查询单个-->
@@ -36,7 +38,7 @@
         select
           <include refid="baseColumn"/>
         from share_car
-        where ID = #{id}
+        where ID = #{id} and IS_DEL = 'N'
     </select>
 
 
@@ -118,8 +120,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into share_car(TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE, GEARBOX, SEATS, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL)
-        values (#{typeId}, #{name}, #{factoryOwn}, #{plate}, #{style}, #{gearbox}, #{seats}, #{length}, #{width}, #{hight}, #{weight}, #{engineType}, #{engineHorsepower}, #{displacement}, #{fuelType}, #{region}, #{ownerId}, #{imageInfo}, #{descr},#{idDel})
+        insert into share_car(TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, DESCR,IS_DEL)
+        values (#{typeId}, #{name}, #{factoryOwn}, #{plate}, #{style},#{color}, #{gearbox}, #{seats},#{door}, #{length}, #{width}, #{hight}, #{weight}, #{engineType}, #{engineHorsepower}, #{displacement}, #{fuelType}, #{region}, #{ownerId}, #{imageInfo}, #{descr},#{isDel})
     </insert>
 
     <!--通过主键修改数据-->
@@ -141,11 +143,17 @@
             <if test="style != null and style != ''">
                 STYLE = #{style},
             </if>
+            <if test="color != null and color != ''">
+                COLOR = #{color},
+            </if>
             <if test="gearbox != null and gearbox != ''">
                 GEARBOX = #{gearbox},
             </if>
             <if test="seats != null">
                 SEATS = #{seats},
+            </if>
+            <if test="door != null">
+                DOOR = #{door},
             </if>
             <if test="length != null">
                 LENGTH = #{length},

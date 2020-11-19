@@ -1,6 +1,7 @@
 package cn.hehe.sharecar.entity;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * (ShareCar)实体类
@@ -34,6 +35,10 @@ public class ShareCar implements Serializable {
     */
     private String style;
     /**
+     * 颜色
+     */
+    private String color;
+    /**
     * 变速箱
     */
     private String gearbox;
@@ -41,22 +46,27 @@ public class ShareCar implements Serializable {
     * 座位数
     */
     private Integer seats;
+
+    /**
+     * 车门数
+     */
+    private Integer door;
     /**
     * 车长
     */
-    private Double length;
+    private BigDecimal length;
     /**
     * 车宽
     */
-    private Double width;
+    private BigDecimal width;
     /**
     * 车高
     */
-    private Double hight;
+    private BigDecimal hight;
     /**
     * 车重
     */
-    private Double weight;
+    private BigDecimal weight;
     /**
     * 发动机类型 (电动 燃油)
     */
@@ -143,6 +153,14 @@ public class ShareCar implements Serializable {
         this.style = style;
     }
 
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     public String getGearbox() {
         return gearbox;
     }
@@ -159,35 +177,43 @@ public class ShareCar implements Serializable {
         this.seats = seats;
     }
 
-    public Double getLength() {
+    public Integer getDoor() {
+        return door;
+    }
+
+    public void setDoor(Integer door) {
+        this.door = door;
+    }
+
+    public BigDecimal getLength() {
         return length;
     }
 
-    public void setLength(Double length) {
+    public void setLength(BigDecimal length) {
         this.length = length;
     }
 
-    public Double getWidth() {
+    public BigDecimal getWidth() {
         return width;
     }
 
-    public void setWidth(Double width) {
+    public void setWidth(BigDecimal width) {
         this.width = width;
     }
 
-    public Double getHight() {
+    public BigDecimal getHight() {
         return hight;
     }
 
-    public void setHight(Double hight) {
+    public void setHight(BigDecimal hight) {
         this.hight = hight;
     }
 
-    public Double getWeight() {
+    public BigDecimal getWeight() {
         return weight;
     }
 
-    public void setWeight(Double weight) {
+    public void setWeight(BigDecimal weight) {
         this.weight = weight;
     }
 

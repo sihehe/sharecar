@@ -86,10 +86,42 @@ function init() {
             width: 200,
             events: {
                 'click #edit': function (e, value, row, index) {
-                    $('#id').val(row.url);
-                    $('#name').val(row.name);
-                    $('#style').val(row.style);
-                    $('#region').val(row.region);
+                    // $('#id').val(row.id);
+                    // $('#name').val(row.name);
+                    // $('#style').val(row.style);
+                    // $('#region').val(row.region);
+                    var id = row.id;
+                    layer.open({
+                        type: 2,
+                        title: '编辑车辆信息',
+                        area: ['870px', '650px'],
+                        maxmin: true, //打开全屏
+                        resize: true, //开启拉伸
+                        scrollbar: false, //屏蔽滚动
+                        btnAlign: 'c', //按钮居中对齐
+                        btn: ['更新', '取消'],
+                        content: "carManager-add",
+                        yes: function (index, layero) {
+                        //    更新
+
+                        },
+                        btn2: function (index, layero) {
+                            /*console.log(index);
+                            console.log(layero);
+                            layer.msg('取消按钮被点击');*/
+                        },
+
+                        success: function (layero,index) {
+                            // layer.msg("成功弹出");
+                            //父页面调用子页面方法
+                            //得到iframe页的窗口对象，执行iframe页的方法：
+                            var iframeWin = window[layero.find('iframe')[0]['name']];
+                            iframeWin.initCar(id);
+                        }
+
+                    });
+
+                    console.log(row.id);
                 },
                 'click #delete': function (e, value, row, index) {
                     deleteInfo(row);
@@ -106,36 +138,29 @@ function init() {
     $('#tableDemo').bootstrapTable({
         url: "carList",
         method: "post",                                        // 请求类型
-        contentType: "application/json",      // post请求必须要有，否则后台接受不到参数
+        contentType : "application/x-www-form-urlencoded",
+        dataType:"json",
         height: tableHeight(),//高度调整
         width: 600,//高度调整
+        striped:true,//隔行变色
+        uniqueId:"id",//Indicate an unique identifier for each row
         toolbar: '#toolbar',
-        striped: true,
-        dataField: "res",
-        showRefresh: false,//刷新按钮
-        showColumns: true,
-        checkboxHeader: false,
-        checkboxEnabled: true,
-        checkbox: true,
-        clickToSelect: true,//是否启用点击选中行
-        toolbarAlign: 'right',
-        buttonsAlign: 'right',//按钮对齐方式
-        //sidePagination: "server",                              // 设置在服务端还是客户端分页
+        sidePagination: "server",                              // 设置在服务端还是客户端分页
         pagination: true,                                      // 是否显示分页
         pageNumber: 1,                                         // 首页页码，默认为1
         pageSize: 5,                                           // 页面数据条数
         pageList: [5, 10, 20, 30],
+        toolbarAlign: 'right',
+        buttonsAlign: 'right',//按钮对齐方式
         queryParamsType: 'limit',
+        clickToSelect: true,
+        showColumns: true,
         queryParams: function (params) {
             return {
                 pageSize: params.limit,
                 pageIndex: params.offset,
-                data: {
-                    name: null,
-                    style: null
-                }
-                // name: $('queryName').val(),
-                // style: $('queryStyle').val()
+                name: $('queryName').val(),
+                style: $('queryStyle').val()
             }
         },
         columns: columns,
@@ -152,10 +177,8 @@ function tableHeight() {
 $('#querybtn').click(function () {
     var params = {
         query: {
-            data: {
-                name: $('#queryName').val(),
-                style: $('#queryStyle').val()
-            }
+            name: $('#queryName').val(),
+            style: $('#queryStyle').val()
         }
     }
     $('#tableDemo').bootstrapTable('refresh', params);
@@ -163,13 +186,14 @@ $('#querybtn').click(function () {
 
 /*初始化风格列表*/
 function initSelectStyleList() {
+    var content = '<option>' + '' + '</option>';
     $.ajax({
         url: 'styleList',
         type: 'post',
         success: function (data) {
             if (data.status) {
                 console.log(data.data);
-                var content = '';
+
                 for (element in data.data) {
                     console.log(data.data[element]);
                     content += '<option>' + data.data[element] + '</option>';
@@ -183,6 +207,7 @@ function initSelectStyleList() {
 }
 
 $('#btn_add').click(function () {
+    // window.location.href = "carManager-add"
 
     var index = layer.open({
         type: 2,
@@ -193,19 +218,88 @@ $('#btn_add').click(function () {
         scrollbar: false, //屏蔽滚动
         btnAlign: 'c', //按钮居中对齐
         btn: ['确定', '取消'],
-        btn1: function(index,layero){
-            console.log(index);
-            console.log(layero);
-           layer.msg('确定按钮被点击');
-        },
-        btn2: function(index,layero){
-            console.log(index);
-            console.log(layero);
-            layer.msg('取消按钮被点击');
-        },
         content: "carManager-add",
+        yes: function (index, layero) {
+            //得到iframe页的窗口对象，执行iframe页的方法：
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+            //调用表单校验
+            var checkResult = iframeWin.check();
+            if(checkResult){
+            //    校验成功 获取子页面值
+// 父页面获取子页面的iframe
+                var frameId = $(layero).find("iframe").attr("id");
+// 父页面获取子页面指定的id数据
+                var name = $(window.frames[frameId].document).find("#name").val();
+                var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
+                var plate = $(window.frames[frameId].document).find("#plate").val();
+                var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
+                var region = $(window.frames[frameId].document).find("#region").val();
+                var style = $(window.frames[frameId].document).find("#style").val();
+                var seats = $(window.frames[frameId].document).find("#seats").val();
+                var color = $(window.frames[frameId].document).find("#color").val();
+                var door = $(window.frames[frameId].document).find("#door").val();
+                var length = $(window.frames[frameId].document).find("#length").val();
+                var width = $(window.frames[frameId].document).find("#width").val();
+                var hight = $(window.frames[frameId].document).find("#hight").val();
+                var weight = $(window.frames[frameId].document).find("#weight").val();
+                var engineType = $(window.frames[frameId].document).find("#engineType").val();
+                var gearbox = $(window.frames[frameId].document).find("#gearbox").val();
+                var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
+                var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
+                var displacement = $(window.frames[frameId].document).find("#displacement").val();
+                var car = {
+                    name:name,
+                    factoryOwn:factoryOwn,
+                    plate:plate,
+                    ownerId:ownerId,
+                    region:region,
+                    style:style,
+                    seats:seats,
+                    color:color,
+                    door:door,
+                    length:length,
+                    width:width,
+                    hight:hight,
+                    weight:weight,
+                    engineType:engineType,
+                    gearbox:gearbox,
+                    fuelType:fuelType,
+                    engineHorsepower:engineHorsepower,
+                    displacement:displacement
+                };
+                $.ajax({
+                    type:'POST',
+                    url:'addCar',
+                    dataType:'json',
+                    contentType:'application/json;charset=UTF-8',
+                    data:JSON.stringify(car),
+                    success:function (res) {
+                        console.log(res);
+                        if(res.status){
+                            layer.close(index);
+                            $('#tableDemo').bootstrapTable('refresh', params);
+                        }else{
+                            layer.error(res.msg);
+                        }
+                    },
+                    error:function (res) {
+                       layer.alert("系统错误,请重试!");
+                    }
+                })
+                // layer.close(index);
+            }else{
+            //    失败
+                layer.msg('填写内容不符合要求');
+            }
+        },
+        btn2: function (index, layero) {
+            console.log(index);
+            console.log(layero);
+            // layer.msg('取消按钮被点击');
+        },
+
         success: function () {
-            layer.msg("成功弹出");
+            // layer.msg("成功弹出");
         }
     });
     layer.full(index);

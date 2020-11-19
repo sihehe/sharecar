@@ -3,18 +3,22 @@ package cn.hehe.sharecar.controller;
 import cn.hehe.share.api.carManager.CarListReq;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageReq;
+import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.sharecar.entity.ShareCar;
 import cn.hehe.sharecar.service.ShareCarService;
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import sun.awt.image.IntegerComponentRaster;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * (ShareCar)表控制层
@@ -45,14 +49,46 @@ public class ShareCarController {
 
     @PostMapping("/carList")
     @ResponseBody
-    public List<ShareCar> carList(@RequestBody PageReq<CarListReq> req) {
+    public PageResp<ShareCar> carList(Integer pageIndex, Integer pageSize,String name,String style) { //PageReq<CarListReq> req
         ShareCar shareCar = new ShareCar();
-        shareCar.setName(req.getData().getName());
-        shareCar.setStyle(req.getData().getStyle());
+        shareCar.setName(name);
+        shareCar.setStyle(style);
         shareCar.setIsDel(DBStatusEnums.N.getKey());
-        PageHelper.startPage(req.getPageIndex(), req.getPageSize());
+        PageHelper.startPage(pageIndex, pageSize);
         List<ShareCar> shareCars = shareCarService.queryAll(shareCar);
-        return shareCars;
+        PageInfo pageInfo = new PageInfo(shareCars);
+        PageResp<ShareCar> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
+        return pageResp;
+    }
+
+    @PostMapping("/addCar")
+    @ResponseBody
+    public Result addCar(@RequestBody ShareCar shareCar) {
+        if(Objects.isNull(shareCar)){
+            return ResultUtils.fail();
+        }
+        shareCar.setTypeId(1);
+        shareCar.setIsDel(DBStatusEnums.N.getKey());
+        shareCarService.insert(shareCar);
+        return ResultUtils.success();
+    }
+
+
+    @PostMapping("/carDetails")
+    @ResponseBody
+    public Result<ShareCar> carDetails(Integer id) {
+        if(Objects.isNull(id)){
+            return ResultUtils.fail();
+        }
+        ShareCar shareCar = shareCarService.queryById(id);
+        if(Objects.isNull(shareCar)){
+            Result fail = ResultUtils.fail();
+            fail.setMsg("查询不到数据");
+            return fail;
+        }
+        Result success = ResultUtils.success();
+        success.setData(shareCar);
+        return success;
     }
 
 
