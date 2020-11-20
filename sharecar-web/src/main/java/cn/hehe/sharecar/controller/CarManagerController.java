@@ -8,15 +8,20 @@ import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.sharecar.entity.ShareCar;
 import cn.hehe.sharecar.service.ShareCarService;
+import cn.hehe.sharecar.service.UploadService;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 import sun.awt.image.IntegerComponentRaster;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,6 +40,9 @@ public class CarManagerController {
     @Resource
     private ShareCarService shareCarService;
 
+    @Autowired
+    private UploadService uploadService;
+
 
 
     @RequestMapping("/")
@@ -47,11 +55,21 @@ public class CarManagerController {
         return "carManager/carManager-add";
     }
 
+    @RequestMapping("/carManager-edit")
+    public String carManagerEdit() {
+        return "carManager/carManager-edit";
+    }
 
+    @RequestMapping("/carManager-details")
+    public String carManagerDetails() {
+        return "carManager/carManager-details";
+    }
+
+/*
     @RequestMapping("/upload")
     public String upload() {
         return "carManager/upload";
-    }
+    }*/
 
     @PostMapping("/carList")
     @ResponseBody
@@ -130,6 +148,13 @@ public class CarManagerController {
         Result result = ResultUtils.success();
         result.setData(styleList);
         return result;
+    }
+
+    @PostMapping("/upload")
+    @ResponseBody
+    public Result upload(HttpServletRequest request){
+//        return uploadService.uploadFile(name,type,file,size);
+        return null;
     }
 
     /**

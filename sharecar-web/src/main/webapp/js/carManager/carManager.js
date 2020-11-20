@@ -81,7 +81,7 @@ function init() {
             title: '操作',
             align: 'center',
             valign: 'middle',
-            width: 200,
+            width: 250,
             events: {
                 'click #edit': function (e, value, row, index) {
                     // $('#id').val(row.id);
@@ -98,7 +98,7 @@ function init() {
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['更新', '取消'],
-                        content: "carManager-add",
+                        content: "carManager-edit",
                         yes: function (index, layero) {
                         //    更新
                             // 父页面获取子页面的iframe
@@ -191,11 +191,36 @@ function init() {
                 },
                 'click #delete': function (e, value, row, index) {
                     deleteInfo(row);
-                }
+                },
+                'click #details': function (e, value, row, index) {
+                    var id = row.id;
+                    layer.open({
+                        type: 2,
+                        title: '车辆信息详情',
+                        area: ['870px', '650px'],
+                        maxmin: true, //打开全屏
+                        resize: true, //开启拉伸
+                        scrollbar: false, //屏蔽滚动
+                        btnAlign: 'c', //按钮居中对齐
+                        btn: ['返回'],
+                        content: "carManager-details",
+                        btn1: function (index, layero) {},
+                        success: function (layero,index) {
+                            // layer.msg("成功弹出");
+                            //父页面调用子页面方法
+                            //得到iframe页的窗口对象，执行iframe页的方法：
+                            var iframeWin = window[layero.find('iframe')[0]['name']];
+                            iframeWin.initCar(id);
+                        }
+
+                    });
+                },
+
             },
             formatter: function (value, row, index) {
                 var result = "";
-                result += '<button id="edit" class="btn btn-info" data-toggle="modal" data-target="#editModal">编辑</button>';
+                result += '<button id="details" class="btn btn-primary" data-toggle="modal" data-target="#detailsModal">详情</button>';
+                result += '<button id="edit" class="btn btn-info" data-toggle="modal" data-target="#editModal" style="margin-left:10px;">编辑</button>';
                 result += '<button id="delete" class="btn btn-danger" style="margin-left:10px;">删除</button>';
                 return result;
             }
