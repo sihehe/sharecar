@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.hehe.sharecar.dao.ShareCarDao">
+<mapper namespace="cn.hehe.share.web.dao.ShareCarDao">
 
-    <resultMap id="BaseResultMap" type="cn.hehe.sharecar.entity.ShareCar">
+    <resultMap id="BaseResultMap" type="cn.hehe.share.web.entity.ShareCar">
         <!--@Table share_car-->
         <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="typeId" column="TYPE_ID" jdbcType="INTEGER"/>
@@ -14,10 +14,10 @@
         <result property="gearbox" column="GEARBOX" jdbcType="VARCHAR"/>
         <result property="seats" column="SEATS" jdbcType="INTEGER"/>
         <result property="door" column="DOOR" jdbcType="INTEGER"/>
-        <result property="length" column="LENGTH" jdbcType="NUMERIC"/>
-        <result property="width" column="WIDTH" jdbcType="NUMERIC"/>
-        <result property="hight" column="HIGHT" jdbcType="NUMERIC"/>
-        <result property="weight" column="WEIGHT" jdbcType="NUMERIC"/>
+        <result property="length" column="LENGTH" jdbcType="DECIMAL"/>
+        <result property="width" column="WIDTH" jdbcType="DECIMAL"/>
+        <result property="hight" column="HIGHT" jdbcType="DECIMAL"/>
+        <result property="weight" column="WEIGHT" jdbcType="DECIMAL"/>
         <result property="engineType" column="ENGINE_TYPE" jdbcType="VARCHAR"/>
         <result property="engineHorsepower" column="ENGINE_HORSEPOWER" jdbcType="VARCHAR"/>
         <result property="displacement" column="DISPLACEMENT" jdbcType="VARCHAR"/>

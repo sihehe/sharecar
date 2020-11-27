@@ -1,4 +1,4 @@
-package cn.hehe.sharecar.service;
+package cn.hehe.share.web.service;
 
 import cn.hehe.share.api.result.Result;
 import org.springframework.web.multipart.MultipartFile;

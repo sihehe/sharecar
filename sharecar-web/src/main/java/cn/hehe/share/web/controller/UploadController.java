@@ -1,8 +1,7 @@
-package cn.hehe.sharecar.controller;
+package cn.hehe.share.web.controller;
 
 import cn.hehe.share.api.result.Result;
-import cn.hehe.share.api.result.ResultUtils;
-import cn.hehe.sharecar.service.UploadService;
+import cn.hehe.share.web.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;

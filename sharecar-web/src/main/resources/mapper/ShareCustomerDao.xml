@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hehe.share.web.dao.ShareCustomerDao">
+
+    <resultMap id="BaseResultMap" type="cn.hehe.share.web.entity.ShareCustomer">
+        <!--@Table share_customer-->
+        <result property="customerId" column="CUSTOMER_ID" jdbcType="INTEGER"/>
+        <result property="customerName" column="CUSTOMER_NAME" jdbcType="VARCHAR"/>
+        <result property="customerGrad" column="CUSTOMER_GRAD" jdbcType="VARCHAR"/>
+        <result property="customerBrithYear" column="CUSTOMER_BRITH_YEAR" jdbcType="VARCHAR"/>
+        <result property="customerPhone" column="CUSTOMER_PHONE" jdbcType="VARCHAR"/>
+        <result property="customerCardNum" column="CUSTOMER_CARD_NUM" jdbcType="VARCHAR"/>
+        <result property="customerAddress" column="CUSTOMER_ADDRESS" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
+        from si.share_customer
+        where CUSTOMER_ID = #{customerId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
+        from si.share_customer
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
+        from si.share_customer
+        <where>
+            <if test="customerId != null">
+                and CUSTOMER_ID = #{customerId}
+            </if>
+            <if test="customerName != null and customerName != ''">
+                and CUSTOMER_NAME like concat('%',#{customerName},'%')
+            </if>
+            <if test="customerGrad != null and customerGrad != ''">
+                and CUSTOMER_GRAD = #{customerGrad}
+            </if>
+            <if test="customerBrithYear != null and customerBrithYear != ''">
+                and CUSTOMER_BRITH_YEAR = #{customerBrithYear}
+            </if>
+            <if test="customerPhone != null and customerPhone != ''">
+                and CUSTOMER_PHONE = #{customerPhone}
+            </if>
+            <if test="customerCardNum != null and customerCardNum != ''">
+                and CUSTOMER_CARD_NUM = #{customerCardNum}
+            </if>
+            <if test="customerAddress != null and customerAddress != ''">
+                and CUSTOMER_ADDRESS = #{customerAddress}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="customerId" useGeneratedKeys="true">
+        insert into si.share_customer(CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS)
+        values (#{customerName}, #{customerGrad}, #{customerBrithYear}, #{customerPhone}, #{customerCardNum}, #{customerAddress})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update si.share_customer
+        <set>
+            <if test="customerName != null and customerName != ''">
+                CUSTOMER_NAME = #{customerName},
+            </if>
+            <if test="customerGrad != null and customerGrad != ''">
+                CUSTOMER_GRAD = #{customerGrad},
+            </if>
+            <if test="customerBrithYear != null and customerBrithYear != ''">
+                CUSTOMER_BRITH_YEAR = #{customerBrithYear},
+            </if>
+            <if test="customerPhone != null and customerPhone != ''">
+                CUSTOMER_PHONE = #{customerPhone},
+            </if>
+            <if test="customerCardNum != null and customerCardNum != ''">
+                CUSTOMER_CARD_NUM = #{customerCardNum},
+            </if>
+            <if test="customerAddress != null and customerAddress != ''">
+                CUSTOMER_ADDRESS = #{customerAddress},
+            </if>
+        </set>
+        where CUSTOMER_ID = #{customerId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from si.share_customer where CUSTOMER_ID = #{customerId}
+    </delete>
+
+</mapper>

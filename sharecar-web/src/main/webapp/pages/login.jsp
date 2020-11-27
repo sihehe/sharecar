@@ -17,11 +17,11 @@
     <meta name="description" content="H+是一个完全响应式，基于Bootstrap3最新版本开发的扁平化主题，她采用了主流的左右两栏式布局，使用了Html5+CSS3等现代技术">
 
     <link rel="shortcut icon" href="favicon.ico">
-    <link href="../css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
-    <link href="../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
 
-    <link href="../css/animate.css" rel="stylesheet">
-    <link href="../css/style.css?v=4.1.0" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/style.css?v=4.1.0" rel="stylesheet">
     <!--[if lt IE 9]>
     <meta http-equiv="refresh" content="0;ie.html"/>
     <![endif]-->
@@ -60,11 +60,9 @@
 </div>
 
 <!-- 全局js -->
-<script src="../js/jquery.min.js?v=2.1.4"></script>
-<script src="../js/bootstrap.min.js?v=3.3.7"></script>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js?v=2.1.4"></script>
+<script src="${pageContext.request.contextPath}/js/bootstrap.min.js?v=3.3.7"></script>
 
-<script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
-<!--统计代码，可删除-->
 
 </body>
 </html>

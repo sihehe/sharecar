@@ -1,4 +1,6 @@
-package cn.hehe.sharecar.entity;
+package cn.hehe.share.web.entity;
+
+import lombok.Data;
 
 /**
  * @program: sharecar
@@ -7,6 +9,7 @@ package cn.hehe.sharecar.entity;
  * @create: 2020-11-10 18:59
  **/
 
+@Data
 public class Product {
 
     private String name;

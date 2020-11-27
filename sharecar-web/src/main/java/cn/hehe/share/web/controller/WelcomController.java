@@ -1,4 +1,4 @@
-package cn.hehe.sharecar.controller;
+package cn.hehe.share.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,5 +25,10 @@ public class WelcomController {
     @RequestMapping("/welcome")
     public String welcome(){
         return "welcome";
+    }
+
+    @RequestMapping("/login")
+    public String login(){
+        return "login";
     }
 }

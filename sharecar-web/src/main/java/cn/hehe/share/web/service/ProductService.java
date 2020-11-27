@@ -1,6 +1,6 @@
-package cn.hehe.sharecar.service;
+package cn.hehe.share.web.service;
 
-import cn.hehe.sharecar.entity.Product;
+import cn.hehe.share.web.entity.Product;
 
 import java.util.List;
 

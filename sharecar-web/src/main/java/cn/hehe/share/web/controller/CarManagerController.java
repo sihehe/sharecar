@@ -1,24 +1,17 @@
-package cn.hehe.sharecar.controller;
+package cn.hehe.share.web.controller;
 
-import cn.hehe.share.api.carManager.CarListReq;
 import cn.hehe.share.api.enums.DBStatusEnums;
-import cn.hehe.share.api.page.PageReq;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
-import cn.hehe.sharecar.entity.ShareCar;
-import cn.hehe.sharecar.service.ShareCarService;
-import cn.hehe.sharecar.service.UploadService;
-import com.github.pagehelper.Page;
+import cn.hehe.share.web.entity.ShareCar;
+import cn.hehe.share.web.service.ShareCarService;
+import cn.hehe.share.web.service.UploadService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.servlet.ModelAndView;
-import sun.awt.image.IntegerComponentRaster;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -46,7 +39,7 @@ public class CarManagerController {
 
 
     @RequestMapping("/")
-    public String selectOne() {
+    public String carManage() {
         return "carManager/carManager";
     }
 
@@ -73,7 +66,7 @@ public class CarManagerController {
 
     @PostMapping("/carList")
     @ResponseBody
-    public PageResp<ShareCar> carList(Integer pageIndex, Integer pageSize,String name,String style) { //PageReq<CarListReq> req
+    public PageResp<ShareCar> carList(Integer pageIndex, Integer pageSize, String name, String style) { //PageReq<CarListReq> req
         ShareCar shareCar = new ShareCar();
         shareCar.setName(name);
         shareCar.setStyle(style);

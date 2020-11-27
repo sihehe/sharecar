@@ -1,6 +1,5 @@
 $(function () {
     init();
-    initSelectStyleList();
 });
 
 function deleteInfo(e) {
@@ -12,8 +11,8 @@ function deleteInfo(e) {
             console.log(data);
             var params = {
                 query: {
-                    name: $('#queryName').val(),
-                    style: $('#queryStyle').val()
+                    status: $('#queryStatus').val(),
+                    orderNum: $('#queryOrderNum').val()
                 }
             }
             $('#tableDemo').bootstrapTable('refresh', params);
@@ -27,51 +26,86 @@ function init() {
     console.log("初始化表格");
 
     var columns = [{
-        field: 'id',
-        title: '主键',
+        field: 'orderId',
+        title: '订单id',
         align: "center",
         halign: "center",
         valign: 'middle',
-        sortable: true
+        visible: false
     },
         {
-            field: 'typeId',
-            title: '类型Id',
+            field: 'orderNum',
+            title: '订单编号',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'name',
-            title: '名称',
+            field: 'customerName',
+            title: '客户',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'factoryOwn',
-            title: '厂商',
+            field: 'carName',
+            title: '车辆',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'style',
-            title: '风格',
+            field: 'orderAmt',
+            title: '订单金额',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'engineType',
-            title: '发动机类型',
+            field: 'businessName',
+            title: '套餐名称',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'region',
-            title: '地区',
+            field: 'num',
+            title: '套餐次数',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'empName',
+            title: '职工名称',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'orderStatus',
+            title: '订单状态',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'payType',
+            title: '支付方式',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'cashPledge',
+            title: '押金',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'isExpire',
+            title: '是否过期',
             align: "center",
             halign: "center",
             valign: 'middle'
@@ -100,7 +134,7 @@ function init() {
                         btn: ['更新', '取消'],
                         content: "carManager-edit",
                         yes: function (index, layero) {
-                        //    更新
+                            //    更新
                             // 父页面获取子页面的iframe
                             var frameId = $(layero).find("iframe").attr("id");
                             // 父页面获取子页面指定的id数据
@@ -143,7 +177,7 @@ function init() {
                                 engineHorsepower:engineHorsepower,
                                 displacement:displacement
                             };
-                        //    向后端传输数据
+                            //    向后端传输数据
                             $.ajax({
                                 url: "updateCar",
                                 type: "POST",
@@ -152,17 +186,17 @@ function init() {
                                 data: JSON.stringify(car),
                                 success:function (res) {
                                     if(res.status){
-                                    //    成功
+                                        //    成功
                                         layer.close(index);
                                         var params = {
                                             query: {
-                                                name: $('#queryName').val(),
-                                                style: $('#queryStyle').val()
+                                                status: $('#queryStatus').val(),
+                                                orderNum: $('#queryOrderNum').val()
                                             }
                                         };
                                         $('#tableDemo').bootstrapTable('refresh', params);
                                     }else{
-                                    //    失败
+                                        //    失败
                                         layer.alert(res.msg);
                                     }
                                 },
@@ -227,7 +261,7 @@ function init() {
         }];
 
     $('#tableDemo').bootstrapTable({
-        url: "carList",
+        url: "orderList",
         method: "post",                                        // 请求类型
         contentType : "application/x-www-form-urlencoded",
         dataType:"json",
@@ -250,8 +284,8 @@ function init() {
             return {
                 pageSize: params.limit,
                 pageIndex: params.offset,
-                name: $('#queryName').val(),
-                style: $('#queryStyle').val()
+                status: $('#queryStatus').val(),
+                orderNum: $('#queryOrderNum').val()
             }
         },
         columns: columns,
@@ -268,55 +302,34 @@ function tableHeight() {
 $('#querybtn').click(function () {
     var params = {
         query: {
-            name: $('#queryName').val(),
-            style: $('#queryStyle').val()
+            status: $('#queryStatus').val(),
+            orderNum: $('#queryOrderNum').val()
         }
     }
     $('#tableDemo').bootstrapTable('refresh', params);
 })
 
-/*初始化风格列表*/
-function initSelectStyleList() {
-    var content = '<option>' + '' + '</option>';
-    $.ajax({
-        url: 'styleList',
-        type: 'post',
-        success: function (data) {
-            if (data.status) {
-                console.log(data.data);
-
-                for (element in data.data) {
-                    console.log(data.data[element]);
-                    content += '<option>' + data.data[element] + '</option>';
-                }
-                console.log(content);
-                $('#queryStyle').html(content);
-                $('#addStyle').html(content);
-            }
-        }
-    })
-}
 
 $('#btn_add').click(function () {
     // window.location.href = "carManager-add"
 
     var index = layer.open({
         type: 2,
-        title: '添加车辆信息',
+        title: '添加订单',
         area: ['870px', '650px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
         scrollbar: false, //屏蔽滚动
         btnAlign: 'c', //按钮居中对齐
         btn: ['确定', '取消'],
-        content: "carManager-add",
+        content: "orderManager-add",
         yes: function (index, layero) {
             //得到iframe页的窗口对象，执行iframe页的方法：
             var iframeWin = window[layero.find('iframe')[0]['name']];
             //调用表单校验
             var checkResult = iframeWin.check();
             if(checkResult){
-            //    校验成功 获取子页面值
+                //    校验成功 获取子页面值
 // 父页面获取子页面的iframe
                 var frameId = $(layero).find("iframe").attr("id");
 // 父页面获取子页面指定的id数据
@@ -370,14 +383,8 @@ $('#btn_add').click(function () {
                             layer.close(index);
                             var params = {
                                 query: {
-                                    name: $('#queryName').val(),
-                                    style: $('#queryStyle').val()
-                                }
-                            };
-                            var params = {
-                                query: {
-                                    name: $('#queryName').val(),
-                                    style: $('#queryStyle').val()
+                                    status: $('#queryStatus').val(),
+                                    orderNum: $('#queryOrderNum').val()
                                 }
                             };
                             $('#tableDemo').bootstrapTable('refresh', params);
@@ -386,12 +393,12 @@ $('#btn_add').click(function () {
                         }
                     },
                     error:function (res) {
-                       layer.alert("系统错误,请重试!");
+                        layer.alert("系统错误,请重试!");
                     }
                 })
                 // layer.close(index);
             }else{
-            //    失败
+                //    失败
                 layer.msg('填写内容不符合要求');
             }
         },

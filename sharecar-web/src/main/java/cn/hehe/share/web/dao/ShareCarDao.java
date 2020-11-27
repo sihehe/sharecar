@@ -1,6 +1,6 @@
-package cn.hehe.sharecar.dao;
+package cn.hehe.share.web.dao;
 
-import cn.hehe.sharecar.entity.ShareCar;
+import cn.hehe.share.web.entity.ShareCar;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;

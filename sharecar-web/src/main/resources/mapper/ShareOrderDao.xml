@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hehe.share.web.dao.ShareOrderDao">
+
+    <resultMap id="BaseResultMap" type="cn.hehe.share.web.entity.ShareOrder">
+        <!--@Table share_order-->
+        <result property="orderId" column="ORDER_ID" jdbcType="INTEGER"/>
+        <result property="orderNum" column="ORDER_NUM" jdbcType="VARCHAR"/>
+        <result property="customerId" column="CUSTOMER_ID" jdbcType="INTEGER"/>
+        <result property="carId" column="CAR_ID" jdbcType="INTEGER"/>
+        <result property="orderAmt" column="ORDER_AMT" jdbcType="DECIMAL"/>
+        <result property="businessId" column="BUSINESS_ID" jdbcType="INTEGER"/>
+        <result property="num" column="NUM" jdbcType="INTEGER"/>
+        <result property="useStartTime" column="USE_START_TIME" jdbcType="VARCHAR"/>
+        <result property="useEndTime" column="USE_END_TIME" jdbcType="VARCHAR"/>
+        <result property="orderTime" column="ORDER_TIME" jdbcType="TIMESTAMP"/>
+        <result property="emptId" column="EMPT_ID" jdbcType="INTEGER"/>
+        <result property="payType" column="PAY_TYPE" jdbcType="VARCHAR"/>
+        <result property="cashPledge" column="CASH_PLEDGE" jdbcType="DECIMAL"/>
+        <result property="orderStatus" column="ORDER_STATUS" jdbcType="VARCHAR"/>
+        <result property="isExpire" column="IS_EXPIRE" jdbcType="VARCHAR"/>
+        <result property="expireNum" column="EXPIRE_NUM" jdbcType="INTEGER"/>
+        <result property="expireAmt" column="EXPIRE_AMT" jdbcType="DECIMAL"/>
+        <result property="remark" column="REMARK" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="baseColumn">
+        ORDER_ID, ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, ORDER_STATUS, CASH_PLEDGE,IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK
+    </sql>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          <include refid="baseColumn"/>
+        from share_order
+        where ORDER_ID = #{orderId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+        <include refid="baseColumn"/>
+        from share_order
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="baseColumn"/>
+        from share_order
+        <where>
+            <if test="orderId != null">
+                and ORDER_ID = #{orderId}
+            </if>
+            <if test="orderNum != null and orderNum != ''">
+                and ORDER_NUM = #{orderNum}
+            </if>
+            <if test="customerId != null">
+                and CUSTOMER_ID = #{customerId}
+            </if>
+            <if test="carId != null">
+                and CAR_ID = #{carId}
+            </if>
+            <if test="orderAmt != null">
+                and ORDER_AMT = #{orderAmt}
+            </if>
+            <if test="businessId != null">
+                and BUSINESS_ID = #{businessId}
+            </if>
+            <if test="num != null">
+                and NUM = #{num}
+            </if>
+            <if test="useStartTime != null and useStartTime != ''">
+                and USE_START_TIME = #{useStartTime}
+            </if>
+            <if test="useEndTime != null and useEndTime != ''">
+                and USE_END_TIME = #{useEndTime}
+            </if>
+            <if test="orderTime != null">
+                and ORDER_TIME = #{orderTime}
+            </if>
+            <if test="emptId != null">
+                and EMPT_ID = #{emptId}
+            </if>
+            <if test="payType != null and payType != ''">
+                and PAY_TYPE = #{payType}
+            </if>
+            <if test="cashPledge != null">
+                and CASH_PLEDGE = #{cashPledge}
+            </if>
+
+            <if test="orderStatus != null and orderStatus != ''">
+                and ORDER_STATUS = #{orderStatus}
+            </if>
+            <if test="isExpire != null and isExpire != ''">
+                and IS_EXPIRE = #{isExpire}
+            </if>
+            <if test="expireNum != null">
+                and EXPIRE_NUM = #{expireNum}
+            </if>
+            <if test="expireAmt != null">
+                and expire_amt = #{expireAmt}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
+        insert into share_order(ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, CASH_PLEDGE,ORDER_STATUS, IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK)
+        values (#{orderNum}, #{customerId}, #{carId}, #{orderAmt}, #{businessId}, #{num}, #{useStartTime}, #{useEndTime}, #{orderTime}, #{emptId}, #{payType},#{cashPledge}, #{orderStatus}, #{isExpire}, #{expireNum}, #{expireAmt},#{remark})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share_order
+        <set>
+            <if test="orderNum != null and orderNum != ''">
+                ORDER_NUM = #{orderNum},
+            </if>
+            <if test="customerId != null">
+                CUSTOMER_ID = #{customerId},
+            </if>
+            <if test="carId != null">
+                CAR_ID = #{carId},
+            </if>
+            <if test="orderAmt != null">
+                ORDER_AMT = #{orderAmt},
+            </if>
+            <if test="businessId != null">
+                BUSINESS_ID = #{businessId},
+            </if>
+            <if test="num != null">
+                NUM = #{num},
+            </if>
+            <if test="useStartTime != null and useStartTime != ''">
+                USE_START_TIME = #{useStartTime},
+            </if>
+            <if test="useEndTime != null and useEndTime != ''">
+                USE_END_TIME = #{useEndTime},
+            </if>
+            <if test="orderTime != null">
+                ORDER_TIME = #{orderTime},
+            </if>
+            <if test="emptId != null">
+                EMPT_ID = #{emptId},
+            </if>
+            <if test="payType != null and payType != ''">
+                PAY_TYPE = #{payType},
+            </if>
+
+            <if test="cashPledge != null">
+                CASH_PLEDGE = #{cashPledge},
+            </if>
+
+            <if test="orderStatus != null and orderStatus != ''">
+                ORDER_STATUS = #{orderStatus},
+            </if>
+            <if test="isExpire != null and isExpire != ''">
+                IS_EXPIRE = #{isExpire},
+            </if>
+            <if test="expireNum != null">
+                EXPIRE_NUM = #{expireNum},
+            </if>
+            <if test="expireAmt != null">
+                expire_amt = #{expireAmt},
+            </if>
+            <if test="remark != null and remark != ''">
+                REMARK = #{remark},
+            </if>
+        </set>
+        where ORDER_ID = #{orderId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from share_order where ORDER_ID = #{orderId}
+    </delete>
+
+</mapper>

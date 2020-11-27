@@ -1,7 +1,7 @@
-package cn.hehe.sharecar.controller;
+package cn.hehe.share.web.controller;
 
-import cn.hehe.sharecar.entity.Product;
-import cn.hehe.sharecar.service.ProductService;
+import cn.hehe.share.web.entity.Product;
+import cn.hehe.share.web.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

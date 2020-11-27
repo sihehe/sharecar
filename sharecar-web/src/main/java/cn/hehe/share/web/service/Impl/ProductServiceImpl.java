@@ -1,7 +1,7 @@
-package cn.hehe.sharecar.service.Impl;
+package cn.hehe.share.web.service.Impl;
 
-import cn.hehe.sharecar.entity.Product;
-import cn.hehe.sharecar.service.ProductService;
+import cn.hehe.share.web.entity.Product;
+import cn.hehe.share.web.service.ProductService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

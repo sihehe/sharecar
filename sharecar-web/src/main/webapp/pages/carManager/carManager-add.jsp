@@ -90,19 +90,19 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="length">车长(单位:M)  *</label>
+                    <label for="length">车长(单位:MM)  *</label>
                     <input id="length" name="length"  type="text" class="form-control ">
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="width">车宽(单位:M) *</label>
+                    <label for="width">车宽(单位:MM) *</label>
                     <input id="width" name="width" type="text" class="form-control ">
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="hight">车高(单位:M) *</label>
+                    <label for="hight">车高(单位:MM) *</label>
                     <input id="hight" name="hight" type="text" class="form-control ">
                 </div>
             </div>

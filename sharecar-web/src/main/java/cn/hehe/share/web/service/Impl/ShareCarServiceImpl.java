@@ -1,8 +1,8 @@
-package cn.hehe.sharecar.service.Impl;
+package cn.hehe.share.web.service.Impl;
 
-import cn.hehe.sharecar.entity.ShareCar;
-import cn.hehe.sharecar.dao.ShareCarDao;
-import cn.hehe.sharecar.service.ShareCarService;
+import cn.hehe.share.web.dao.ShareCarDao;
+import cn.hehe.share.web.entity.ShareCar;
+import cn.hehe.share.web.service.ShareCarService;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

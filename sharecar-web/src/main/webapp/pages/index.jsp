@@ -44,7 +44,7 @@
 									</span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="login.html">安全退出</a></li>
+                            <li><a href="login">安全退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">CAR</div>
@@ -56,6 +56,9 @@
                 </li>
                 <li>
                     <a class="J_menuItem" href="carManager/"><i class="fa fa-columns"></i> <span class="nav-label">车辆信息管理</span></a>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="orderManager/"><i class="fa fa-columns"></i> <span class="nav-label">订单管理</span></a>
                 </li>
                <%-- <li>
                     <a href="#">

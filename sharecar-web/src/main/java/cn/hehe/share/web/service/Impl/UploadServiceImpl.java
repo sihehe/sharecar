@@ -1,8 +1,8 @@
-package cn.hehe.sharecar.service.Impl;
+package cn.hehe.share.web.service.Impl;
 
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
-import cn.hehe.sharecar.service.UploadService;
+import cn.hehe.share.web.service.UploadService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 

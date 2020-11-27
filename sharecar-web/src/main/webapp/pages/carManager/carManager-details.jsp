@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>共享车辆信息添加</title>
+    <title>共享车辆信息详情</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -90,19 +90,19 @@
 
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="length">车长(单位:M)  *</label>
+                    <label for="length">车长(单位:MM)  *</label>
                     <input id="length" name="length"  type="text" class="form-control " disabled>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="width">车宽(单位:M) *</label>
+                    <label for="width">车宽(单位:MM) *</label>
                     <input id="width" name="width" type="text" class="form-control " disabled>
                 </div>
             </div>
             <div class="col-sm-3">
                 <div class="form-group">
-                    <label for="hight">车高(单位:M) *</label>
+                    <label for="hight">车高(单位:MM) *</label>
                     <input id="hight" name="hight" type="text" class="form-control " disabled>
                 </div>
             </div>

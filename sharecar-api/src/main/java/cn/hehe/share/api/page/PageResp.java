@@ -1,5 +1,7 @@
 package cn.hehe.share.api.page;
 
+import lombok.Data;
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -9,6 +11,7 @@ import java.util.List;
  * @author: Mr.si
  * @create: 2020-11-19 17:16
  **/
+@Data
 public class PageResp<T> implements Serializable {
 
 
@@ -18,22 +21,6 @@ public class PageResp<T> implements Serializable {
 
     public PageResp(Long total, List rows) {
         this.total = total;
-        this.rows = rows;
-    }
-
-    public Long getTotal() {
-        return total;
-    }
-
-    public void setTotal(Long total) {
-        this.total = total;
-    }
-
-    public List getRows() {
-        return rows;
-    }
-
-    public void setRows(List rows) {
         this.rows = rows;
     }
 }
