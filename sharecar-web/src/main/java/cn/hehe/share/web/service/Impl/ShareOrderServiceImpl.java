@@ -14,6 +14,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -118,7 +119,8 @@ public class ShareOrderServiceImpl implements ShareOrderService {
 //         生产订单编号
         Random random = new Random();
         int i = random.nextInt(100);
-        OrderUtils.getOrderCode(i);
+        String orderNum = OrderUtils.getOrderCode(i);
+        shareOrder.setOrderNum(orderNum);
 //        校验客户是否存在
 
 //        校验车辆信息是否存在
@@ -130,7 +132,7 @@ public class ShareOrderServiceImpl implements ShareOrderService {
 
 //
 
-
+        shareOrder.setOrderAmt(BigDecimal.ONE);
         this.shareOrderDao.insert(shareOrder);
         return ResultUtils.success();
     }

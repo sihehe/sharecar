@@ -353,7 +353,7 @@ $('#btn_add').click(function () {
                 };
                 $.ajax({
                     type:'POST',
-                    url:'addOrder',
+                    url:'orderAdd',
                     dataType:'json',
                     contentType:'application/json;charset=UTF-8',
                     data:JSON.stringify(order),

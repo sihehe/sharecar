@@ -194,7 +194,9 @@ window.onload = function () {
         rules:{
             customerId:{required: true},
             carId:{ required: true},
+            carName:{ required: true},
             businessId:{ required: true},
+            businessName:{ required: true},
             num:{ required: true},
             useStartTime:{ required: true},
             emptId:{ required: true},
@@ -203,7 +205,9 @@ window.onload = function () {
         messages:{
             customerId:{required:"客户不能为空"},
             carId:{required:"车辆信息不能为空"},
+            carName:{required:"车辆信息不能为空"},
             businessId:{required:"套餐不能为空"},
+            businessName:{required:"套餐不能为空"},
             num:{required:"套餐数量不能为空"},
             useStartTime:{required:"日期不能为空"},
             emptId:{required:"经理人信息不能为空"},

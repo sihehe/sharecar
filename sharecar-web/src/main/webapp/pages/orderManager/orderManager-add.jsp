@@ -37,7 +37,7 @@
                     <label for="carName">车辆 *</label>
                     <input id="carId" name="carId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="carName" name="carName" disabled>
+                        <input type="text" class="form-control" id="carName" name="carName" readonly="readonly">
                         <span class="input-group-btn">
                             <button type="button" id="carSearch" class="btn btn-primary">选择</button>
                         </span>
@@ -47,14 +47,14 @@
 
                 <div class="form-group">
                     <label for="cashPledge">押金 *</label>
-                    <input id="cashPledge" name="cashPledge" type="text" class="form-control " disabled>
+                    <input id="cashPledge" name="cashPledge" type="text" class="form-control " readonly="readonly">
                 </div>
 
                 <div class="form-group">
                     <label for="businessName">套餐 *</label>
                     <input id="businessId" name="businessId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="businessName" name="businessName" disabled>
+                        <input type="text" class="form-control" id="businessName" name="businessName" readonly="readonly" >
                         <span class="input-group-btn">
                             <button type="button" id="businessSearch" class="btn btn-primary">选择</button>
                         </span>
@@ -78,7 +78,7 @@
                 </div>
                 <div class="form-group">
                     <label for="orderAmt">订单金额 *</label>
-                    <input id="orderAmt" name="orderAmt" type="text" class="form-control " disabled>
+                    <input id="orderAmt" name="orderAmt" type="text" class="form-control " readonly="readonly">
                 </div>
                 <div class="form-group">
                     <label for="payType">支付方式 *</label>
