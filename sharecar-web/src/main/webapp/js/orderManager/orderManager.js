@@ -326,65 +326,45 @@ $('#btn_add').click(function () {
         yes: function (index, layero) {
             //得到iframe页的窗口对象，执行iframe页的方法：
             var iframeWin = window[layero.find('iframe')[0]['name']];
-            //调用表单校验
+            //调用表单校验 调用子方法
             var checkResult = iframeWin.check();
             if(checkResult){
                 //    校验成功 获取子页面值
 // 父页面获取子页面的iframe
                 var frameId = $(layero).find("iframe").attr("id");
 // 父页面获取子页面指定的id数据
-                var name = $(window.frames[frameId].document).find("#name").val();
-                var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
-                var plate = $(window.frames[frameId].document).find("#plate").val();
-                var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
-                var region = $(window.frames[frameId].document).find("#region").val();
-                var style = $(window.frames[frameId].document).find("#style").val();
-                var seats = $(window.frames[frameId].document).find("#seats").val();
-                var color = $(window.frames[frameId].document).find("#color").val();
-                var door = $(window.frames[frameId].document).find("#door").val();
-                var length = $(window.frames[frameId].document).find("#length").val();
-                var width = $(window.frames[frameId].document).find("#width").val();
-                var hight = $(window.frames[frameId].document).find("#hight").val();
-                var weight = $(window.frames[frameId].document).find("#weight").val();
-                var engineType = $(window.frames[frameId].document).find("#engineType").val();
-                var gearbox = $(window.frames[frameId].document).find("#gearbox").val();
-                var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
-                var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
-                var displacement = $(window.frames[frameId].document).find("#displacement").val();
-                var car = {
-                    name:name,
-                    factoryOwn:factoryOwn,
-                    plate:plate,
-                    ownerId:ownerId,
-                    region:region,
-                    style:style,
-                    seats:seats,
-                    color:color,
-                    door:door,
-                    length:length,
-                    width:width,
-                    hight:hight,
-                    weight:weight,
-                    engineType:engineType,
-                    gearbox:gearbox,
-                    fuelType:fuelType,
-                    engineHorsepower:engineHorsepower,
-                    displacement:displacement
+                var customerId = $(window.frames[frameId].document).find("#customerId").val();
+                var carId = $(window.frames[frameId].document).find("#carId").val();
+                var businessId = $(window.frames[frameId].document).find("#businessId").val();
+                var num = $(window.frames[frameId].document).find("#num").val();
+                var useStartTime = $(window.frames[frameId].document).find("#useStartTime").val();
+                var emptId = $(window.frames[frameId].document).find("#emptId").val();
+                var payType = $(window.frames[frameId].document).find("#payType").val();
+                var remark = $(window.frames[frameId].document).find("#remark").val();
+                var order = {
+                    customerId:customerId,
+                    carId:carId,
+                    businessId:businessId,
+                    num:num,
+                    useStartTime:useStartTime,
+                    emptId:emptId,
+                    payType:payType,
+                    remark:remark
                 };
                 $.ajax({
                     type:'POST',
-                    url:'addCar',
+                    url:'addOrder',
                     dataType:'json',
                     contentType:'application/json;charset=UTF-8',
-                    data:JSON.stringify(car),
+                    data:JSON.stringify(order),
                     success:function (res) {
                         console.log(res);
                         if(res.status){
                             layer.close(index);
                             var params = {
                                 query: {
-                                    status: $('#queryStatus').val(),
-                                    orderNum: $('#queryOrderNum').val()
+                                    orderNum: $('#queryOrderNum').val(),
+                                    status: $('#queryStatus').val()
                                 }
                             };
                             $('#tableDemo').bootstrapTable('refresh', params);

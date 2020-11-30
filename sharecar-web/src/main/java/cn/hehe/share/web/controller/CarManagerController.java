@@ -48,6 +48,11 @@ public class CarManagerController {
         return "carManager/carManager-add";
     }
 
+    @RequestMapping("/carManager-list")
+    public String carManagerList() {
+        return "carManager/carManager-list";
+    }
+
     @RequestMapping("/carManager-edit")
     public String carManagerEdit() {
         return "carManager/carManager-edit";

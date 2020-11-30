@@ -4,6 +4,7 @@ import cn.hehe.share.api.dto.OrderListDTO;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
+import cn.hehe.share.api.utils.OrderUtils;
 import cn.hehe.share.web.entity.ShareOrder;
 import cn.hehe.share.web.dao.ShareOrderDao;
 import cn.hehe.share.web.service.ShareOrderService;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * 共享管理订单表(ShareOrder)表服务实现类
@@ -113,6 +115,22 @@ public class ShareOrderServiceImpl implements ShareOrderService {
 
     @Override
     public Result orderAdd(ShareOrder shareOrder) {
+//         生产订单编号
+        Random random = new Random();
+        int i = random.nextInt(100);
+        OrderUtils.getOrderCode(i);
+//        校验客户是否存在
+
+//        校验车辆信息是否存在
+
+//        校验职工信息是否存在
+
+//        校验套餐id是否存在
+//        计算订单金额
+
+//
+
+
         this.shareOrderDao.insert(shareOrder);
         return ResultUtils.success();
     }
