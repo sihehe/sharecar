@@ -1,6 +1,8 @@
 package cn.hehe.share.web.service.Impl;
 
+import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
+import cn.hehe.share.api.enums.ISDELStatusEnums;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
@@ -17,6 +19,7 @@ import javax.annotation.Resource;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 
 /**
@@ -94,6 +97,7 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         ShareOrder shareOrder = new ShareOrder();
         shareOrder.setOrderStatus(status);
         shareOrder.setOrderNum(orderNum);
+        shareOrder.setIsDel(ISDELStatusEnums.ZERO.getValue());
         PageHelper.startPage(pageIndex, pageSize);
         List<ShareOrder> shareOrders = this.shareOrderDao.queryAll(shareOrder);
         List<OrderListDTO> orderListDTOList = new ArrayList<>();
@@ -134,6 +138,37 @@ public class ShareOrderServiceImpl implements ShareOrderService {
 
         shareOrder.setOrderAmt(BigDecimal.ONE);
         this.shareOrderDao.insert(shareOrder);
+        return ResultUtils.success();
+    }
+
+    @Override
+    public Result orderDel(Integer orderId) {
+        ShareOrder shareOrder = new ShareOrder();
+        shareOrder.setOrderId(orderId);
+        shareOrder.setIsDel(ISDELStatusEnums.ONE.getValue());
+        this.shareOrderDao.update(shareOrder);
+        return ResultUtils.success();
+    }
+
+    @Override
+    public Result<OrderDetailsDTO>  orderDetails(Integer orderId) {
+        OrderDetailsDTO orderDetails = this.shareOrderDao.orderDetails(orderId);
+        if(Objects.isNull(orderDetails)){
+            return ResultUtils.fail("查询不到订单");
+        }
+        Result result = ResultUtils.success();
+        result.setData(orderDetails);
+        return result;
+    }
+
+    @Override
+    public Result orderEdit(ShareOrder shareOrder) {
+//       先查询
+        ShareOrder order = this.shareOrderDao.queryById(shareOrder.getOrderId());
+        if(Objects.isNull(order)){
+            return ResultUtils.fail("更新失败");
+        }
+        this.shareOrderDao.update(shareOrder);
         return ResultUtils.success();
     }
 }

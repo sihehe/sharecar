@@ -1,5 +1,6 @@
 package cn.hehe.share.web.service;
 
+import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -59,4 +60,9 @@ public interface ShareOrderService {
 
     Result orderAdd(ShareOrder shareOrder);
 
+    Result orderDel(Integer orderId);
+
+    Result<OrderDetailsDTO>  orderDetails(Integer orderId);
+
+    Result orderEdit(ShareOrder shareOrder);
 }

@@ -1,5 +1,6 @@
 package cn.hehe.share.web.controller;
 
+import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
@@ -42,6 +43,16 @@ public class OrderManagerController {
         return "orderManager/orderManager-add";
     }
 
+    @RequestMapping("/orderManager-details")
+    public String details(){
+        return "orderManager/orderManager-details";
+    }
+
+    @RequestMapping("/orderManager-edit")
+    public String edit(){
+        return "orderManager/orderManager-edit";
+    }
+
 
     @PostMapping("/orderList")
     @ResponseBody
@@ -53,8 +64,27 @@ public class OrderManagerController {
 
     @PostMapping("/orderAdd")
     @ResponseBody
-    public Result orderAdd(@RequestBody ShareOrder shareOrder) { //PageReq<CarListReq> req
+    public Result orderAdd(@RequestBody ShareOrder shareOrder) {
         return shareOrderService.orderAdd(shareOrder);
+    }
+
+    @PostMapping("/orderDel")
+    @ResponseBody
+    public Result orderDel(Integer orderId) {
+        return shareOrderService.orderDel(orderId);
+    }
+
+
+    @PostMapping("/orderDetails")
+    @ResponseBody
+    public Result<OrderDetailsDTO> orderDetails(Integer orderId) {
+        return shareOrderService.orderDetails(orderId);
+    }
+
+    @PostMapping("/orderEdit")
+    @ResponseBody
+    public Result orderEdit(ShareOrder shareOrder) {
+        return shareOrderService.orderEdit(shareOrder);
     }
 
 }

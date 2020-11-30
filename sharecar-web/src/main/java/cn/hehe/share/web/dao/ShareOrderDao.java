@@ -1,5 +1,6 @@
 package cn.hehe.share.web.dao;
 
+import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.web.entity.ShareOrder;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
@@ -62,4 +63,5 @@ public interface ShareOrderDao {
      */
     int deleteById(Integer orderId);
 
+    OrderDetailsDTO orderDetails(@Param("orderId") Integer orderId);
 }

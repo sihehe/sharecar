@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author: Mr.si
  * @create: 2020-11-15 15:55
  **/
-public class ResultUtils implements Serializable {
+public class ResultUtils<T> implements Serializable {
 
 
     public static Result success(){
@@ -19,5 +19,11 @@ public class ResultUtils implements Serializable {
 
     public static Result fail(){
         return new Result(ResultEnum.FAIL);
+    }
+
+    public static Result fail(String msg){
+        Result result = new Result(ResultEnum.FAIL);
+        result.setMsg(msg);
+        return result;
     }
 }

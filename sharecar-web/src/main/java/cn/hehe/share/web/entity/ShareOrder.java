@@ -91,5 +91,10 @@ public class ShareOrder implements Serializable {
      */
     private String remark;
 
+    /**
+     * 删除标记 0 不删 1 删除
+     */
+    private Integer isDel;
+
 
 }

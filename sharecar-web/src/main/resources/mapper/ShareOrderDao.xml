@@ -22,10 +22,11 @@
         <result property="expireNum" column="EXPIRE_NUM" jdbcType="INTEGER"/>
         <result property="expireAmt" column="EXPIRE_AMT" jdbcType="DECIMAL"/>
         <result property="remark" column="REMARK" jdbcType="VARCHAR"/>
+        <result property="isDel" column="IS_DEL" jdbcType="INTEGER"/>
     </resultMap>
 
     <sql id="baseColumn">
-        ORDER_ID, ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, ORDER_STATUS, CASH_PLEDGE,IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK
+        ORDER_ID, ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, ORDER_STATUS, CASH_PLEDGE,IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL
     </sql>
 
     <!--查询单个-->
@@ -102,13 +103,21 @@
             <if test="expireAmt != null">
                 and expire_amt = #{expireAmt}
             </if>
+            <if test="isDel != null">
+                and IS_DEL = #{isDel}
+            </if>
         </where>
+    </select>
+
+    <select id="orderDetails" resultType="cn.hehe.share.api.dto.OrderDetailsDTO">
+        select <include refid="baseColumn"/> from share_order o left join share_car c on o.CAR_ID = c.ID left join share_business b on o.BUSINESS_ID = b.business_ID  where o.ORDER_ID = #{orderId}
+
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
-        insert into share_order(ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, CASH_PLEDGE,ORDER_STATUS, IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK)
-        values (#{orderNum}, #{customerId}, #{carId}, #{orderAmt}, #{businessId}, #{num}, #{useStartTime}, #{useEndTime}, #{orderTime}, #{emptId}, #{payType},#{cashPledge}, #{orderStatus}, #{isExpire}, #{expireNum}, #{expireAmt},#{remark})
+        insert into share_order(ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, CASH_PLEDGE,ORDER_STATUS, IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL)
+        values (#{orderNum}, #{customerId}, #{carId}, #{orderAmt}, #{businessId}, #{num}, #{useStartTime}, #{useEndTime}, #{orderTime}, #{emptId}, #{payType},#{cashPledge}, #{orderStatus}, #{isExpire}, #{expireNum}, #{expireAmt},#{remark},#{isDel})
     </insert>
 
     <!--通过主键修改数据-->
@@ -167,6 +176,9 @@
             </if>
             <if test="remark != null and remark != ''">
                 REMARK = #{remark},
+            </if>
+            <if test="isDel != null">
+                IS_DEL = #{isDel},
             </if>
         </set>
         where ORDER_ID = #{orderId}

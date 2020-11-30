@@ -5,14 +5,14 @@ $(function () {
 function deleteInfo(e) {
     console.log(e);
     $.ajax({
-        url: 'delCar?carId=' + e.id,
+        url: 'orderDel?orderId=' + e.orderId,
         type: 'post',
         success: function (data) {
             console.log(data);
             var params = {
                 query: {
-                    status: $('#queryStatus').val(),
-                    orderNum: $('#queryOrderNum').val()
+                    orderNum: $('#queryOrderNum').val(),
+                    status: $('#queryStatus').val()
                 }
             }
             $('#tableDemo').bootstrapTable('refresh', params);
@@ -118,68 +118,43 @@ function init() {
             width: 250,
             events: {
                 'click #edit': function (e, value, row, index) {
-                    // $('#id').val(row.id);
-                    // $('#name').val(row.name);
-                    // $('#style').val(row.style);
-                    // $('#region').val(row.region);
                     var id = row.id;
                     layer.open({
                         type: 2,
-                        title: '编辑车辆信息',
+                        title: '编辑订单信息',
                         area: ['870px', '650px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['更新', '取消'],
-                        content: "carManager-edit",
+                        content: "orderManager-edit",
                         yes: function (index, layero) {
                             //    更新
                             // 父页面获取子页面的iframe
                             var frameId = $(layero).find("iframe").attr("id");
                             // 父页面获取子页面指定的id数据
-                            var name = $(window.frames[frameId].document).find("#name").val();
-                            var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
-                            var plate = $(window.frames[frameId].document).find("#plate").val();
-                            var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
-                            var region = $(window.frames[frameId].document).find("#region").val();
-                            var style = $(window.frames[frameId].document).find("#style").val();
-                            var seats = $(window.frames[frameId].document).find("#seats").val();
-                            var color = $(window.frames[frameId].document).find("#color").val();
-                            var door = $(window.frames[frameId].document).find("#door").val();
-                            var length = $(window.frames[frameId].document).find("#length").val();
-                            var width = $(window.frames[frameId].document).find("#width").val();
-                            var hight = $(window.frames[frameId].document).find("#hight").val();
-                            var weight = $(window.frames[frameId].document).find("#weight").val();
-                            var engineType = $(window.frames[frameId].document).find("#engineType").val();
-                            var gearbox = $(window.frames[frameId].document).find("#gearbox").val();
-                            var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
-                            var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
-                            var displacement = $(window.frames[frameId].document).find("#displacement").val();
-                            var car = {
-                                id: id,
-                                name:name,
-                                factoryOwn:factoryOwn,
-                                plate:plate,
-                                ownerId:ownerId,
-                                region:region,
-                                style:style,
-                                seats:seats,
-                                color:color,
-                                door:door,
-                                length:length,
-                                width:width,
-                                hight:hight,
-                                weight:weight,
-                                engineType:engineType,
-                                gearbox:gearbox,
-                                fuelType:fuelType,
-                                engineHorsepower:engineHorsepower,
-                                displacement:displacement
+                            var customerId = $(window.frames[frameId].document).find("#customerId").val();
+                            var carId = $(window.frames[frameId].document).find("#carId").val();
+                            var businessId = $(window.frames[frameId].document).find("#businessId").val();
+                            var num = $(window.frames[frameId].document).find("#num").val();
+                            var useStartTime = $(window.frames[frameId].document).find("#useStartTime").val();
+                            var emptId = $(window.frames[frameId].document).find("#emptId").val();
+                            var payType = $(window.frames[frameId].document).find("#payType").val();
+                            var remark = $(window.frames[frameId].document).find("#remark").val();
+                            var order = {
+                                customerId:customerId,
+                                carId:carId,
+                                businessId:businessId,
+                                num:num,
+                                useStartTime:useStartTime,
+                                emptId:emptId,
+                                payType:payType,
+                                remark:remark
                             };
                             //    向后端传输数据
                             $.ajax({
-                                url: "updateCar",
+                                url: "orderEdit",
                                 type: "POST",
                                 dataType: 'json',
                                 contentType: 'application/json;charset=UTF-8',
@@ -230,21 +205,21 @@ function init() {
                     var id = row.id;
                     layer.open({
                         type: 2,
-                        title: '车辆信息详情',
+                        title: '订单信息详情',
                         area: ['870px', '650px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['返回'],
-                        content: "carManager-details",
+                        content: "orderManager-details",
                         btn1: function (index, layero) {},
                         success: function (layero,index) {
                             // layer.msg("成功弹出");
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCar(id);
+                            iframeWin.initOrder(id);
                         }
 
                     });
