@@ -118,7 +118,7 @@ function init() {
             width: 250,
             events: {
                 'click #edit': function (e, value, row, index) {
-                    var id = row.id;
+                    var id = row.orderId;
                     layer.open({
                         type: 2,
                         title: '编辑订单信息',
@@ -191,7 +191,7 @@ function init() {
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCar(id);
+                            iframeWin.initOrder(id);
                         }
 
                     });
@@ -202,7 +202,7 @@ function init() {
                     deleteInfo(row);
                 },
                 'click #details': function (e, value, row, index) {
-                    var id = row.id;
+                    var id = row.orderId;
                     layer.open({
                         type: 2,
                         title: '订单信息详情',

@@ -110,8 +110,27 @@
     </select>
 
     <select id="orderDetails" resultType="cn.hehe.share.api.dto.OrderDetailsDTO">
-        select <include refid="baseColumn"/> from share_order o left join share_car c on o.CAR_ID = c.ID left join share_business b on o.BUSINESS_ID = b.business_ID  where o.ORDER_ID = #{orderId}
-
+        select
+       cu.CUSTOMER_ID ,
+       cu.CUSTOMER_NAME customerName,
+       c.ID carId ,
+       c.NAME carName,
+       o.CASH_PLEDGE cashPledge,
+       b.BUSINESS_ID businessId,
+       b.BUSINESS_NAME usinessName,
+       o.num,
+       o.USE_START_TIME useStartTime,
+       d.DEPT_ID emptId,
+       d.DEPT_NAME emptName,
+       o.ORDER_AMT orderAmt,
+       o.PAY_TYPE payType ,
+       o.remark
+from share_order o
+  left join share_car c on o.CAR_ID = c.ID
+  left join share_business b on o.BUSINESS_ID = b.business_ID
+  left join share_customer cu on cu.CUSTOMER_ID = o.CUSTOMER_ID
+  left join share_dept d on d.DEPT_ID = o.EMPT_ID
+  where o.ORDER_ID = #{orderId}
     </select>
 
     <!--新增所有列-->
