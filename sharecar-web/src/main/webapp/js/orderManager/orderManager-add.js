@@ -46,35 +46,33 @@ $('#businessSearch').click(function () {
 
     layer.open({
         type: 2,
-        title: '选择车辆',
+        title: '选择套餐',
         area: ['450px', '500px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
         scrollbar: false, //屏蔽滚动
         btnAlign: 'c', //按钮居中对齐
         btn: ['确定', '取消'],
-        content: "../carManager/carManager-list",
+        content: "../businessManager/businessManager-list",
         yes: function (index, layero) {
 // 父页面执行子页面的方法
             var iframeWin = window[layero.find('iframe')[0]['name']];
             var selectArr = iframeWin.getSelections();
             if(selectArr.length > 0){
                 if(selectArr.length > 1){
-                    layer.alert("请选择一条车辆信息记录");
+                    layer.alert("请选择一条套餐信息记录");
                 }
-                var carInfo = selectArr[0];
-                console.log(carInfo);
-                $('#carId').val(carInfo.id);
-                $('#carName').val(carInfo.name);
+                var businessInfo = selectArr[0];
+                console.log(businessInfo);
+                $('#businessId').val(businessInfo.businessId);
+                $('#businessName').val(businessInfo.businessName);
                 layer.close(index);
             }else{
-                layer.alert("请选择车辆信息");
+                layer.alert("请选择套餐");
             }
             // layer.close(index);
         },
         btn2: function (index, layero) {
-            console.log(index);
-            console.log(layero);
             // layer.msg('取消按钮被点击');
         },
 

@@ -11,67 +11,60 @@ function init() {
             align: "center",
             halign: "center",
             valign: 'middle',
-            checkbox: true,
+            checkbox: true
         },
         {
-        field: 'id',
-        title: '主键',
-        align: "center",
-        halign: "center",
-        valign: 'middle',
-        sortable: true
-    },
+            field: 'businessId',
+            title: '主键',
+            align: "center",
+            halign: "center",
+            valign: 'middle',
+            sortable: true
+        },
         {
-            field: 'typeId',
-            title: '类型Id',
+            field: 'businessName',
+            title: '套餐名称',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'name',
-            title: '名称',
+            field: 'businessUnit',
+            title: '套餐类型',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'factoryOwn',
-            title: '厂商',
+            field: 'carType',
+            title: '车辆类型',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'style',
-            title: '风格',
+            field: 'price',
+            title: '价格',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'engineType',
-            title: '发动机类型',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
-            field: 'region',
-            title: '地区',
+            field: 'timeOutPrice',
+            title: '超时单价',
             align: "center",
             halign: "center",
             valign: 'middle'
         }];
 
     $('#tableDemo').bootstrapTable({
-        url: "carList",
+        url: "businessList",
         method: "post",                                        // 请求类型
         contentType : "application/x-www-form-urlencoded",
         dataType:"json",
         height: tableHeight(),//高度调整
         width: 600,//高度调整
-        striped:true,//隔行变色`
+        striped:true,//隔行变色
         uniqueId:"id",//Indicate an unique identifier for each row
         sidePagination: "server",                              // 设置在服务端还是客户端分页
         pagination: true,                                      // 是否显示分页

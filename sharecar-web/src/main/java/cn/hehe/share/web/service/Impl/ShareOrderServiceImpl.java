@@ -2,6 +2,7 @@ package cn.hehe.share.web.service.Impl;
 
 import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
+import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.enums.ISDELStatusEnums;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -17,10 +18,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
-import java.util.Random;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * 共享管理订单表(ShareOrder)表服务实现类
@@ -136,7 +136,20 @@ public class ShareOrderServiceImpl implements ShareOrderService {
 
 //
 
+        String useStartTime = shareOrder.getUseStartTime();
+        String[] split = useStartTime.split(" ~ ");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            shareOrder.setUseStartTime(simpleDateFormat1.format(simpleDateFormat.parse(split[0])));
+            shareOrder.setUseEndTime(simpleDateFormat1.format(simpleDateFormat.parse(split[1])));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         shareOrder.setOrderAmt(BigDecimal.ONE);
+        shareOrder.setOrderTime(new Date());
+        shareOrder.setOrderStatus(DBStatusEnums.N.getKey());
+        shareOrder.setIsDel(0);
         this.shareOrderDao.insert(shareOrder);
         return ResultUtils.success();
     }

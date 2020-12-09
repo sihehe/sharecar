@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hehe.share.web.dao.ShareBusinessDetailDao">
+
+    <resultMap id="BaseResultMap" type="cn.hehe.share.web.entity.ShareBusinessDetail">
+        <!--@Table share_business_detail-->
+        <result property="id" column="ID" jdbcType="INTEGER"/>
+        <result property="businessId" column="BUSINESS_ID" jdbcType="INTEGER"/>
+        <result property="carType" column="CAR_TYPE" jdbcType="VARCHAR"/>
+        <result property="price" column="PRICE" jdbcType="NUMERIC"/>
+        <result property="timeOutPrice" column="TIME_OUT_PRICE" jdbcType="NUMERIC"/>
+        <result property="isDel" column="IS_DEL" jdbcType="VARCHAR"/>
+        <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="createUser" column="CREATE_USER" jdbcType="VARCHAR"/>
+        <result property="updateTime" column="UPDATE_TIME" jdbcType="TIMESTAMP"/>
+        <result property="updateUser" column="UPDATE_USER" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+        from share_business_detail
+        where ID = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+        from share_business_detail
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+        from share_business_detail
+        <where>
+            <if test="id != null">
+                and ID = #{id}
+            </if>
+            <if test="businessId != null">
+                and BUSINESS_ID = #{businessId}
+            </if>
+            <if test="carType != null and carType != ''">
+                and CAR_TYPE = #{carType}
+            </if>
+            <if test="price != null">
+                and PRICE = #{price}
+            </if>
+            <if test="timeOutPrice != null">
+                and TIME_OUT_PRICE = #{timeOutPrice}
+            </if>
+            <if test="isDel != null and isDel != ''">
+                and IS_DEL = #{isDel}
+            </if>
+            <if test="createTime != null">
+                and CREATE_TIME = #{createTime}
+            </if>
+            <if test="createUser != null and createUser != ''">
+                and CREATE_USER = #{createUser}
+            </if>
+            <if test="updateTime != null">
+                and UPDATE_TIME = #{updateTime}
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                and UPDATE_USER = #{updateUser}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into share_business_detail(BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER)
+        values (#{businessId}, #{carType}, #{price}, #{timeOutPrice}, #{isDel}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share_business_detail
+        <set>
+            <if test="businessId != null">
+                BUSINESS_ID = #{businessId},
+            </if>
+            <if test="carType != null and carType != ''">
+                CAR_TYPE = #{carType},
+            </if>
+            <if test="price != null">
+                PRICE = #{price},
+            </if>
+            <if test="timeOutPrice != null">
+                TIME_OUT_PRICE = #{timeOutPrice},
+            </if>
+            <if test="isDel != null and isDel != ''">
+                IS_DEL = #{isDel},
+            </if>
+            <if test="createTime != null">
+                CREATE_TIME = #{createTime},
+            </if>
+            <if test="createUser != null and createUser != ''">
+                CREATE_USER = #{createUser},
+            </if>
+            <if test="updateTime != null">
+                UPDATE_TIME = #{updateTime},
+            </if>
+            <if test="updateUser != null and updateUser != ''">
+                UPDATE_USER = #{updateUser},
+            </if>
+        </set>
+        where ID = #{id}
+    </update>
+
+    <update id="updateByBusinessId">
+        update share_business_detail set IS_DEL = #{isDel}
+        where BUSINESS_ID = #{businessId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from share_business_detail where ID = #{id}
+    </delete>
+
+</mapper>
