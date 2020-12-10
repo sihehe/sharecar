@@ -86,7 +86,7 @@
             and sb.BUSINESS_NAME like concat('%',#{name},'%')
         </if>
         <if test=" type != null and type != '' ">
-            and sbd.CAR_TYPE = #{type}
+            and sb.BUSINESS_UNIT = #{type}
         </if>
     </select>
 

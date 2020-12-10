@@ -1,5 +1,6 @@
 package cn.hehe.share.web.controller;
 
+import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -61,9 +62,17 @@ public class ShareBusinessController {
 
     @PostMapping("/delBusiness")
     @ResponseBody
-    public Result delBusiness(Integer businessId) {
+    public Result<BusinessDetailsDto> delBusiness(Integer businessId) {
         return sahreBusinessService.delBusiness(businessId);
     }
+
+
+    @PostMapping("/businessDetails")
+    @ResponseBody
+    public Result<BusinessDetailsDto> businessDetails(Integer businessId) {
+        return sahreBusinessService.businessDetails(businessId);
+    }
+
 
 
 }

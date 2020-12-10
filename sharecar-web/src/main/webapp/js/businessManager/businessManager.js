@@ -5,14 +5,14 @@ $(function () {
 function deleteInfo(e) {
     console.log(e);
     $.ajax({
-        url: 'delBusiness?carId=' + e.id,
+        url: 'delBusiness?businessId=' + e.businessId,
         type: 'post',
         success: function (data) {
             console.log(data);
             var params = {
                 query: {
                     name: $('#queryName').val(),
-                    style: $('#queryType').val()
+                    type: $('#queryType').val()
                 }
             }
             $('#tableDemo').bootstrapTable('refresh', params);
@@ -84,7 +84,7 @@ function init() {
                     layer.open({
                         type: 2,
                         title: '编辑车辆信息',
-                        area: ['870px', '650px'],
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
@@ -149,7 +149,7 @@ function init() {
                                         var params = {
                                             query: {
                                                 name: $('#queryName').val(),
-                                                style: $('#queryType').val()
+                                                type: $('#queryType').val()
                                             }
                                         };
                                         $('#tableDemo').bootstrapTable('refresh', params);
@@ -188,14 +188,14 @@ function init() {
                     var id = row.id;
                     layer.open({
                         type: 2,
-                        title: '车辆信息详情',
-                        area: ['870px', '650px'],
+                        title: '套餐信息详情',
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['返回'],
-                        content: "carManager-details",
+                        content: "businessManager-details",
                         btn1: function (index, layero) {},
                         success: function (layero,index) {
                             // layer.msg("成功弹出");
@@ -243,7 +243,7 @@ function init() {
                 pageSize: params.limit,
                 pageIndex: params.offset,
                 name: $('#queryName').val(),
-                style: $('#queryType').val()
+                type: $('#queryType').val()
             }
         },
         columns: columns,
@@ -261,7 +261,7 @@ $('#querybtn').click(function () {
     var params = {
         query: {
             name: $('#queryName').val(),
-            style: $('#queryType').val()
+            type: $('#queryType').val()
         }
     }
     $('#tableDemo').bootstrapTable('refresh', params);
@@ -274,7 +274,7 @@ $('#btn_add').click(function () {
     var index = layer.open({
         type: 2,
         title: '添加套餐信息',
-        area: ['870px', '650px'],
+        area: ['870px', '550px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
         scrollbar: false, //屏蔽滚动
@@ -342,13 +342,13 @@ $('#btn_add').click(function () {
                             var params = {
                                 query: {
                                     name: $('#queryName').val(),
-                                    style: $('#queryType').val()
+                                    type: $('#queryType').val()
                                 }
                             };
                             var params = {
                                 query: {
                                     name: $('#queryName').val(),
-                                    style: $('#queryType').val()
+                                    type: $('#queryType').val()
                                 }
                             };
                             $('#tableDemo').bootstrapTable('refresh', params);

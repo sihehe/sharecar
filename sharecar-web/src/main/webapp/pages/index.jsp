@@ -55,10 +55,19 @@
                     <a class="J_menuItem" href="home" > <i class="fa fa-home"></i> <span class="nav-label">首页</span></a>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="carManager/"><i class="fa fa-columns"></i> <span class="nav-label">车辆信息管理</span></a>
+                    <a class="J_menuItem" href="carManager/"><i class="fa fa-car"></i> <span class="nav-label">车辆信息管理</span></a>
                 </li>
                 <li>
-                    <a class="J_menuItem" href="orderManager/"><i class="fa fa-columns"></i> <span class="nav-label">订单管理</span></a>
+                    <a class="J_menuItem" href="orderManager/"><i class="fa fa-table"></i> <span class="nav-label">订单管理</span></a>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="businessManager/"><i class="fa fa-edit"></i> <span class="nav-label">套餐管理</span></a>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="orderManager/"><i class="fa fa-cutlery"></i> <span class="nav-label">客户管理</span></a>
+                </li>
+                <li>
+                    <a class="J_menuItem" href="orderManager/"><i class="glyphicon glyphicon-user"></i> <span class="nav-label">职工管理</span></a>
                 </li>
                <%-- <li>
                     <a href="#">

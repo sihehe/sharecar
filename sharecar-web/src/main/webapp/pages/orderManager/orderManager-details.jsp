@@ -28,71 +28,54 @@
             <div class="col-sm-12 hr-line-dashed"></div>
             <div class="col-sm-5">
                 <div class="form-group" id="customer">
-                    <label for="customerId">客户名称 *</label>
-                    <select data-size="6" class="form-control selectpicker show-tick" data-live-search="true" title="请输入客户名称"  id="customerId" name="customerId" data-selectNameUrl="${pageContext.request.contextPath}/customerManager/customerList" >
-                    </select>
-                    <%--<input id="customerId" name="customerId" type="text" class="form-control ">--%>
+                    <label for="customerName">客户名称 *</label>
+                    <input id="customerName" name="customerName" type="text" class="form-control" disabled>
                 </div>
                 <div class="form-group">
                     <label for="carName">车辆 *</label>
-                    <input id="carId" name="carId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="carName" name="carName" readonly="readonly">
-                        <span class="input-group-btn">
-                            <button type="button" id="carSearch" class="btn btn-primary">选择</button>
-                        </span>
+                        <input type="text" class="form-control" id="carName" name="carName" disabled >
                     </div>
                     <%--<input id="carName" name="carName" type="text" class="form-control" >--%>
                 </div>
 
                 <div class="form-group">
                     <label for="cashPledge">押金 *</label>
-                    <input id="cashPledge" name="cashPledge" type="text" class="form-control " readonly="readonly">
+                    <input id="cashPledge" name="cashPledge" type="text" class="form-control " disabled>
                 </div>
 
                 <div class="form-group">
                     <label for="businessName">套餐 *</label>
-                    <input id="businessId" name="businessId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
-                        <input type="text" class="form-control" id="businessName" name="businessName" readonly="readonly" >
-                        <span class="input-group-btn">
-                            <button type="button" id="businessSearch" class="btn btn-primary">选择</button>
-                        </span>
+                        <input type="text" class="form-control" id="businessName" name="businessName" disabled>
                     </div>
 
                 </div>
                 <div class="form-group">
                     <label for="num">套餐数量 *</label>
-                    <input id="num" name="num" type="text" class="form-control ">
+                    <input id="num" name="num" type="text" class="form-control " disabled>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="useStartTime">租车起止时间 *</label>
-                    <input id="useStartTime" name="useStartTime" type="text" class="form-control ">
+                    <input id="useStartTime" name="useStartTime" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group" id="empt">
-                    <label for="emptId">经理人</label>
-                    <select data-size="6" class="form-control selectpicker show-tick" data-live-search="true" title="请输入职工名称"  id="emptId" name="emptId" data-selectNameUrl="${pageContext.request.contextPath}/customerManager/customerList" >
-                    </select>
+                    <label for="emptName">经理人</label>
+                    <input id="emptName" name="emptName" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group">
                     <label for="orderAmt">订单金额 *</label>
-                    <input id="orderAmt" name="orderAmt" type="text" class="form-control " readonly="readonly">
+                    <input id="orderAmt" name="orderAmt" type="text" class="form-control " readonly="readonly" disabled>
                 </div>
                 <div class="form-group">
                     <label for="payType">支付方式 *</label>
-                    <select class="form-control m-b" name="payType" id="payType" >
-                        <option>请选择</option>
-                        <option>银联</option>
-                        <option>微信</option>
-                        <option>支付宝</option>
-                        <option>其他</option>
-                    </select>
+                    <input id="payType" name="payType" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group">
                     <label for="remark">备注 </label>
-                    <textarea id="remark" name="remark" class="form-control" rows="3"></textarea>
+                    <textarea id="remark" name="remark" class="form-control" rows="3" disabled></textarea>
                 </div>
             </div>
 

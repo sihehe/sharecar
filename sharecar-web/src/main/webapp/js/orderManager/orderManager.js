@@ -38,7 +38,8 @@ function init() {
             title: '订单编号',
             align: "center",
             halign: "center",
-            valign: 'middle'
+            valign: 'middle',
+            width: 180
         },
         {
             field: 'customerName',
@@ -117,12 +118,12 @@ function init() {
             valign: 'middle',
             width: 250,
             events: {
-                'click #edit': function (e, value, row, index) {
+                /*'click #edit': function (e, value, row, index) {
                     var id = row.orderId;
                     layer.open({
                         type: 2,
                         title: '编辑订单信息',
-                        area: ['870px', '650px'],
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
@@ -181,9 +182,9 @@ function init() {
                             })
                         },
                         btn2: function (index, layero) {
-                            /*console.log(index);
+                            /!*console.log(index);
                             console.log(layero);
-                            layer.msg('取消按钮被点击');*/
+                            layer.msg('取消按钮被点击');*!/
                         },
 
                         success: function (layero,index) {
@@ -197,16 +198,16 @@ function init() {
                     });
 
                     console.log(row.id);
-                },
-                'click #delete': function (e, value, row, index) {
+                },*/
+                /*'click #delete': function (e, value, row, index) {
                     deleteInfo(row);
-                },
+                },*/
                 'click #details': function (e, value, row, index) {
                     var id = row.orderId;
                     layer.open({
                         type: 2,
                         title: '订单信息详情',
-                        area: ['870px', '650px'],
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
@@ -224,13 +225,31 @@ function init() {
 
                     });
                 },
+                'click #pay': function (e, value, row, index) {
+                    var index = layer.open({
+                        type: 2,
+                        title: '添加订单',
+                        area: ['430px', '500px'],
+                        maxmin: true, //打开全屏
+                        resize: true, //开启拉伸
+                        scrollbar: false, //屏蔽滚动
+                        btnAlign: 'c', //按钮居中对齐
+                        btn: ['返回'],
+                        content: "https://login.weixin.qq.com/qrcode/wZ7Pht-zAA==",
+                        btn1: function (index, layero) {
+                        },
+                        success: function () {
+                            // layer.msg("成功弹出");
+                        }
+                    });
+                }
 
             },
             formatter: function (value, row, index) {
                 var result = "";
                 result += '<button id="details" class="btn btn-primary" data-toggle="modal" data-target="#detailsModal">详情</button>';
-                result += '<button id="edit" class="btn btn-info" data-toggle="modal" data-target="#editModal" style="margin-left:10px;">编辑</button>';
-                result += '<button id="delete" class="btn btn-danger" style="margin-left:10px;">删除</button>';
+                 result += '<button id="pay" class="btn btn-info" data-toggle="modal" data-target="#payModal" style="margin-left:10px;">结算</button>';
+                // result += '<button id="delete" class="btn btn-danger" style="margin-left:10px;">删除</button>';
                 return result;
             }
         }];
@@ -291,7 +310,7 @@ $('#btn_add').click(function () {
     var index = layer.open({
         type: 2,
         title: '添加订单',
-        area: ['870px', '650px'],
+        area: ['870px', '550px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
         scrollbar: false, //屏蔽滚动

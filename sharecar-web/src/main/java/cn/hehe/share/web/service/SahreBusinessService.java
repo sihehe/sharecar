@@ -1,5 +1,6 @@
 package cn.hehe.share.web.service;
 
+import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -18,5 +19,8 @@ public interface SahreBusinessService {
     PageResp<BusinessListDto> businessList(Integer pageIndex, Integer pageSize, String name, String type);
 
     Result delBusiness(Integer businessId);
+
+    Result<BusinessDetailsDto> businessDetails(Integer businessId);
+
 
 }

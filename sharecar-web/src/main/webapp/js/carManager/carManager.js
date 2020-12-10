@@ -92,7 +92,7 @@ function init() {
                     layer.open({
                         type: 2,
                         title: '编辑车辆信息',
-                        area: ['870px', '650px'],
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
@@ -197,7 +197,7 @@ function init() {
                     layer.open({
                         type: 2,
                         title: '车辆信息详情',
-                        area: ['870px', '650px'],
+                        area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
@@ -303,7 +303,7 @@ $('#btn_add').click(function () {
     var index = layer.open({
         type: 2,
         title: '添加车辆信息',
-        area: ['870px', '650px'],
+        area: ['870px', '550px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
         scrollbar: false, //屏蔽滚动

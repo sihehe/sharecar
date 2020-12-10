@@ -225,17 +225,14 @@ function initOrder(orderId) {
         contentType:'application/json;charset=UTF-8',
         success:function (res) {
             if(res.status){
-                $('#customerId').val(res.data.customerId);
                 // 待定赋值方式
                 $('#customerName').val(res.data.customerName);
-                $('#carId').val(res.data.carId);
                 $('#carName').val(res.data.carName);
                 $('#cashPledge').val(res.data.cashPledge);
                 $('#businessId').val(res.data.businessId);
                 $('#businessName').val(res.data.businessName);
                 $('#num').val(res.data.num);
                 $('#useStartTime').val(res.data.useStartTime);
-                $('#emptId').val(res.data.emptId);
                 // 待定赋值方式
                 $('#emptName').val(res.data.emptName);
                 $('#orderAmt').val(res.data.orderAmt);

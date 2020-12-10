@@ -1,5 +1,6 @@
 package cn.hehe.share.web.service.Impl;
 
+import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
@@ -12,11 +13,13 @@ import cn.hehe.share.web.entity.ShareBusinessDetail;
 import cn.hehe.share.web.service.SahreBusinessService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * (SahreBusiness)表服务实现类
@@ -50,5 +53,18 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         sahreBusinessDao.update(sahreBusiness);
         shareBusinessDetailDao.updateByBusinessId(businessId,DBStatusEnums.Y.getKey());
         return ResultUtils.success();
+    }
+
+    @Override
+    public Result<BusinessDetailsDto> businessDetails(Integer businessId) {
+        SahreBusiness sahreBusiness = sahreBusinessDao.queryById(businessId);
+        if(Objects.isNull(sahreBusiness)){
+            return ResultUtils.fail("未查询到相关套餐");
+        }
+        BusinessDetailsDto businessDetailsDto = new BusinessDetailsDto();
+        BeanUtils.copyProperties(sahreBusiness,businessDetailsDto);
+        Result success = ResultUtils.success();
+        success.setData(businessDetailsDto);
+        return success;
     }
 }
