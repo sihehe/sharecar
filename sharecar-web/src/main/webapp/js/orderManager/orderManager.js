@@ -227,7 +227,7 @@ function init() {
                 },
                 'click #pay': function (e, value, row, index) {
                     var index = layer.open({
-                        type: 2,
+                        type: 1,
                         title: '添加订单',
                         area: ['430px', '500px'],
                         maxmin: true, //打开全屏
@@ -235,7 +235,7 @@ function init() {
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['返回'],
-                        content: "https://login.weixin.qq.com/qrcode/wZ7Pht-zAA==",
+                        content: "<img src= '../img/payCode.png'/>",
                         btn1: function (index, layero) {
                         },
                         success: function () {
