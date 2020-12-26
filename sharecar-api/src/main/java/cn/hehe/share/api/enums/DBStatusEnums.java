@@ -10,7 +10,9 @@ public enum DBStatusEnums {
 
 
     Y("Y","是"),
-    N("N","否")
+    N("N","否"),
+    A("A","使用中"),
+    C("C","失效"),
     ;
 
 

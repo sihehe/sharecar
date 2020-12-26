@@ -2,6 +2,7 @@ package cn.hehe.share.web.entity;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
 import java.util.Date;
 import java.io.Serializable;
 
@@ -31,11 +32,11 @@ public class ShareBusinessDetail implements Serializable {
     /**
     * 单价
     */
-    private Double price;
+    private BigDecimal price;
     /**
     * 超时单价(按照业务类型规则计算)
     */
-    private Double timeOutPrice;
+    private BigDecimal timeOutPrice;
     /**
     * 是否删除(N-不删除Y-删除)
     */

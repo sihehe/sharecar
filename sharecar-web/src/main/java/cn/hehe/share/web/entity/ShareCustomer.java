@@ -1,5 +1,7 @@
 package cn.hehe.share.web.entity;
 
+import lombok.Data;
+
 import java.io.Serializable;
 
 /**
@@ -8,6 +10,8 @@ import java.io.Serializable;
  * @author makejava
  * @since 2020-11-27 16:12:21
  */
+
+@Data
 public class ShareCustomer implements Serializable {
     private static final long serialVersionUID = -20926919804298264L;
     /**
@@ -40,61 +44,8 @@ public class ShareCustomer implements Serializable {
     */
     private String customerAddress;
 
+    private String isDel;
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
 
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public String getCustomerName() {
-        return customerName;
-    }
-
-    public void setCustomerName(String customerName) {
-        this.customerName = customerName;
-    }
-
-    public String getCustomerGrad() {
-        return customerGrad;
-    }
-
-    public void setCustomerGrad(String customerGrad) {
-        this.customerGrad = customerGrad;
-    }
-
-    public String getCustomerBrithYear() {
-        return customerBrithYear;
-    }
-
-    public void setCustomerBrithYear(String customerBrithYear) {
-        this.customerBrithYear = customerBrithYear;
-    }
-
-    public String getCustomerPhone() {
-        return customerPhone;
-    }
-
-    public void setCustomerPhone(String customerPhone) {
-        this.customerPhone = customerPhone;
-    }
-
-    public String getCustomerCardNum() {
-        return customerCardNum;
-    }
-
-    public void setCustomerCardNum(String customerCardNum) {
-        this.customerCardNum = customerCardNum;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress;
-    }
 
 }

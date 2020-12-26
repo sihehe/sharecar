@@ -11,29 +11,35 @@
         <result property="customerPhone" column="CUSTOMER_PHONE" jdbcType="VARCHAR"/>
         <result property="customerCardNum" column="CUSTOMER_CARD_NUM" jdbcType="VARCHAR"/>
         <result property="customerAddress" column="CUSTOMER_ADDRESS" jdbcType="VARCHAR"/>
+        <result property="isDel" column="is_del" jdbcType="VARCHAR"/>
     </resultMap>
-
+    
+    
+    <sql id="baseColumn">
+        CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS,is_del
+    </sql>
+    
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
-          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
-        from si.share_customer
+          <include refid="baseColumn"/>
+        from share_customer
         where CUSTOMER_ID = #{customerId}
     </select>
 
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BaseResultMap">
         select
-          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
-        from si.share_customer
+        <include refid="baseColumn"/>
+        from share_customer
         limit #{offset}, #{limit}
     </select>
 
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BaseResultMap">
         select
-          CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS
-        from si.share_customer
+        <include refid="baseColumn"/>
+        from share_customer
         <where>
             <if test="customerId != null">
                 and CUSTOMER_ID = #{customerId}
@@ -56,18 +62,21 @@
             <if test="customerAddress != null and customerAddress != ''">
                 and CUSTOMER_ADDRESS = #{customerAddress}
             </if>
+            <if test=" isDel != null and isDel != ''">
+                and is_del = #{isDel}
+            </if>
         </where>
     </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="customerId" useGeneratedKeys="true">
-        insert into si.share_customer(CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS)
-        values (#{customerName}, #{customerGrad}, #{customerBrithYear}, #{customerPhone}, #{customerCardNum}, #{customerAddress})
+        insert into share_customer(CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS,is_del)
+        values (#{customerName}, #{customerGrad}, #{customerBrithYear}, #{customerPhone}, #{customerCardNum}, #{customerAddress},#{isDel})
     </insert>
 
     <!--通过主键修改数据-->
     <update id="update">
-        update si.share_customer
+        update share_customer
         <set>
             <if test="customerName != null and customerName != ''">
                 CUSTOMER_NAME = #{customerName},
@@ -87,13 +96,16 @@
             <if test="customerAddress != null and customerAddress != ''">
                 CUSTOMER_ADDRESS = #{customerAddress},
             </if>
+            <if test=" isDel != null and isDel != ''">
+                is_del = #{isDel},
+            </if>
         </set>
         where CUSTOMER_ID = #{customerId}
     </update>
 
     <!--通过主键删除-->
     <delete id="deleteById">
-        delete from si.share_customer where CUSTOMER_ID = #{customerId}
+        delete from share_customer where CUSTOMER_ID = #{customerId}
     </delete>
 
 </mapper>

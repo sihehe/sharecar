@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>车辆信息管理</title>
+    <title>客户管理</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -26,12 +26,10 @@
             <div class="col-sm-3 ">
                 <input class="form-control" type="text" id="queryName" placeholder="请输入内容">
             </div>
-            <label class="col-sm-1 control-label" for="queryStyle">风格:</label>
+            <label class="col-sm-1 control-label" for="queryPhone">手机号:</label>
 
-            <div class="col-sm-3">
-                <select class="form-control m-b" name="account" id="queryStyle">
-                </select>
-                <%--<input class="form-control" type="text" id="queryStyle" placeholder="请输入内容">--%>
+            <div class="col-sm-3 ">
+                <input class="form-control" type="text" id="queryPhone" placeholder="请输入内容">
             </div>
             <button class="btn btn-primary" id="querybtn">搜索</button>
         </div>
@@ -74,7 +72,7 @@
 
 
 <!-- Peity -->
-<script src="${pageContext.request.contextPath}/js/carManager/carManager.js"></script>
+<script src="${pageContext.request.contextPath}/js/customerManager/customerManager.js"></script>
 
 
 

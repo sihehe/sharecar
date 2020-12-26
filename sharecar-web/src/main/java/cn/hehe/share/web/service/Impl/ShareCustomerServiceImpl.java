@@ -1,6 +1,9 @@
 package cn.hehe.share.web.service.Impl;
 
+import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
+import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.web.entity.ShareCustomer;
 import cn.hehe.share.web.dao.ShareCustomerDao;
 import cn.hehe.share.web.service.ShareCustomerService;
@@ -81,14 +84,25 @@ public class ShareCustomerServiceImpl implements ShareCustomerService {
     }
 
     @Override
-    public PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize, String customerName, String grad) {
+    public PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize, String customerName, String grad,String customerPhone) {
         ShareCustomer shareCustomer = new ShareCustomer();
         shareCustomer.setCustomerName(customerName);
         shareCustomer.setCustomerGrad(grad);
+        shareCustomer.setCustomerPhone(customerPhone);
+        shareCustomer.setIsDel(DBStatusEnums.N.getKey());
         PageHelper.startPage(pageIndex,pageSize);
         List<ShareCustomer> shareCustomers = this.shareCustomerDao.queryAll(shareCustomer);
         PageInfo pageInfo = new PageInfo(shareCustomers);
         PageResp<ShareCustomer> pageResp = new PageResp(pageInfo.getTotal(),shareCustomers);
         return pageResp;
+    }
+
+    @Override
+    public Result delCustomer(Integer customerId) {
+        ShareCustomer shareCustomer = new ShareCustomer();
+        shareCustomer.setCustomerId(customerId);
+        shareCustomer.setIsDel(DBStatusEnums.Y.getKey());
+        shareCustomerDao.update(shareCustomer);
+        return ResultUtils.success();
     }
 }

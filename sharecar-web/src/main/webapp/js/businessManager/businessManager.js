@@ -27,7 +27,7 @@ function init() {
 
     var columns = [{
         field: 'businessId',
-        title: '主键',
+        title: '序号',
         align: "center",
         halign: "center",
         valign: 'middle',
@@ -48,27 +48,6 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'carType',
-            title: '车辆类型',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
-            field: 'price',
-            title: '价格',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
-            field: 'timeOutPrice',
-            title: '超时单价',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
             field: 'operate',
             title: '操作',
             align: 'center',
@@ -76,87 +55,29 @@ function init() {
             width: 250,
             events: {
                 'click #edit': function (e, value, row, index) {
-                    // $('#id').val(row.id);
-                    // $('#name').val(row.name);
-                    // $('#style').val(row.style);
-                    // $('#region').val(row.region);
-                    var id = row.id;
+                    var id = row.businessId;
                     layer.open({
                         type: 2,
-                        title: '编辑车辆信息',
+                        title: '编辑套餐信息',
                         area: ['870px', '550px'],
                         maxmin: true, //打开全屏
                         resize: true, //开启拉伸
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['更新', '取消'],
-                        content: "carManager-edit",
+                        content: "businessManager-edit",
                         yes: function (index, layero) {
-                        //    更新
-                            // 父页面获取子页面的iframe
-                            var frameId = $(layero).find("iframe").attr("id");
-                            // 父页面获取子页面指定的id数据
-                            var name = $(window.frames[frameId].document).find("#name").val();
-                            var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
-                            var plate = $(window.frames[frameId].document).find("#plate").val();
-                            var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
-                            var region = $(window.frames[frameId].document).find("#region").val();
-                            var style = $(window.frames[frameId].document).find("#style").val();
-                            var seats = $(window.frames[frameId].document).find("#seats").val();
-                            var color = $(window.frames[frameId].document).find("#color").val();
-                            var door = $(window.frames[frameId].document).find("#door").val();
-                            var length = $(window.frames[frameId].document).find("#length").val();
-                            var width = $(window.frames[frameId].document).find("#width").val();
-                            var hight = $(window.frames[frameId].document).find("#hight").val();
-                            var weight = $(window.frames[frameId].document).find("#weight").val();
-                            var engineType = $(window.frames[frameId].document).find("#engineType").val();
-                            var gearbox = $(window.frames[frameId].document).find("#gearbox").val();
-                            var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
-                            var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
-                            var displacement = $(window.frames[frameId].document).find("#displacement").val();
-                            var car = {
-                                id: id,
-                                name:name,
-                                factoryOwn:factoryOwn,
-                                plate:plate,
-                                ownerId:ownerId,
-                                region:region,
-                                style:style,
-                                seats:seats,
-                                color:color,
-                                door:door,
-                                length:length,
-                                width:width,
-                                hight:hight,
-                                weight:weight,
-                                engineType:engineType,
-                                gearbox:gearbox,
-                                fuelType:fuelType,
-                                engineHorsepower:engineHorsepower,
-                                displacement:displacement
-                            };
+                            var iframeWin = window[layero.find('iframe')[0]['name']];
+                            var business = getAddBusiness(layero,iframeWin,id);
                         //    向后端传输数据
                             $.ajax({
-                                url: "updateCar",
+                                url: "updateBunsiness",
                                 type: "POST",
                                 dataType: 'json',
                                 contentType: 'application/json;charset=UTF-8',
-                                data: JSON.stringify(car),
+                                data: JSON.stringify(business),
                                 success:function (res) {
-                                    if(res.status){
-                                    //    成功
-                                        layer.close(index);
-                                        var params = {
-                                            query: {
-                                                name: $('#queryName').val(),
-                                                type: $('#queryType').val()
-                                            }
-                                        };
-                                        $('#tableDemo').bootstrapTable('refresh', params);
-                                    }else{
-                                    //    失败
-                                        layer.alert(res.msg);
-                                    }
+                                    retryQueryTable(res,index);
                                 },
                                 error:function (res) {
                                     layer.alert("系统异常,请重试!");
@@ -174,7 +95,7 @@ function init() {
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCar(id);
+                            iframeWin.initBusiness(id);
                         }
 
                     });
@@ -185,8 +106,8 @@ function init() {
                     deleteInfo(row);
                 },
                 'click #details': function (e, value, row, index) {
-                    var id = row.id;
-                    layer.open({
+                    var id = row.businessId;
+                   var index= layer.open({
                         type: 2,
                         title: '套餐信息详情',
                         area: ['870px', '550px'],
@@ -202,10 +123,11 @@ function init() {
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCar(id);
+                            iframeWin.initBusiness(id);
                         }
 
                     });
+                   layer.full(index);
                 },
 
             },
@@ -286,50 +208,30 @@ $('#btn_add').click(function () {
             var iframeWin = window[layero.find('iframe')[0]['name']];
             //调用表单校验
             var checkResult = iframeWin.check();
-            if(checkResult){
-            //    校验成功 获取子页面值
-// 父页面获取子页面的iframe
-                var frameId = $(layero).find("iframe").attr("id");
-// 父页面获取子页面指定的id数据
-                var name = $(window.frames[frameId].document).find("#name").val();
-                var car = {
-                    name:name
-                };
+            if (!checkResult) {
+                //    失败
+                layer.msg('填写内容不符合要求');
+            } else {
+                // 调用动态表格校验
+                var checkTableData = iframeWin.checkTableData();
+                if (!checkTableData) {
+                    layer.alert('价格配置信息填写不完整');
+                }
+                var business = getAddBusiness(layero,iframeWin,null);
                 $.ajax({
-                    type:'POST',
-                    url:'addBusiness',
-                    dataType:'json',
-                    contentType:'application/json;charset=UTF-8',
-                    data:JSON.stringify(car),
-                    success:function (res) {
-                        console.log(res);
-                        if(res.status){
-                            layer.close(index);
-                            var params = {
-                                query: {
-                                    name: $('#queryName').val(),
-                                    type: $('#queryType').val()
-                                }
-                            };
-                            var params = {
-                                query: {
-                                    name: $('#queryName').val(),
-                                    type: $('#queryType').val()
-                                }
-                            };
-                            $('#tableDemo').bootstrapTable('refresh', params);
-                        }else{
-                            layer.error(res.msg);
-                        }
+                    type: 'POST',
+                    url: 'addBusiness',
+                    dataType: 'json',
+                    contentType: 'application/json;charset=UTF-8',
+                    data: JSON.stringify(business),
+                    success: function (res) {
+                        retryQueryTable(res,index);
                     },
-                    error:function (res) {
-                       layer.alert("系统错误,请重试!");
+                    error: function (res) {
+                        layer.alert("系统错误,请重试!");
                     }
                 })
                 // layer.close(index);
-            }else{
-            //    失败
-                layer.msg('填写内容不符合要求');
             }
         },
         btn2: function (index, layero) {
@@ -346,8 +248,42 @@ $('#btn_add').click(function () {
 
 })
 
+function getAddBusiness(layero,iframeWin,id) {
+    //    校验成功 获取子页面值
+    // 父页面获取子页面的iframe
+    var frameId = $(layero).find("iframe").attr("id");
+    // 父页面获取子页面指定的id数据
+    var name = $(window.frames[frameId].document).find("#businessName").val();
+    var businessUnit = $(window.frames[frameId].document).find("#businessUnit").val();
+    var businessTimeOutUnit = $(window.frames[frameId].document).find("#businessTimeOutUnit").val();
+    var tableData = iframeWin.getTableData();
+    var business = {
+        businessId:id,
+        name: name,
+        businessUnit: businessUnit,
+        businessTimeOutUnit: businessTimeOutUnit,
+        businessPriceList: tableData
+    };
+    return business;
+}
 
 
+function retryQueryTable(res,index) {
+    if(res.status){
+        //    成功
+        layer.close(index);
+        var params = {
+            query: {
+                name: $('#queryName').val(),
+                type: $('#queryType').val()
+            }
+        };
+        $('#tableDemo').bootstrapTable('refresh', params);
+    }else{
+        //    失败
+        layer.alert(res.msg);
+    }
+}
 
 
 

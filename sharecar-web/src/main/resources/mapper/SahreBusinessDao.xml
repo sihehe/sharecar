@@ -75,13 +75,9 @@
         select
         sb.BUSINESS_ID businessId,
         sb.BUSINESS_NAME businessName,
-        sb.BUSINESS_UNIT businessUnit,
-        sbd.CAR_TYPE carType,
-        sbd.PRICE price,
-        sbd.TIME_OUT_PRICE timeOutPrice
+        sb.BUSINESS_UNIT businessUnit
         from share_business sb
-        left join share_business_detail sbd on sb.BUSINESS_ID = sbd.BUSINESS_ID
-        where sb.BUSINESS_STATUS = 'Y' and sbd.IS_DEL = 'N'
+        where sb.BUSINESS_STATUS = 'A'
         <if test=" name != null and name != '' ">
             and sb.BUSINESS_NAME like concat('%',#{name},'%')
         </if>

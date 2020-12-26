@@ -4,6 +4,8 @@ import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.ShareAddBusiness;
+import cn.hehe.share.api.vo.ShareUpdateBusiness;
 import cn.hehe.share.web.entity.SahreBusiness;
 import cn.hehe.share.web.service.SahreBusinessService;
 import org.springframework.stereotype.Controller;
@@ -73,6 +75,17 @@ public class ShareBusinessController {
         return sahreBusinessService.businessDetails(businessId);
     }
 
+    @PostMapping("/addBusiness")
+    @ResponseBody
+    public Result addBusiness(@RequestBody ShareAddBusiness shareAddBusiness) {
+        return sahreBusinessService.addBusiness(shareAddBusiness);
+    }
+
+    @PostMapping("/updateBunsiness")
+    @ResponseBody
+    public Result updateBunsiness(@RequestBody ShareUpdateBusiness shareUpdateBusiness) {
+        return sahreBusinessService.updateBunsiness(shareUpdateBusiness);
+    }
 
 
 }

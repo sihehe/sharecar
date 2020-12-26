@@ -1,6 +1,7 @@
 package cn.hehe.share.web.service;
 
 import cn.hehe.share.api.page.PageResp;
+import cn.hehe.share.api.result.Result;
 import cn.hehe.share.web.entity.ShareCustomer;
 import java.util.List;
 
@@ -53,5 +54,7 @@ public interface ShareCustomerService {
      */
     boolean deleteById(Integer customerId);
 
-    PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize, String customerName, String grad);
+    PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize, String customerName, String grad,String customerPhone);
+
+    Result delCustomer(Integer customerId);
 }

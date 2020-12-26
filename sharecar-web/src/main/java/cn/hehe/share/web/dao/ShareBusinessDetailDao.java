@@ -63,4 +63,5 @@ public interface ShareBusinessDetailDao {
     int deleteById(Integer id);
 
     void updateByBusinessId (@Param("businessId") Integer businessId,@Param("isDel") String isDel);
+
 }

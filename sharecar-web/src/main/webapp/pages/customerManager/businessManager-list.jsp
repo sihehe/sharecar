@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>车辆信息管理</title>
+    <title>套餐管理</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -20,37 +20,21 @@
 </head>
 <body>
 <div class="col-sm-12" style="padding: 0 20px">
-    <div class="searchfrom row">
-        <div class="form-group form-group-md">
+    <div class="searchfrom row col-sm-2">
+       <%-- <div class="form-group form-group-sm">
             <label class="col-sm-1 control-label" for="queryName">名称:</label>
-            <div class="col-sm-3 ">
+            <div class="col-sm-2 ">
                 <input class="form-control" type="text" id="queryName" placeholder="请输入内容">
             </div>
-            <label class="col-sm-1 control-label" for="queryStyle">风格:</label>
-
-            <div class="col-sm-3">
-                <select class="form-control m-b" name="account" id="queryStyle">
-                </select>
-                <%--<input class="form-control" type="text" id="queryStyle" placeholder="请输入内容">--%>
-            </div>
             <button class="btn btn-primary" id="querybtn">搜索</button>
-        </div>
+        </div>--%>
+           <input  type="text" id="queryName" placeholder="请输入内容" style="height:34px">
+           <button class="btn btn-primary" id="querybtn" style="float: right;margin-right: 180px">搜索</button>
     </div>
 
     <div>
         <div class="carTable">
             <table id="tableDemo" class="table"></table>
-            <div id="toolbar" class="btn-group pull-right" style="margin-right: 20px;margin-top: 10px">
-                <%--  <button id="btn_edit" type="button" class="btn btn-default">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>修改
-                  </button>
-                  <button id="btn_delete" type="button" class="btn btn-default ">
-                      <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>删除
-                  </button>--%>
-                <button id="btn_add" type="button" class="btn btn-default">
-                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>新增
-                </button>
-            </div>
         </div>
 
     </div>
@@ -74,7 +58,7 @@
 
 
 <!-- Peity -->
-<script src="${pageContext.request.contextPath}/js/carManager/carManager.js"></script>
+<script src="${pageContext.request.contextPath}/js/businessManager/businessManager-list.js"></script>
 
 
 

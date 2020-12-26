@@ -25,10 +25,39 @@ public class ShareCustomerController {
     @Resource
     private ShareCustomerService shareCustomerService;
 
+
+    @RequestMapping("/")
+    public String businessManager() {
+        return "customerManager/customerManager";
+    }
+
+    @RequestMapping("/customerManager-add")
+    public String customerManagerAdd() {
+        return "customerManager/customerManager-add";
+    }
+
+    @RequestMapping("/customerManager-list")
+    public String customerManagerList() {
+        return "customerManager/customerManager-list";
+    }
+
+    @RequestMapping("/customerManager-edit")
+    public String customerManagerEdit() {
+        return "customerManager/customerManager-edit";
+    }
+
+    @RequestMapping("/customerManager-details")
+    public String customerManagerDetails() {
+        return "customerManager/customerManager-details";
+    }
+
+
+
+
     @PostMapping("/customerList")
     @ResponseBody
-    public PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize,String customerName,String grad){
-        return shareCustomerService.customerList(pageIndex,pageSize,customerName,grad);
+    public PageResp<ShareCustomer> customerList(Integer pageIndex, Integer pageSize,String customerName,String grad,String customerPhone){
+        return shareCustomerService.customerList(pageIndex,pageSize,customerName,grad,customerPhone);
     }
 
     /**
@@ -40,6 +69,13 @@ public class ShareCustomerController {
     @GetMapping("selectOne")
     public ShareCustomer selectOne(Integer id) {
         return this.shareCustomerService.queryById(id);
+    }
+
+
+    @PostMapping("/delCustomer")
+    @ResponseBody
+    public Result delCustomer(Integer customerId){
+        return shareCustomerService.delCustomer(customerId);
     }
 
 }

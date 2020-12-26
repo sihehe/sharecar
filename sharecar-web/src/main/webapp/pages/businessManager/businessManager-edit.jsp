@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>共享套餐信息添加</title>
+    <title>共享车辆信息详情</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -17,9 +17,10 @@
     <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/style.css?v=4.1.0" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/plugins/iCheck/custom.css" rel="stylesheet">
+
 </head>
 <body style="background: #eee;">
-<div class="row" style="padding: 0 15px;">
+<div style="padding: 0 15px;">
 
     <form id="addCarForm" onsubmit="return false" action="##" method="post">
         <%-- 车辆基本信息 --%>
@@ -85,19 +86,20 @@
             </thead>
 
             <tbody  id="appendTbody">
-           <%-- <tr data-index="0" data-uniqueid="1">
-                <td style="text-align: center; vertical-align: middle; ">1</td>
-                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>
-                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>
-                <td style="text-align: center; vertical-align: middle; width: 250px; ">
-                    <button id="delete" class="btn btn-danger" style="margin-left:10px;" onclick="delRow(this)">删除</button>
-                </td>
-            </tr>--%>
+            <%-- <tr data-index="0" data-uniqueid="1">
+                 <td style="text-align: center; vertical-align: middle; ">1</td>
+                 <td style="text-align: center; vertical-align: middle; "></td>
+                 <td style="text-align: center; vertical-align: middle; "></td>
+                 <td style="text-align: center; vertical-align: middle; width: 250px; ">
+                     <button id="delete" class="btn btn-danger" style="margin-left:10px;" onclick="delRow(this)">删除</button>
+                 </td>
+             </tr>--%>
             </tbody>
 
         </table>
     </div>
 </div>
+
 
 
 <!-- 全局js -->
@@ -120,9 +122,7 @@
 
 <!-- 自定义js -->
 <%--<script src="${pageContext.request.contextPath}/js/content.js?v=1.0.0"></script>--%>
-
-
-<script src="${pageContext.request.contextPath}/js/businessManager/businessManager-add.js"></script>
+<script src="${pageContext.request.contextPath}/js/businessManager/businessManager-edit.js"></script>
 
 
 </body>
@@ -133,7 +133,6 @@
     .wizard-big.wizard > .content {
         min-height: 400px;
     }
-
     .hr-line-dashed {
         border-top: 3px dashed #ccc;
         color: #333;

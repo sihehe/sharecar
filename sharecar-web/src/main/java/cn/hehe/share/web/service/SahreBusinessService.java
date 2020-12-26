@@ -4,6 +4,8 @@ import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.ShareAddBusiness;
+import cn.hehe.share.api.vo.ShareUpdateBusiness;
 import cn.hehe.share.web.entity.SahreBusiness;
 import java.util.List;
 
@@ -22,5 +24,9 @@ public interface SahreBusinessService {
 
     Result<BusinessDetailsDto> businessDetails(Integer businessId);
 
+
+    Result addBusiness(ShareAddBusiness shareAddBusiness);
+
+    Result updateBunsiness(ShareUpdateBusiness shareUpdateBusiness);
 
 }
