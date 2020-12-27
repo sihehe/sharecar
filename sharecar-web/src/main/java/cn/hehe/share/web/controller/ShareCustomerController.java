@@ -2,10 +2,13 @@ package cn.hehe.share.web.controller;
 
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.ShareAddCustomer;
+import cn.hehe.share.api.vo.ShareUpdateCustomer;
 import cn.hehe.share.web.entity.ShareCustomer;
 import cn.hehe.share.web.service.ShareCustomerService;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -60,22 +63,32 @@ public class ShareCustomerController {
         return shareCustomerService.customerList(pageIndex,pageSize,customerName,grad,customerPhone);
     }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-    @GetMapping("selectOne")
-    public ShareCustomer selectOne(Integer id) {
-        return this.shareCustomerService.queryById(id);
-    }
 
 
     @PostMapping("/delCustomer")
     @ResponseBody
     public Result delCustomer(Integer customerId){
         return shareCustomerService.delCustomer(customerId);
+    }
+
+
+
+    @PostMapping("/addCustomer")
+    @ResponseBody
+    public Result addCustomer( @RequestBody ShareAddCustomer shareAddCustomer){
+        return shareCustomerService.addCustomer(shareAddCustomer);
+    }
+
+    @PostMapping("/customerDetails")
+    @ResponseBody
+    public Result<ShareCustomer> customerDetails(Integer customerId){
+        return shareCustomerService.customerDetails(customerId);
+    }
+
+    @PostMapping("/updateCustomer")
+    @ResponseBody
+    public Result updateCustomer(@RequestBody ShareUpdateCustomer shareUpdateCustomer){
+        return shareCustomerService.updateCustomer(shareUpdateCustomer);
     }
 
 }

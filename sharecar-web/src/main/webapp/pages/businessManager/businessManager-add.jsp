@@ -57,7 +57,7 @@
 
 
     <div style="margin-right: 0px;">
-        <table  style="width: 1652px;">
+        <table   class="col-sm-offset-1 col-sm-10">
             <thead>
             <tr>
                 <th style="text-align: center; vertical-align: middle; " data-field="id" tabindex="0">

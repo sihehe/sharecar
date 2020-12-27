@@ -5,7 +5,7 @@ $(function () {
 function deleteInfo(e) {
     console.log(e);
     $.ajax({
-        url: 'delCustomer?customerId=' + e.customerId,
+        url: 'delCustomer?deptId=' + e.deptId,
         type: 'post',
         success: function (data) {
             console.log(data);
@@ -18,8 +18,8 @@ function deleteInfo(e) {
 function refresh() {
     var params = {
         query: {
-            customerName: $('#queryName').val(),
-            customerPhone: $('#queryPhone').val()
+            deptName: $('#queryName').val(),
+            deptPhone: $('#queryPhone').val()
         }
     }
     $('#tableDemo').bootstrapTable('refresh', params);
@@ -30,37 +30,37 @@ function init() {
     console.log("初始化表格");
 
     var columns = [{
-        field: 'customerId',
-        title: '客户编号',
+        field: 'deptId',
+        title: '职工编号',
         align: "center",
         halign: "center",
         valign: 'middle',
         sortable: true
     },
         {
-            field: 'customerName',
-            title: '客户姓名',
+            field: 'deptName',
+            title: '职工姓名',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'customerGrad',
-            title: '客户性别',
+            field: 'deptGrad',
+            title: '职工性别',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'customerPhone',
-            title: '客户手机号',
+            field: 'deptPhone',
+            title: '职工手机号',
             align: "center",
             halign: "center",
             valign: 'middle'
         },
         {
-            field: 'customerAddress',
-            title: '客户地址',
+            field: 'deptAddress',
+            title: '职工地址',
             align: "center",
             halign: "center",
             valign: 'middle'
@@ -73,7 +73,7 @@ function init() {
             width: 250,
             events: {
                 'click #edit': function (e, value, row, index) {
-                    var id = row.customerId;
+                    var id = row.deptId;
                     layer.open({
                         type: 2,
                         title: '编辑客户信息',
@@ -83,7 +83,7 @@ function init() {
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['更新', '取消'],
-                        content: "customerManager-edit",
+                        content: "deptManager-edit",
                         yes: function (index, layero) {
                             var iframeWin = window[layero.find('iframe')[0]['name']];
                             //调用表单校验
@@ -91,14 +91,14 @@ function init() {
                             if(!checkResult){
                                 layer.msg('填写内容不符合要求');
                             }else{
-                                var customer = getAddcustomer(layero,id);
+                                var dept = getAdddept(layero,id);
                                 //    向后端传输数据
                                 $.ajax({
                                     url: "updateCustomer",
                                     type: "POST",
                                     dataType: 'json',
                                     contentType: 'application/json;charset=UTF-8',
-                                    data: JSON.stringify(customer),
+                                    data: JSON.stringify(dept),
                                     success:function (res) {
                                         retryQueryTable(res,index);
                                     },
@@ -130,7 +130,7 @@ function init() {
                     deleteInfo(row);
                 },
                 'click #details': function (e, value, row, index) {
-                    var id = row.customerId;
+                    var id = row.deptId;
                    var index= layer.open({
                         type: 2,
                         title: '客户信息详情',
@@ -140,7 +140,7 @@ function init() {
                         scrollbar: false, //屏蔽滚动
                         btnAlign: 'c', //按钮居中对齐
                         btn: ['返回'],
-                        content: "customerManager-details",
+                        content: "deptManager-details",
                         btn1: function (index, layero) {},
                         success: function (layero,index) {
                             // layer.msg("成功弹出");
@@ -164,7 +164,7 @@ function init() {
         }];
 
     $('#tableDemo').bootstrapTable({
-        url: "customerList",
+        url: "deptList",
         method: "post",                                        // 请求类型
         contentType : "application/x-www-form-urlencoded",
         dataType:"json",
@@ -187,8 +187,8 @@ function init() {
             return {
                 pageSize: params.limit,
                 pageIndex: params.offset,
-                customerName: $('#queryName').val(),
-                customerPhone: $('#queryPhone').val()
+                deptName: $('#queryName').val(),
+                deptPhone: $('#queryPhone').val()
             }
         },
         columns: columns,
@@ -219,7 +219,7 @@ $('#btn_add').click(function () {
         scrollbar: false, //屏蔽滚动
         btnAlign: 'c', //按钮居中对齐
         btn: ['确定', '取消'],
-        content: "customerManager-add",
+        content: "deptManager-add",
         yes: function (index, layero) {
             //得到iframe页的窗口对象，执行iframe页的方法：
             var iframeWin = window[layero.find('iframe')[0]['name']];
@@ -229,13 +229,13 @@ $('#btn_add').click(function () {
                 //    失败
                 layer.msg('填写内容不符合要求');
             } else {
-                var customer = getAddcustomer(layero);
+                var dept = getAdddept(layero);
                 $.ajax({
                     type: 'POST',
                     url: 'addCustomer',
                     dataType: 'json',
                     contentType: 'application/json;charset=UTF-8',
-                    data: JSON.stringify(customer),
+                    data: JSON.stringify(dept),
                     success: function (res) {
                         retryQueryTable(res,index);
                     },
@@ -260,27 +260,27 @@ $('#btn_add').click(function () {
 
 })
 
-function getAddcustomer(layero,id) {
+function getAdddept(layero,id) {
     //    校验成功 获取子页面值
     // 父页面获取子页面的iframe
     var frameId = $(layero).find("iframe").attr("id");
     // 父页面获取子页面指定的id数据
-    var customerName = $(window.frames[frameId].document).find("#customerName").val();
-    var customerGrad = $(window.frames[frameId].document).find("#customerGrad").val();
-    var customerBrithYear = $(window.frames[frameId].document).find("#customerBrithYear").val();
-    var customerPhone = $(window.frames[frameId].document).find("#customerPhone").val();
-    var customerCardNum = $(window.frames[frameId].document).find("#customerCardNum").val();
-    var customerAddress = $(window.frames[frameId].document).find("#customerAddress").val();
-    var customer = {
-        customerId: id,
-        customerName: customerName,
-        customerGrad: customerGrad,
-        customerBrithYear: customerBrithYear,
-        customerPhone: customerPhone,
-        customerCardNum: customerCardNum,
-        customerAddress: customerAddress
+    var deptName = $(window.frames[frameId].document).find("#deptName").val();
+    var deptGrad = $(window.frames[frameId].document).find("#deptGrad").val();
+    var deptBrithYear = $(window.frames[frameId].document).find("#deptBrithYear").val();
+    var deptPhone = $(window.frames[frameId].document).find("#deptPhone").val();
+    var deptCardNum = $(window.frames[frameId].document).find("#deptCardNum").val();
+    var deptAddress = $(window.frames[frameId].document).find("#deptAddress").val();
+    var dept = {
+        deptId: id,
+        deptName: deptName,
+        deptGrad: deptGrad,
+        deptBrithYear: deptBrithYear,
+        deptPhone: deptPhone,
+        deptCardNum: deptCardNum,
+        deptAddress: deptAddress
     };
-    return customer;
+    return dept;
 }
 
 

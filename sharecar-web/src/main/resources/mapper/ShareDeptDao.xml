@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hehe.share.web.dao.ShareDeptDao">
+
+    <resultMap id="BaseResultMap" type="cn.hehe.share.web.entity.ShareDept">
+        <!--@Table share_dept-->
+        <result property="deptId" column="DEPT_ID" jdbcType="INTEGER"/>
+        <result property="deptName" column="DEPT_NAME" jdbcType="VARCHAR"/>
+        <result property="deptGrad" column="DEPT_GRAD" jdbcType="VARCHAR"/>
+        <result property="deptBrithYear" column="DEPT_BRITH_YEAR" jdbcType="VARCHAR"/>
+        <result property="deptPhone" column="DEPT_PHONE" jdbcType="VARCHAR"/>
+        <result property="deptCardNum" column="DEPT_CARD_NUM" jdbcType="VARCHAR"/>
+        <result property="deptAddress" column="DEPT_ADDRESS" jdbcType="VARCHAR"/>
+        <result property="isDel" column="IS_DEL" jdbcType="VARCHAR"/>
+    </resultMap>
+    
+    <sql id="BaseColumn" >
+       DEPT_ID, DEPT_NAME, DEPT_GRAD, DEPT_BRITH_YEAR, DEPT_PHONE, DEPT_CARD_NUM, DEPT_ADDRESS, IS_DEL
+    </sql>
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select
+          <include refid="BaseColumn"/>
+        from share_dept
+        where DEPT_ID = #{deptId}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from share_dept
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumn"/>
+        from share_dept
+        <where>
+            <if test="deptId != null">
+                and DEPT_ID = #{deptId}
+            </if>
+            <if test="deptName != null and deptName != ''">
+                and DEPT_NAME LIKE concat('%',#{deptName},'%')
+            </if>
+            <if test="deptGrad != null and deptGrad != ''">
+                and DEPT_GRAD = #{deptGrad}
+            </if>
+            <if test="deptBrithYear != null and deptBrithYear != ''">
+                and DEPT_BRITH_YEAR = #{deptBrithYear}
+            </if>
+            <if test="deptPhone != null and deptPhone != ''">
+                and DEPT_PHONE = #{deptPhone}
+            </if>
+            <if test="deptCardNum != null and deptCardNum != ''">
+                and DEPT_CARD_NUM = #{deptCardNum}
+            </if>
+            <if test="deptAddress != null and deptAddress != ''">
+                and DEPT_ADDRESS = #{deptAddress}
+            </if>
+            <if test="isDel != null and isDel != ''">
+                and IS_DEL = #{isDel}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="deptId" useGeneratedKeys="true">
+        insert into share_dept(DEPT_NAME, DEPT_GRAD, DEPT_BRITH_YEAR, DEPT_PHONE, DEPT_CARD_NUM, DEPT_ADDRESS,IS_DEL)
+        values (#{deptName}, #{deptGrad}, #{deptBrithYear}, #{deptPhone}, #{deptCardNum}, #{deptAddress},#{isDel})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update share_dept
+        <set>
+            <if test="deptName != null and deptName != ''">
+                DEPT_NAME = #{deptName},
+            </if>
+            <if test="deptGrad != null and deptGrad != ''">
+                DEPT_GRAD = #{deptGrad},
+            </if>
+            <if test="deptBrithYear != null and deptBrithYear != ''">
+                DEPT_BRITH_YEAR = #{deptBrithYear},
+            </if>
+            <if test="deptPhone != null and deptPhone != ''">
+                DEPT_PHONE = #{deptPhone},
+            </if>
+            <if test="deptCardNum != null and deptCardNum != ''">
+                DEPT_CARD_NUM = #{deptCardNum},
+            </if>
+            <if test="deptAddress != null and deptAddress != ''">
+                DEPT_ADDRESS = #{deptAddress},
+            </if>
+            <if test="isDel != null and isDel != ''">
+                 IS_DEL = #{isDel},
+            </if>
+        </set>
+        where DEPT_ID = #{deptId}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from share_dept where DEPT_ID = #{deptId}
+    </delete>
+
+</mapper>

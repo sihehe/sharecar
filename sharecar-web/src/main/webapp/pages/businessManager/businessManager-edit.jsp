@@ -19,7 +19,7 @@
     <link href="${pageContext.request.contextPath}/css/plugins/iCheck/custom.css" rel="stylesheet">
 
 </head>
-<body style="background: #eee;">
+<body style="background: #eee;" class="col-sm-12">
 <div style="padding: 0 15px;">
 
     <form id="addCarForm" onsubmit="return false" action="##" method="post">
@@ -58,7 +58,7 @@
 
 
     <div style="margin-right: 0px;">
-        <table  style="width: 1652px;">
+        <table   class="col-sm-offset-1 col-sm-10">
             <thead>
             <tr>
                 <th style="text-align: center; vertical-align: middle; " data-field="id" tabindex="0">
