@@ -37,6 +37,7 @@ public class ShareDeptServiceImpl implements ShareDeptService {
         shareDept.setDeptName(deptName);
         shareDept.setDeptPhone(deptPhone);
         shareDept.setDeptGrad(grad);
+        shareDept.setIsDel(DBStatusEnums.N.getKey());
         PageHelper.startPage(pageIndex,pageSize);
         List<ShareDept> shareDeptList = shareDeptDao.queryAll(shareDept);
         PageInfo pageInfo = new PageInfo(shareDeptList);

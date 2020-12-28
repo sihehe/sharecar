@@ -73,7 +73,7 @@
                 </div>
                 <div class="form-group" id="empt">
                     <label for="emptId">经理人</label>
-                    <select data-size="6" class="form-control selectpicker show-tick" data-live-search="true" title="请输入职工名称"  id="emptId" name="emptId" data-selectNameUrl="${pageContext.request.contextPath}/customerManager/customerList" >
+                    <select data-size="6" class="form-control selectpicker show-tick" data-live-search="true" title="请输入职工名称"  id="emptId" name="emptId" data-selectNameUrl="${pageContext.request.contextPath}/deptManager/deptList" >
                     </select>
                 </div>
                 <div class="form-group">

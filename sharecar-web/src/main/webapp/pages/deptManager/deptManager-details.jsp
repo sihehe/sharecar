@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>客户信息详情</title>
+    <title>职工信息详情</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -27,35 +27,35 @@
         <div class="col-sm-10 col-sm-offset-1 row">
             <div class="col-sm-5">
                 <div class="form-group">
-                    <label for="customerName">客户名称 *</label>
-                    <input id="customerName" name="customerName" type="text" class="form-control" disabled>
+                    <label for="deptName">职工名称 *</label>
+                    <input id="deptName" name="deptName" type="text" class="form-control" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="customerGrad">客户性别 *</label>
-                    <select class="form-control m-b" name="customerGrad" id="customerGrad" disabled>
+                    <label for="deptGrad">职工性别 *</label>
+                    <select class="form-control m-b" name="deptGrad" id="deptGrad" disabled>
                         <option>请选择</option>
                         <option value="男">男</option>
                         <option value="女">女</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="customerBrithYear">客户出生年月 *</label>
-                    <input id="customerBrithYear" name="customerBrithYear" type="text" class="form-control" disabled>
+                    <label for="deptBrithYear">职工出生年月 *</label>
+                    <input id="deptBrithYear" name="deptBrithYear" type="text" class="form-control" disabled>
                 </div>
 
             </div>
             <div class="col-sm-5">
                 <div class="form-group">
-                    <label for="customerPhone">客户联系电话 *</label>
-                    <input id="customerPhone" name="customerPhone" type="text" class="form-control " disabled>
+                    <label for="deptPhone">职工联系电话 *</label>
+                    <input id="deptPhone" name="deptPhone" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group">
-                    <label for="customerCardNum">客户身份证号 *</label>
-                    <input id="customerCardNum" name="customerCardNum" type="text" class="form-control " disabled>
+                    <label for="deptCardNum">职工身份证号 *</label>
+                    <input id="deptCardNum" name="deptCardNum" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group">
-                    <label for="customerAddress">客户联系地址 *</label>
-                    <textarea id="customerAddress" name="customerAddress" class="form-control" rows="3" disabled></textarea>
+                    <label for="deptAddress">职工联系地址 *</label>
+                    <textarea id="deptAddress" name="deptAddress" class="form-control" rows="3" disabled></textarea>
                 </div>
 
             </div>
@@ -85,7 +85,7 @@
 
 <!-- 自定义js -->
 <%--<script src="${pageContext.request.contextPath}/js/content.js?v=1.0.0"></script>--%>
-<script src="${pageContext.request.contextPath}/js/customerManager/customerManager-details.js"></script>
+<script src="${pageContext.request.contextPath}/js/deptManager/deptManager-details.js"></script>
 
 
 </body>

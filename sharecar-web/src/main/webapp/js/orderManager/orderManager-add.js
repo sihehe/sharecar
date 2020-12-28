@@ -161,7 +161,7 @@ window.onload = function () {
                 data: {                     //传递到后台的值
                     pageIndex: 1,
                     pageSize: 1000,
-                    customerName: empNameInput
+                    deptName: empNameInput
                 },
                 dataType: "Json",
                 success: function (res) {
@@ -171,7 +171,7 @@ window.onload = function () {
                     if (res.rows != null) {
                         Selectmanagers = res.rows;
                         $.each(Selectmanagers, function (i, Selectmanager) {
-                            $("#emptId").append(" <option value=\"" + Selectmanager.customerId + "\">" + Selectmanager.customerName + "</option>");
+                            $("#emptId").append(" <option value=\"" + Selectmanager.deptId + "\">" + Selectmanager.deptName + "</option>");
                         })
                         //必不可少的刷新
                         $("#emptId").selectpicker('refresh');

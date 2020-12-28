@@ -5,7 +5,7 @@ $(function () {
 function deleteInfo(e) {
     console.log(e);
     $.ajax({
-        url: 'delCustomer?deptId=' + e.deptId,
+        url: 'delDept?deptId=' + e.deptId,
         type: 'post',
         success: function (data) {
             console.log(data);
@@ -94,7 +94,7 @@ function init() {
                                 var dept = getAdddept(layero,id);
                                 //    向后端传输数据
                                 $.ajax({
-                                    url: "updateCustomer",
+                                    url: "updateDept",
                                     type: "POST",
                                     dataType: 'json',
                                     contentType: 'application/json;charset=UTF-8',
@@ -119,7 +119,7 @@ function init() {
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCustomer(id);
+                            iframeWin.initDept(id);
                         }
 
                     });
@@ -147,7 +147,7 @@ function init() {
                             //父页面调用子页面方法
                             //得到iframe页的窗口对象，执行iframe页的方法：
                             var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initCustomer(id);
+                            iframeWin.initDept(id);
                         }
 
                     });
@@ -212,7 +212,7 @@ $('#btn_add').click(function () {
 
     var index = layer.open({
         type: 2,
-        title: '添加客户信息',
+        title: '添加职工信息',
         area: ['870px', '550px'],
         maxmin: true, //打开全屏
         resize: true, //开启拉伸
@@ -232,7 +232,7 @@ $('#btn_add').click(function () {
                 var dept = getAdddept(layero);
                 $.ajax({
                     type: 'POST',
-                    url: 'addCustomer',
+                    url: 'addDept',
                     dataType: 'json',
                     contentType: 'application/json;charset=UTF-8',
                     data: JSON.stringify(dept),

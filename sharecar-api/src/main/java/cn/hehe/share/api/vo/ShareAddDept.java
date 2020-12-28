@@ -12,4 +12,10 @@ import java.io.Serializable;
  **/
 @Data
 public class ShareAddDept implements Serializable {
+    private String deptName;
+    private String deptGrad;
+    private String deptBrithYear;
+    private String deptPhone;
+    private String deptCardNum;
+    private String deptAddress;
 }

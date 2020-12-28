@@ -17,4 +17,10 @@ public class ShareUpdateDept implements Serializable {
      * 员工id
      */
     private Integer deptId;
+    private String deptName;
+    private String deptGrad;
+    private String deptBrithYear;
+    private String deptPhone;
+    private String deptCardNum;
+    private String deptAddress;
 }
