@@ -1,11 +1,14 @@
 package cn.hehe.share.web.controller;
 
+import cn.hehe.share.api.dto.CarListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.web.entity.ShareCar;
+import cn.hehe.share.web.entity.ShareType;
 import cn.hehe.share.web.service.ShareCarService;
+import cn.hehe.share.web.service.ShareTypeService;
 import cn.hehe.share.web.service.UploadService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
@@ -32,6 +35,9 @@ public class CarManagerController {
      */
     @Resource
     private ShareCarService shareCarService;
+
+    @Resource
+    private ShareTypeService shareTypeService;
 
     @Autowired
     private UploadService uploadService;
@@ -71,15 +77,15 @@ public class CarManagerController {
 
     @PostMapping("/carList")
     @ResponseBody
-    public PageResp<ShareCar> carList(Integer pageIndex, Integer pageSize, String name, String style) { //PageReq<CarListReq> req
+    public PageResp<CarListDTO> carList(Integer pageIndex, Integer pageSize, String name, String style) { //PageReq<CarListReq> req
         ShareCar shareCar = new ShareCar();
         shareCar.setName(name);
         shareCar.setStyle(style);
         shareCar.setIsDel(DBStatusEnums.N.getKey());
         PageHelper.startPage(pageIndex, pageSize);
-        List<ShareCar> shareCars = shareCarService.queryAll(shareCar);
+        List<CarListDTO> shareCars = shareCarService.carList(shareCar);
         PageInfo pageInfo = new PageInfo(shareCars);
-        PageResp<ShareCar> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
+        PageResp<CarListDTO> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
         return pageResp;
     }
 
@@ -145,6 +151,15 @@ public class CarManagerController {
         List<String> styleList = shareCarService.styleList();
         Result result = ResultUtils.success();
         result.setData(styleList);
+        return result;
+    }
+
+    @PostMapping("/typeList")
+    @ResponseBody
+    public Result<List<ShareType>> typeList() {
+        List<ShareType> shareTypeList = shareTypeService.typeList();
+        Result result = ResultUtils.success();
+        result.setData(shareTypeList);
         return result;
     }
 

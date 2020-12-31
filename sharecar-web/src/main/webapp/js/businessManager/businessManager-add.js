@@ -30,6 +30,7 @@ function addRow() {
         '                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>\n' +
         '                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>\n' +
         '                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>\n' +
+        '                <td style="text-align: center; vertical-align: middle; "><input  type="text" class="form-control "></td>\n' +
         '                <td style="text-align: center; vertical-align: middle; width: 250px; ">\n' +
         '                    <button id="delete" class="btn btn-danger" style="margin-left:10px;margin: 10px" onclick="delRow(this)">删除</button>\n' +
         '                </td>\n' +
@@ -49,7 +50,8 @@ function getTableData() {
         json.type = $(tdArr[0]).children('input').val();
         json.price = $(tdArr[1]).children('input').val();
         json.outTimePrice = $(tdArr[2]).children('input').val();
-        if (json.type == '' || json.price == ''|| json.outTimePrice == '') {
+        json.cashPledge = $(tdArr[3]).children('input').val();
+        if (json.type == '' || json.price == ''|| json.outTimePrice == ''|| json.cashPledge == '') {
             layer.alert('输入信息不能为空');
             return;
         } else {
@@ -69,7 +71,8 @@ function checkTableData() {
         json.type = $(tdArr[0]).children('input').val();
         json.price = $(tdArr[1]).children('input').val();
         json.outTimePrice = $(tdArr[2]).children('input').val();
-        if (json.type == '' || json.price == ''|| json.outTimePrice == '') {
+        json.cashPledge = $(tdArr[3]).children('input').val();
+        if (json.type == '' || json.price == ''|| json.outTimePrice == ''|| json.cashPledge == '') {
             return false;
         }
     }

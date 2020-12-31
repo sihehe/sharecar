@@ -8,6 +8,7 @@
         <result property="businessId" column="BUSINESS_ID" jdbcType="INTEGER"/>
         <result property="carType" column="CAR_TYPE" jdbcType="VARCHAR"/>
         <result property="price" column="PRICE" jdbcType="NUMERIC"/>
+        <result property="cashPledge" column="CASH_PLEDGE" jdbcType="NUMERIC"/>
         <result property="timeOutPrice" column="TIME_OUT_PRICE" jdbcType="NUMERIC"/>
         <result property="isDel" column="IS_DEL" jdbcType="VARCHAR"/>
         <result property="createTime" column="CREATE_TIME" jdbcType="TIMESTAMP"/>
@@ -16,10 +17,14 @@
         <result property="updateUser" column="UPDATE_USER" jdbcType="VARCHAR"/>
     </resultMap>
 
+
+    <sql id="baseColumn">
+        ID, BUSINESS_ID, CAR_TYPE, PRICE,CASH_PLEDGE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+    </sql>
     <!--查询单个-->
     <select id="queryById" resultMap="BaseResultMap">
         select
-          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+          <include refid="baseColumn"/>
         from share_business_detail
         where ID = #{id}
     </select>
@@ -27,7 +32,7 @@
     <!--查询指定行数据-->
     <select id="queryAllByLimit" resultMap="BaseResultMap">
         select
-          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+        <include refid="baseColumn"/>
         from share_business_detail
         limit #{offset}, #{limit}
     </select>
@@ -35,7 +40,7 @@
     <!--通过实体作为筛选条件查询-->
     <select id="queryAll" resultMap="BaseResultMap">
         select
-          ID, BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER
+        <include refid="baseColumn"/>
         from share_business_detail
         <where>
             <if test="id != null">
@@ -50,6 +55,10 @@
             <if test="price != null">
                 and PRICE = #{price}
             </if>
+            <if test="cashPledge != null">
+                and CASH_PLEDGE = #{cashPledge}
+            </if>
+
             <if test="timeOutPrice != null">
                 and TIME_OUT_PRICE = #{timeOutPrice}
             </if>
@@ -73,8 +82,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into share_business_detail(BUSINESS_ID, CAR_TYPE, PRICE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER)
-        values (#{businessId}, #{carType}, #{price}, #{timeOutPrice}, #{isDel}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})
+        insert into share_business_detail(BUSINESS_ID, CAR_TYPE, PRICE,CASH_PLEDGE, TIME_OUT_PRICE, IS_DEL, CREATE_TIME, CREATE_USER, UPDATE_TIME, UPDATE_USER)
+        values (#{businessId}, #{carType}, #{price},#{cashPledge}, #{timeOutPrice}, #{isDel}, #{createTime}, #{createUser}, #{updateTime}, #{updateUser})
     </insert>
 
     <!--通过主键修改数据-->
@@ -90,6 +99,10 @@
             <if test="price != null">
                 PRICE = #{price},
             </if>
+            <if test="cashPledge != null">
+                CASH_PLEDGE = #{cashPledge},
+            </if>
+
             <if test="timeOutPrice != null">
                 TIME_OUT_PRICE = #{timeOutPrice},
             </if>

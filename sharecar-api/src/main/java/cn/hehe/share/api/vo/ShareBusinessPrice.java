@@ -18,4 +18,5 @@ public class ShareBusinessPrice implements Serializable {
     private String type;
     private BigDecimal price;
     private BigDecimal outTimePrice;
+    private BigDecimal cashPledge;
 }

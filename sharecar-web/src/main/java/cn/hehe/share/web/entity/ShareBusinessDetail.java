@@ -33,6 +33,13 @@ public class ShareBusinessDetail implements Serializable {
     * 单价
     */
     private BigDecimal price;
+
+    /**
+     * 押金
+     */
+    private BigDecimal cashPledge;
+
+
     /**
     * 超时单价(按照业务类型规则计算)
     */

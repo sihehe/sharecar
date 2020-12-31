@@ -72,6 +72,10 @@
                     <div class="th-inner ">超时价格(单位:元)</div>
                     <div class="fht-cell" style="width: 50px;"></div>
                 </th>
+                <th style="text-align: center; vertical-align: middle; " data-field="name" tabindex="0">
+                    <div class="th-inner ">押金(单位:元)</div>
+                    <div class="fht-cell" style="width: 50px;"></div>
+                </th>
 
                 <th style="text-align: center; vertical-align: middle; width: 40px; " data-field="operate"
                     tabindex="0">

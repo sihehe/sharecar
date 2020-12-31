@@ -79,6 +79,7 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
             priceDetailsDTO.setCarType(businessDetail.getCarType());
             priceDetailsDTO.setPrice(businessDetail.getPrice());
             priceDetailsDTO.setTimeOutPrice(businessDetail.getTimeOutPrice());
+            priceDetailsDTO.setCashPledge(businessDetail.getCashPledge());
             priceDetailsDTOList.add(priceDetailsDTO);
         }
         businessDetailsDto.setPriceDetailsDTOList(priceDetailsDTOList);
@@ -149,6 +150,7 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         shareBusinessDetail.setCarType(shareBusinessPrice.getType());
         shareBusinessDetail.setPrice(shareBusinessPrice.getPrice());
         shareBusinessDetail.setTimeOutPrice(shareBusinessPrice.getOutTimePrice());
+        shareBusinessDetail.setCashPledge(shareBusinessPrice.getCashPledge());
         shareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
         shareBusinessDetail.setCreateTime(new Date());
 //                shareBusinessDetail.setCreateUser();
@@ -163,6 +165,7 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         shareBusinessDetail.setCarType(shareBusinessPrice.getType());
         shareBusinessDetail.setPrice(shareBusinessPrice.getPrice());
         shareBusinessDetail.setTimeOutPrice(shareBusinessPrice.getOutTimePrice());
+        shareBusinessDetail.setCashPledge(shareBusinessPrice.getCashPledge());
         shareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
         shareBusinessDetailDao.update(shareBusinessDetail);
     }

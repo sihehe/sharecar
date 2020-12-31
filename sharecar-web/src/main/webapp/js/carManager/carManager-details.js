@@ -67,6 +67,7 @@ function initCar(id) {
                 $("#ownerId").val(res.data.ownerId);
                 $("#region").val(res.data.region);
                 $("#style").val(res.data.style);
+                $("#type").val(res.data.type);
                 $("#seats").val(res.data.seats);
                 $("#color").val(res.data.color);
                 $("#door").val(res.data.door);

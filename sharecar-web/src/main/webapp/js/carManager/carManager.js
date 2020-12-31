@@ -28,15 +28,15 @@ function init() {
 
     var columns = [{
         field: 'id',
-        title: '主键',
+        title: '序号',
         align: "center",
         halign: "center",
         valign: 'middle',
         sortable: true
     },
         {
-            field: 'typeId',
-            title: '类型Id',
+            field: 'typeName',
+            title: '类型',
             align: "center",
             halign: "center",
             valign: 'middle'
@@ -51,6 +51,14 @@ function init() {
         {
             field: 'factoryOwn',
             title: '厂商',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+
+        {
+            field: 'plate',
+            title: '车牌',
             align: "center",
             halign: "center",
             valign: 'middle'

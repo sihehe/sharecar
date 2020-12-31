@@ -24,4 +24,6 @@ public class PriceDetailsDTO implements Serializable {
 
     private BigDecimal timeOutPrice;
 
+    private BigDecimal cashPledge;
+
 }

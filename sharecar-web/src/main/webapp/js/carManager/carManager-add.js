@@ -1,4 +1,84 @@
-$(function () {
+
+function check(){
+    var result = $("#addCarForm").valid();
+    return result;
+}
+
+function initTypeList() {
+    $.ajax({
+        url: "typeList",
+        type: "POST",
+        dataType:'json',
+        contentType:'application/json;charset=UTF-8',
+        success:function (res) {
+            if(res.status){
+                //    给弹出页面赋值
+                var content = '<option ></option>';
+                for (element in res.data) {
+                    var typeName = res.data[element].typeName;
+                    var typeId = res.data[element].typeId;
+                    content += '<option value='+typeId+'>' + typeName + '</option>';
+                }
+                console.log(content);
+                $('#type').html(content);
+            }else{
+                layer.alert(res.msg);
+            }
+
+        },
+        error:function (res) {
+            layer.alert('系统异常,请重试!');
+        }
+
+    });
+}
+/* 选择盒子触发时间 */
+window.onload = function () {
+
+
+    /* 选择客户绑定时间 */
+    //键入字符触发事件:动态获得后台传入select选项数据
+    //请求的url
+    var selectNameUrl = $("#ownerId").attr("data-selectNameUrl");
+    //选择得到搜索栏input，松开按键后触发事件
+    $("#ownerId").prev().find('.bs-searchbox').find('input').keyup(function () {
+        //键入的值
+        var inputManagerName = $('#addCarForm #owner .open input').val();
+        //判定键入的值不为空，才调用ajax
+        if (inputManagerName != '') {
+            $.ajax({
+                type: 'post',
+                url: selectNameUrl,
+                data: {                     //传递到后台的值
+                    pageIndex: 1,
+                    pageSize: 1000,
+                    customerName: inputManagerName
+                },
+                dataType: "Json",
+                success: function (res) {
+                    //清除select标签下旧的option签，根据新获得的数据重新添加option标签
+                    console.log(res);
+                    $("#ownerId").empty();
+                    if (res.rows != null) {
+                        Selectmanagers = res.rows;
+                        $.each(Selectmanagers, function (i, Selectmanager) {
+                            $("#ownerId").append(" <option value=\"" + Selectmanager.customerId + "\">" + Selectmanager.customerName + "</option>");
+                        })
+                        //必不可少的刷新
+                        $("#ownerId").selectpicker('refresh');
+
+                    }
+                }
+            })
+        } else{
+            //如果输入的字符为空，清除之前option标签
+            $("#ownerId").empty();
+            $("#ownerId").selectpicker('refresh');
+        }
+    });
+
+
+
     $("#addCarForm").validate({
         //debug: true, //调试模式 表单不会被提交
         rules:{
@@ -8,6 +88,7 @@ $(function () {
             ownerId:{ required: true},
             region:{ required: true},
             style:{ required: true},
+            type:{ required: true},
             seats:{ required: true},
             color:{ required: true},
             door:{ required: true,digits:true,max:99},
@@ -29,6 +110,7 @@ $(function () {
             ownerId:{required:"不能为空"},
             region:{required:"不能为空"},
             style:{required:"不能为空"},
+            type:{required:"不能为空"},
             seats:{required:"不能为空"},
             color:{required:"不能为空"},
             door:{required:"不能为空",digits:"必须为正数",max:"最大不能超过99"},
@@ -45,50 +127,5 @@ $(function () {
 
 
     });
-});
-
-function check(){
-    var result = $("#addCarForm").valid();
-    return result;
+    initTypeList();
 }
-
-function initCar(id) {
-    $.ajax({
-        url: "carDetails?id="+id,
-        type: "POST",
-        dataType:'json',
-        contentType:'application/json;charset=UTF-8',
-        success:function (res) {
-            if(res.status){
-                //    给弹出页面赋值
-                $("#name").val(res.data.name);
-                $("#factoryOwn").val(res.data.factoryOwn);
-                $("#plate").val(res.data.plate);
-                $("#ownerId").val(res.data.ownerId);
-                $("#region").val(res.data.region);
-                $("#style").val(res.data.style);
-                $("#seats").val(res.data.seats);
-                $("#color").val(res.data.color);
-                $("#door").val(res.data.door);
-                $("#length").val(res.data.length);
-                $("#width").val(res.data.width);
-                $("#hight").val(res.data.hight);
-                $("#weight").val(res.data.weight);
-                $("#engineType").val(res.data.engineType);
-                $("#gearbox").val(res.data.gearbox);
-                $("#fuelType").val(res.data.fuelType);
-                $("#engineHorsepower").val(res.data.engineHorsepower);
-                $("#displacement").val(res.data.displacement);
-            }else{
-                layer.alert(res.msg);
-            }
-
-        },
-        error:function (res) {
-            layer.alert('系统异常,请重试!');
-        }
-
-    });
-
-}
-

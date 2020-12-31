@@ -198,6 +198,33 @@
         where ID = #{id}
     </update>
 
+
+    <select id="carList" resultType="cn.hehe.share.api.dto.CarListDTO">
+        SELECT
+        sc.id id,
+        st.type_name typeName,
+        sc.name name,
+        sc.FACTORY_OWN factoryOwn,
+        sc.PLATE plate,
+        sc.STYLE style,
+        sc.ENGINE_TYPE engineType,
+        sc.REGION region
+        FROM
+        share_car sc
+        LEFT JOIN share_type st ON sc.TYPE_ID = st.type_id
+        <where>
+            <if test="name != null and name != ''">
+                and sc.NAME like concat('%',#{name},'%')
+            </if>
+            <if test="style != null and style != ''">
+                and sc.style = #{style}
+            </if>
+            <if test="isDel != null and isDel != ''">
+                and sc.IS_DEL = #{isDel}
+            </if>
+        </where>
+    </select>
+
     <!--通过主键删除-->
     <delete id="deleteById">
         update share_car set IS_DEL = 'Y' where ID = #{id}

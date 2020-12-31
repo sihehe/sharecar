@@ -38,10 +38,12 @@ function initBusiness(id) {
                    var carType = arr[i].carType;
                     var price = arr[i].price;
                     var timeOutPrice = arr[i].timeOutPrice;
+                    var cashPledge = arr[i].cashPledge;
                     var row = '<tr data-index="0" data-uniqueid="1">\n' +
                         '                 <td style="text-align: center; vertical-align: middle; ">'+carType+'</td>\n' +
                         '                 <td style="text-align: center; vertical-align: middle; ">'+price+'</td>\n' +
                         '                 <td style="text-align: center; vertical-align: middle; ">'+timeOutPrice+'</td>\n' +
+                        '                 <td style="text-align: center; vertical-align: middle; ">'+cashPledge+'</td>\n' +
                         '             </tr>';
                     $('#appendTbody').append(row);
                 }

@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>共享车辆信息详情</title>
+    <title>套餐信息详情</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
@@ -73,7 +73,10 @@
                     <div class="th-inner ">超时价格(单位:元)</div>
                     <div class="fht-cell" style="width: 50px;"></div>
                 </th>
-
+                <th style="text-align: center; vertical-align: middle; " data-field="name" tabindex="0">
+                    <div class="th-inner ">押金(单位:元)</div>
+                    <div class="fht-cell" style="width: 50px;"></div>
+                </th>
                 <%--<th style="text-align: center; vertical-align: middle; width: 40px; " data-field="operate"
                     tabindex="0">
                     <div class="th-inner ">操作

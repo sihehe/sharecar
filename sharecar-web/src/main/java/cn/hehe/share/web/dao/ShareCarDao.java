@@ -1,5 +1,6 @@
 package cn.hehe.share.web.dao;
 
+import cn.hehe.share.api.dto.CarListDTO;
 import cn.hehe.share.web.entity.ShareCar;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -22,14 +23,6 @@ public interface ShareCarDao {
      */
     ShareCar queryById(Integer id);
 
-    /**
-     * 查询指定行数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<ShareCar> queryAllByLimit(@Param("offset") int offset, @Param("limit") int limit);
 
 
     /**
@@ -71,4 +64,5 @@ public interface ShareCarDao {
     List<String> styleList();
 
 
+    List<CarListDTO> carList(ShareCar shareCar);
 }

@@ -1,5 +1,6 @@
 package cn.hehe.share.web.service.Impl;
 
+import cn.hehe.share.api.dto.CarListDTO;
 import cn.hehe.share.web.dao.ShareCarDao;
 import cn.hehe.share.web.entity.ShareCar;
 import cn.hehe.share.web.service.ShareCarService;
@@ -30,17 +31,6 @@ public class ShareCarServiceImpl implements ShareCarService {
         return this.shareCarDao.queryById(id);
     }
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    @Override
-    public List<ShareCar> queryAllByLimit(int offset, int limit) {
-        return this.shareCarDao.queryAllByLimit(offset, limit);
-    }
 
     /**
      * 新增数据
@@ -87,5 +77,11 @@ public class ShareCarServiceImpl implements ShareCarService {
     public List<String> styleList() {
         List<String> stringList = shareCarDao.styleList();
         return stringList;
+    }
+
+    @Override
+    public List<CarListDTO> carList(ShareCar shareCar) {
+        List<CarListDTO> carListDTOS =  shareCarDao.carList(shareCar);
+        return carListDTOS;
     }
 }

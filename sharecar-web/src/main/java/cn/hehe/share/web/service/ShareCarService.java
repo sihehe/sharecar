@@ -1,5 +1,6 @@
 package cn.hehe.share.web.service;
 
+import cn.hehe.share.api.dto.CarListDTO;
 import cn.hehe.share.web.entity.ShareCar;
 import java.util.List;
 
@@ -19,14 +20,6 @@ public interface ShareCarService {
      */
     ShareCar queryById(Integer id);
 
-    /**
-     * 查询多条数据
-     *
-     * @param offset 查询起始位置
-     * @param limit 查询条数
-     * @return 对象列表
-     */
-    List<ShareCar> queryAllByLimit(int offset, int limit);
 
     /**
      * 新增数据
@@ -61,4 +54,5 @@ public interface ShareCarService {
     List<String> styleList();
 
 
+    List<CarListDTO> carList(ShareCar shareCar);
 }
