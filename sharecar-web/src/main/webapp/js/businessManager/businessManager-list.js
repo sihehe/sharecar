@@ -36,13 +36,6 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'carType',
-            title: '车辆类型',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
             field: 'price',
             title: '价格',
             align: "center",
@@ -50,15 +43,16 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'timeOutPrice',
-            title: '超时单价',
+            field: 'cashPledge',
+            title: '押金',
             align: "center",
             halign: "center",
             valign: 'middle'
-        }];
+        }
+        ];
 
     $('#tableDemo').bootstrapTable({
-        url: "businessList",
+        url: "queryBusinessList",
         method: "post",                                        // 请求类型
         contentType : "application/x-www-form-urlencoded",
         dataType:"json",
@@ -79,7 +73,8 @@ function init() {
             return {
                 pageSize: params.limit,
                 pageIndex: params.offset,
-                name: $('#queryName').val()
+                name: $('#queryName').val(),
+                carType: $('#type').val()
             }
         },
         columns: columns,
@@ -94,19 +89,22 @@ function tableHeight() {
 
 
 $('#querybtn').click(function () {
-    var params = {
-        query: {
-            name: $('#queryName').val()
-        }
-    }
-    $('#tableDemo').bootstrapTable('refresh', params);
+    refreshTable();
 });
 
 function getSelections() {
     return $('#tableDemo').bootstrapTable('getSelections', undefined);
 }
 
-
+function refreshTable() {
+    var params = {
+        query: {
+            name: $('#queryName').val(),
+            carType: $('#type').val()
+        }
+    }
+    $('#tableDemo').bootstrapTable('refresh', params);
+}
 
 
 

@@ -22,11 +22,19 @@ function init() {
         sortable: true
     },
         {
+            field: 'typeName',
+            title: '类型',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
             field: 'typeId',
             title: '类型Id',
             align: "center",
             halign: "center",
-            valign: 'middle'
+            valign: 'middle',
+            visible: false
         },
         {
             field: 'name',

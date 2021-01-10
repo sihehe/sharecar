@@ -23,6 +23,15 @@ $('#carSearch').click(function () {
                 console.log(carInfo);
                $('#carId').val(carInfo.id);
                $('#carName').val(carInfo.name);
+               $('#typeId').val(carInfo.typeId);
+
+               // 清空数量 清空套餐
+                $('#num').val('');
+                $('#price').val('');
+                $('#businessId').val('');
+                $('#businessName').val('');
+                //押金输入框赋值
+                $('#cashPledge').val('');
                layer.close(index);
             }else{
                 layer.alert("请选择车辆信息");
@@ -43,6 +52,10 @@ $('#carSearch').click(function () {
 
 /* 套餐选择按钮时间 */
 $('#businessSearch').click(function () {
+    var typeId = $('#typeId').val();
+    if(typeId == undefined || typeId.length == 0){
+        layer.alert('请先选择车辆!!!');
+    }
 
     layer.open({
         type: 2,
@@ -66,6 +79,11 @@ $('#businessSearch').click(function () {
                 console.log(businessInfo);
                 $('#businessId').val(businessInfo.businessId);
                 $('#businessName').val(businessInfo.businessName);
+                //押金输入框赋值
+                $('#cashPledge').val(businessInfo.cashPledge);
+                $('#price').val(businessInfo.price);
+                // 清空套餐
+                $('#num').val('');
                 layer.close(index);
             }else{
                 layer.alert("请选择套餐");
@@ -76,11 +94,47 @@ $('#businessSearch').click(function () {
             // layer.msg('取消按钮被点击');
         },
 
-        success: function () {
+        success: function (layero, index) {
+            var body=layer.getChildFrame('body',index);//少了这个是不能从父页面向子页面传值的
+            body.contents().find("#type").val($('#typeId').val());
+            var iframeWin = window[layero.find('iframe')[0]['name']];
+            iframeWin.refreshTable();
             // layer.msg("成功弹出");
         }
     });
 });
+
+// 套餐数量触发事件
+$('#num').change(function () {
+    numChange();
+});
+
+function numChange(){
+    $('#orderAmt').empty();
+    var cashPledge = $('#cashPledge').val();
+    if(cashPledge == undefined || cashPledge.length == 0){
+        layer.alert('请选择套餐');
+    }
+    var price = $('#price').val();
+    if(price == undefined || price.length == 0){
+        layer.alert('请选择套餐');
+    }
+    var num = $('#num').val();
+    if(num == undefined || num.length == 0){
+        layer.alert('请输入正确的数量');
+    }
+    if(parseFloat(num).toString() != 'NaN'){
+        if(parseInt(num) <= 0){
+            layer.alert('请输入正确的数量');
+        }
+    }else{
+        layer.alert('请输入正确的数量');
+    }
+
+    var orderAmt = (parseFloat(num * price) + parseFloat(cashPledge)).toFixed(2);
+    $('#orderAmt').val(orderAmt);
+}
+
 
 
 /* 日期选择组件 */

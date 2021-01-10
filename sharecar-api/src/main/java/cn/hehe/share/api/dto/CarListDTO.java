@@ -17,9 +17,13 @@ public class CarListDTO {
      */
     private Integer id;
     /**
-     * 类型id
+     * 类型
      */
     private String typeName;
+    /**
+     * 类型id
+     */
+    private Integer typeId;
     /**
      * 名称
      */

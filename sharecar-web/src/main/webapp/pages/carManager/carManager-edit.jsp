@@ -11,6 +11,7 @@
     <title>共享车辆信息编辑</title>
 
     <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/plugins/bootstrap-select/bootstrap-select.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/font-awesome.css?v=4.4.0" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/plugins/bootstrap-table/bootstrap-table.min.css"
           rel="stylesheet">
@@ -44,15 +45,20 @@
                     <input id="plate" name="plate" type="text" class="form-control ">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group" id="owner">
                     <label for="ownerId">车主 *</label>
-                    <input id="ownerId"  name="ownerId" type="text" class="form-control ">
+                    <input id="ownerId" name="ownerId" type="text" class="form-control " disabled>
                 </div>
             </div>
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="region">地区 *</label>
-                    <input id="region" name="region" type="text" class="form-control ">
+                    <input id="region" name="region" type="text" class="form-control " >
+                </div>
+                <div class="form-group">
+                    <label for="type">类型 *</label>
+                    <select class="form-control m-b" name="type" id="type">
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="descr">介绍描述 </label>
@@ -74,7 +80,12 @@
                 </div>
                 <div class="form-group">
                     <label for="seats">座位数 *</label>
-                    <input id="seats" name="seats" type="text" class="form-control ">
+                    <select class="form-control m-b" name="seats" id="seats">
+                        <option></option>
+                        <option value="2" >2座</option>
+                        <option value="5" >5座</option>
+                        <option value="7" >7座</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-5">
@@ -84,7 +95,11 @@
                 </div>
                 <div class="form-group">
                     <label for="door">车门数 *</label>
-                    <input id="door" name="door" type="text" class="form-control ">
+                    <select class="form-control m-b" name="door" id="door">
+                        <option></option>
+                        <option value="2" >2门</option>
+                        <option value="4" >4门</option>
+                    </select>
                 </div>
             </div>
 
@@ -126,25 +141,59 @@
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="engineType">发动机类型 *</label>
-                    <input id="engineType" name="engineType" type="text" class="form-control ">
+                    <select class="form-control m-b" name="engineType" id="engineType">
+                        <option></option>
+                        <option value="电动" >电动</option>
+                        <option value="燃油" >燃油</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="gearbox">变速箱 *</label>
-                    <input id="gearbox" name="gearbox" type="text" class="form-control ">
+                    <select class="form-control m-b" name="gearbox" id="gearbox">
+                        <option></option>
+                        <option value="自动" >自动</option>
+                        <option value="手动" >手动</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="fuelType">燃油类型 *</label>
-                    <input id="fuelType" name="fuelType" type="text" class="form-control ">
+                    <select class="form-control m-b" name="fuelType" id="fuelType">
+                        <option></option>
+                        <option value="充电" >充电</option>
+                        <option value="#90" >#90</option>
+                        <option value="#93" >#93</option>
+                        <option value="#97" >#97</option>
+                        <option value="#98" >#98</option>
+                    </select>
                 </div>
             </div>
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="engineHorsepower">引擎马力</label>
-                    <input id="engineHorsepower" name="engineHorsepower" type="text" class="form-control  ">
+                    <select class="form-control m-b" name="engineHorsepower" id="engineHorsepower">
+                        <option></option>
+                        <option value="100" >100</option>
+                        <option value="120" >120</option>
+                        <option value="140" >140</option>
+                        <option value="160" >160</option>
+                        <option value="180" >180</option>
+                        <option value="200" >200</option>
+                        <option value="220" >220</option>
+                        <option value="240" >240</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="displacement">排量 </label>
-                    <input id="displacement" name="displacement" type="text" class="form-control">
+                    <select class="form-control m-b" name="displacement" id="displacement">
+                        <option></option>
+                        <option value="0.8" >0.8</option>
+                        <option value="1.0" >1.0</option>
+                        <option value="1.4" >1.4</option>
+                        <option value="1.6" >1.6</option>
+                        <option value="1.8" >1.8</option>
+                        <option value="2.0" >2.0</option>
+                        <option value="2.2" >2.2</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -199,6 +248,7 @@
 
 <!-- Bootstrap table -->
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/plugins/bootstrap-select/bootstrap-select.js"></script>
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
 

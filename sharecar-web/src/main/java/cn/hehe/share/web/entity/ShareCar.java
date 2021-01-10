@@ -93,7 +93,7 @@ public class ShareCar implements Serializable {
     /**
     * 拥有人id
     */
-    private String ownerId;
+    private Integer ownerId;
     /**
     * 车辆图片
     */

@@ -61,6 +61,12 @@ public class ShareBusinessController {
         return sahreBusinessService.businessList(pageIndex,pageSize,name,type);
     }
 
+    @PostMapping("/queryBusinessList")
+    @ResponseBody
+    public PageResp<BusinessListDto> queryBusinessList(Integer pageIndex, Integer pageSize, String name, String carType) { //PageReq<CarListReq> req
+        return sahreBusinessService.queryBusinessList(pageIndex,pageSize,name,carType);
+    }
+
 
     @PostMapping("/delBusiness")
     @ResponseBody

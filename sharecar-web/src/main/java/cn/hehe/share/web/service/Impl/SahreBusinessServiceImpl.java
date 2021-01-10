@@ -144,6 +144,15 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         return ResultUtils.success();
     }
 
+    @Override
+    public PageResp<BusinessListDto> queryBusinessList(Integer pageIndex, Integer pageSize, String name, String carType) {
+        PageHelper.startPage(pageIndex, pageSize);
+        List<BusinessListDto> businessList = shareBusinessDao.queryBusinessList(name,carType);
+        PageInfo pageInfo = new PageInfo(businessList);
+        PageResp<BusinessListDto> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
+        return pageResp;
+    }
+
     private void insertBusinessDetail(SahreBusiness sahreBusiness, ShareBusinessPrice shareBusinessPrice) {
         ShareBusinessDetail shareBusinessDetail = new ShareBusinessDetail();
         shareBusinessDetail.setBusinessId(sahreBusiness.getBusinessId());

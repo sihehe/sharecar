@@ -115,9 +115,10 @@ function init() {
                             var name = $(window.frames[frameId].document).find("#name").val();
                             var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
                             var plate = $(window.frames[frameId].document).find("#plate").val();
-                            var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
                             var region = $(window.frames[frameId].document).find("#region").val();
+                            var descr = $(window.frames[frameId].document).find("#descr").val();
                             var style = $(window.frames[frameId].document).find("#style").val();
+                            var typeId = $(window.frames[frameId].document).find("#type").val();
                             var seats = $(window.frames[frameId].document).find("#seats").val();
                             var color = $(window.frames[frameId].document).find("#color").val();
                             var door = $(window.frames[frameId].document).find("#door").val();
@@ -135,13 +136,14 @@ function init() {
                                 name:name,
                                 factoryOwn:factoryOwn,
                                 plate:plate,
-                                ownerId:ownerId,
                                 region:region,
+                                descr:descr,
                                 style:style,
                                 seats:seats,
                                 color:color,
                                 door:door,
                                 length:length,
+                                typeId:typeId,
                                 width:width,
                                 hight:hight,
                                 weight:weight,
@@ -247,7 +249,7 @@ function init() {
         sidePagination: "server",                              // 设置在服务端还是客户端分页
         pagination: true,                                      // 是否显示分页
         pageNumber: 1,                                         // 首页页码，默认为1
-        pageSize: 5,                                           // 页面数据条数
+        pageSize: 10,                                           // 页面数据条数
         pageList: [5, 10, 20, 30],
         toolbarAlign: 'right',
         buttonsAlign: 'right',//按钮对齐方式
@@ -333,6 +335,7 @@ $('#btn_add').click(function () {
                 var plate = $(window.frames[frameId].document).find("#plate").val();
                 var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
                 var region = $(window.frames[frameId].document).find("#region").val();
+                var descr = $(window.frames[frameId].document).find("#descr").val();
                 var style = $(window.frames[frameId].document).find("#style").val();
                 var seats = $(window.frames[frameId].document).find("#seats").val();
                 var color = $(window.frames[frameId].document).find("#color").val();
@@ -352,6 +355,7 @@ $('#btn_add').click(function () {
                     plate:plate,
                     ownerId:ownerId,
                     region:region,
+                    descr:descr,
                     style:style,
                     seats:seats,
                     color:color,

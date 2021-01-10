@@ -1,13 +1,16 @@
-$(function () {
+/* 选择盒子触发时间 */
+window.onload = function () {
+
+
     $("#addCarForm").validate({
         //debug: true, //调试模式 表单不会被提交
         rules:{
             name:{required: true,rangelength:[3,30]},
             factoryOwn:{ required: true},
             plate:{ required: true},
-            ownerId:{ required: true},
             region:{ required: true},
             style:{ required: true},
+            type:{ required: true},
             seats:{ required: true},
             color:{ required: true},
             door:{ required: true,digits:true,max:99},
@@ -26,9 +29,9 @@ $(function () {
             name:{required:"不能为空",rangelength:"长度必须是3-30个字符"},
             factoryOwn:{required:"不能为空"},
             plate:{required:"不能为空"},
-            ownerId:{required:"不能为空"},
             region:{required:"不能为空"},
             style:{required:"不能为空"},
+            type:{required:"不能为空"},
             seats:{required:"不能为空"},
             color:{required:"不能为空"},
             door:{required:"不能为空",digits:"必须为正数",max:"最大不能超过99"},
@@ -45,7 +48,8 @@ $(function () {
 
 
     });
-});
+    initTypeList();
+}
 
 function check(){
     var result = $("#addCarForm").valid();
@@ -66,8 +70,9 @@ function initCar(id) {
                 $("#plate").val(res.data.plate);
                 $("#ownerId").val(res.data.ownerId);
                 $("#region").val(res.data.region);
+                $("#descr").val(res.data.descr);
                 $("#style").val(res.data.style);
-                $("#type").val(res.data.type);
+                $("#type").val(res.data.typeId);
                 $("#seats").val(res.data.seats);
                 $("#color").val(res.data.color);
                 $("#door").val(res.data.door);
@@ -93,3 +98,31 @@ function initCar(id) {
 
 }
 
+function initTypeList() {
+    $.ajax({
+        url: "typeList",
+        type: "POST",
+        dataType:'json',
+        contentType:'application/json;charset=UTF-8',
+        success:function (res) {
+            if(res.status){
+                //    给弹出页面赋值
+                var content = '<option ></option>';
+                for (element in res.data) {
+                    var typeName = res.data[element].typeName;
+                    var typeId = res.data[element].typeId;
+                    content += '<option value='+typeId+'>' + typeName + '</option>';
+                }
+                console.log(content);
+                $('#type').html(content);
+            }else{
+                layer.alert(res.msg);
+            }
+
+        },
+        error:function (res) {
+            layer.alert('系统异常,请重试!');
+        }
+
+    });
+}

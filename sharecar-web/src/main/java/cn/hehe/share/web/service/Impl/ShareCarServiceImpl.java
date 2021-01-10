@@ -1,13 +1,21 @@
 package cn.hehe.share.web.service.Impl;
 
+import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.web.dao.ShareCarDao;
+import cn.hehe.share.web.dao.ShareCustomerDao;
 import cn.hehe.share.web.entity.ShareCar;
+import cn.hehe.share.web.entity.ShareCustomer;
 import cn.hehe.share.web.service.ShareCarService;
+import cn.hehe.share.web.service.ShareCustomerService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * (ShareCar)表服务实现类
@@ -19,6 +27,8 @@ import java.util.List;
 public class ShareCarServiceImpl implements ShareCarService {
     @Resource
     private ShareCarDao shareCarDao;
+    @Resource
+    private ShareCustomerDao shareCustomerDao;
 
     /**
      * 通过ID查询单条数据
@@ -83,5 +93,27 @@ public class ShareCarServiceImpl implements ShareCarService {
     public List<CarListDTO> carList(ShareCar shareCar) {
         List<CarListDTO> carListDTOS =  shareCarDao.carList(shareCar);
         return carListDTOS;
+    }
+
+    @Override
+    public Result<CarDetailsDTO> carDetails(Integer id) {
+        if(Objects.isNull(id)){
+            return ResultUtils.fail();
+        }
+        ShareCar shareCar = this.queryById(id);
+        if(Objects.isNull(shareCar)){
+            Result fail = ResultUtils.fail();
+            fail.setMsg("查询不到数据");
+            return fail;
+        }
+        CarDetailsDTO carDetailsDTO = new CarDetailsDTO();
+        BeanUtils.copyProperties(shareCar,carDetailsDTO);
+        Integer ownerId = shareCar.getOwnerId();
+        ShareCustomer shareCustomer = shareCustomerDao.queryById(ownerId);
+        String customerName = shareCustomer.getCustomerName();
+        carDetailsDTO.setOwnerId(customerName);
+        Result success = ResultUtils.success();
+        success.setData(carDetailsDTO);
+        return success;
     }
 }

@@ -21,7 +21,7 @@ public class CarDetailsDTO implements Serializable {
     /**
      * 类型id
      */
-    private String type;
+    private Integer typeId;
     /**
      * 名称
      */

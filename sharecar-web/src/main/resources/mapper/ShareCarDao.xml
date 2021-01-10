@@ -23,7 +23,7 @@
         <result property="displacement" column="DISPLACEMENT" jdbcType="VARCHAR"/>
         <result property="fuelType" column="FUEL_TYPE" jdbcType="VARCHAR"/>
         <result property="region" column="REGION" jdbcType="VARCHAR"/>
-        <result property="ownerId" column="OWNER_ID" jdbcType="VARCHAR"/>
+        <result property="ownerId" column="OWNER_ID" jdbcType="INTEGER"/>
         <result property="imageInfo" column="IMAGE_INFO" jdbcType="VARCHAR"/>
         <result property="descr" column="DESCR" jdbcType="VARCHAR"/>
         <result property="isDel" column="IS_DEL" jdbcType="CHAR"/>
@@ -203,6 +203,7 @@
         SELECT
         sc.id id,
         st.type_name typeName,
+        sc.type_Id typeId,
         sc.name name,
         sc.FACTORY_OWN factoryOwn,
         sc.PLATE plate,

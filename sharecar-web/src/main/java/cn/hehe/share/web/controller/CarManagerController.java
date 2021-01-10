@@ -1,5 +1,6 @@
 package cn.hehe.share.web.controller;
 
+import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
@@ -122,19 +123,9 @@ public class CarManagerController {
 
     @PostMapping("/carDetails")
     @ResponseBody
-    public Result<ShareCar> carDetails(Integer id) {
-        if(Objects.isNull(id)){
-            return ResultUtils.fail();
-        }
-        ShareCar shareCar = shareCarService.queryById(id);
-        if(Objects.isNull(shareCar)){
-            Result fail = ResultUtils.fail();
-            fail.setMsg("查询不到数据");
-            return fail;
-        }
-        Result success = ResultUtils.success();
-        success.setData(shareCar);
-        return success;
+    public Result<CarDetailsDTO> carDetails(Integer id) {
+       return shareCarService.carDetails(id);
+
     }
 
 

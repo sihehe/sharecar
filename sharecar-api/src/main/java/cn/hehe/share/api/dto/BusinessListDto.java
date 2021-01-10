@@ -22,8 +22,10 @@ public class BusinessListDto implements Serializable {
 
     private String carType;
 
-    private String price;
+    private BigDecimal price;
 
     private String timeOutPrice;
+
+    private BigDecimal cashPledge;
 
 }

@@ -64,4 +64,6 @@ public interface SahreBusinessDao {
     int deleteById(Integer businessId);
 
     List<BusinessListDto> businessList(@Param("name") String name, @Param("type")  String type);
+
+    List<BusinessListDto> queryBusinessList(@Param("name") String name,@Param("carType") String carType);
 }

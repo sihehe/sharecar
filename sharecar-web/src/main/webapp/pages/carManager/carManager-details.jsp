@@ -55,6 +55,11 @@
                     <input id="region" name="region" type="text" class="form-control " disabled>
                 </div>
                 <div class="form-group">
+                    <label for="type">类型 *</label>
+                    <select class="form-control m-b" name="type" id="type" disabled>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="descr">介绍描述 </label>
                     <textarea id="descr" name="descr" class="form-control" rows="3" disabled></textarea>
                 </div>

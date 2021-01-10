@@ -29,6 +29,7 @@
             <button class="btn btn-primary" id="querybtn">搜索</button>
         </div>--%>
            <input  type="text" id="queryName" placeholder="请输入内容" style="height:34px">
+           <input  type="text" id="type" placeholder="请输入内容" style="display: none">
            <button class="btn btn-primary" id="querybtn" style="float: right;margin-right: 180px">搜索</button>
     </div>
 

@@ -38,6 +38,7 @@
                     <input id="carId" name="carId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
                         <input type="text" class="form-control" id="carName" name="carName" readonly="readonly">
+                        <input type="text" class="form-control" id="typeId" style="display: none">
                         <span class="input-group-btn">
                             <button type="button" id="carSearch" class="btn btn-primary">选择</button>
                         </span>
@@ -55,6 +56,7 @@
                     <input id="businessId" name="businessId" type="text" class="form-control" style="display: none">
                     <div class="input-group">
                         <input type="text" class="form-control" id="businessName" name="businessName" readonly="readonly" >
+                        <input type="text" class="form-control" id="price" name="price" style="display: none" >
                         <span class="input-group-btn">
                             <button type="button" id="businessSearch" class="btn btn-primary">选择</button>
                         </span>

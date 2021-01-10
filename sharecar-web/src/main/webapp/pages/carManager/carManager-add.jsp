@@ -54,8 +54,9 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="region">地区 *</label>
-                    <input id="region" name="region" type="text" class="form-control ">
-
+                    <input id="region" name="region" type="text" class="form-control " style="display: none">
+                    <select class="form-control m-b col-sm-5" name="province" id="param_province" onchange="provincechange()"><option>请选择省份</option></select>
+                    <select class="form-control m-b col-sm-5" name="city" id="param_city" onchange="citychange()"><option>请选择城市</option></select>
                 </div>
                 <div class="form-group">
                     <label for="type">类型 *</label>

@@ -29,4 +29,5 @@ public interface SahreBusinessService {
 
     Result updateBunsiness(ShareUpdateBusiness shareUpdateBusiness);
 
+    PageResp<BusinessListDto> queryBusinessList(Integer pageIndex, Integer pageSize, String name, String carType);
 }
