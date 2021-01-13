@@ -198,10 +198,10 @@
             </div>
         </div>
         <%-- 车辆图片信息 --%>
-        <div class="col-sm-10 col-sm-offset-1 row">
+       <%-- <div class="col-sm-10 col-sm-offset-1 row">
             <h2 class="col-sm-10">车辆图片信息</h2>
             <div class="col-sm-12 hr-line-dashed"></div>
-            <%--<div class="wrapper wrapper-content animated fadeIn">--%>
+            &lt;%&ndash;<div class="wrapper wrapper-content animated fadeIn">&ndash;%&gt;
             <div class="col-sm-12">
                 <div class="ibox-content">
                     <div class="page-container">
@@ -229,7 +229,7 @@
                 </div>
             </div>
 
-        </div>
+        </div>--%>
 
     </form>
 
@@ -268,7 +268,7 @@
 </script>
 <script src="${pageContext.request.contextPath}/js/plugins/webuploader/webuploader.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/js/demo/webuploader-demo.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/demo/webuploader-demo.js"></script>--%>
 <script src="${pageContext.request.contextPath}/js/carManager/carManager-edit.js"></script>
 
 

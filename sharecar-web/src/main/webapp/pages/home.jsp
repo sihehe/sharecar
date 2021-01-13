@@ -99,9 +99,9 @@
                     <h5>订单</h5>
                     <div class="pull-right">
                         <div class="btn-group">
-                            <button type="button" class="btn btn-xs btn-white active">天</button>
+                          <%--  <button type="button" class="btn btn-xs btn-white active">天</button>--%>
                             <button type="button" class="btn btn-xs btn-white">月</button>
-                            <button type="button" class="btn btn-xs btn-white">年</button>
+                            <%--<button type="button" class="btn btn-xs btn-white">年</button>--%>
                         </div>
                     </div>
                 </div>

@@ -221,7 +221,7 @@
 </script>
 <script src="${pageContext.request.contextPath}/js/plugins/webuploader/webuploader.min.js"></script>
 
-<script src="${pageContext.request.contextPath}/js/demo/webuploader-demo.js"></script>
+<%--<script src="${pageContext.request.contextPath}/js/demo/webuploader-demo.js"></script>--%>
 <script src="${pageContext.request.contextPath}/js/carManager/carManager-details.js"></script>
 
 
