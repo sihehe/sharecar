@@ -84,7 +84,7 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'orderStatus',
+            field: 'orderStatusStr',
             title: '订单状态',
             align: "center",
             halign: "center",
@@ -105,103 +105,12 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'isExpire',
-            title: '是否过期',
-            align: "center",
-            halign: "center",
-            valign: 'middle'
-        },
-        {
             field: 'operate',
             title: '操作',
             align: 'center',
             valign: 'middle',
             width: 250,
             events: {
-                /*'click #edit': function (e, value, row, index) {
-                    var id = row.orderId;
-                    layer.open({
-                        type: 2,
-                        title: '编辑订单信息',
-                        area: ['870px', '550px'],
-                        maxmin: true, //打开全屏
-                        resize: true, //开启拉伸
-                        scrollbar: false, //屏蔽滚动
-                        btnAlign: 'c', //按钮居中对齐
-                        btn: ['更新', '取消'],
-                        content: "orderManager-edit",
-                        yes: function (index, layero) {
-                            //    更新
-                            // 父页面获取子页面的iframe
-                            var frameId = $(layero).find("iframe").attr("id");
-                            // 父页面获取子页面指定的id数据
-                            var customerId = $(window.frames[frameId].document).find("#customerId").val();
-                            var carId = $(window.frames[frameId].document).find("#carId").val();
-                            var businessId = $(window.frames[frameId].document).find("#businessId").val();
-                            var num = $(window.frames[frameId].document).find("#num").val();
-                            var useStartTime = $(window.frames[frameId].document).find("#useStartTime").val();
-                            var emptId = $(window.frames[frameId].document).find("#emptId").val();
-                            var payType = $(window.frames[frameId].document).find("#payType").val();
-                            var remark = $(window.frames[frameId].document).find("#remark").val();
-                            var order = {
-                                customerId:customerId,
-                                carId:carId,
-                                businessId:businessId,
-                                num:num,
-                                useStartTime:useStartTime,
-                                emptId:emptId,
-                                payType:payType,
-                                remark:remark
-                            };
-                            //    向后端传输数据
-                            $.ajax({
-                                url: "orderEdit",
-                                type: "POST",
-                                dataType: 'json',
-                                contentType: 'application/json;charset=UTF-8',
-                                data: JSON.stringify(car),
-                                success:function (res) {
-                                    if(res.status){
-                                        //    成功
-                                        layer.close(index);
-                                        var params = {
-                                            query: {
-                                                status: $('#queryStatus').val(),
-                                                orderNum: $('#queryOrderNum').val()
-                                            }
-                                        };
-                                        $('#tableDemo').bootstrapTable('refresh', params);
-                                    }else{
-                                        //    失败
-                                        layer.alert(res.msg);
-                                    }
-                                },
-                                error:function (res) {
-                                    layer.alert("系统异常,请重试!");
-                                }
-                            })
-                        },
-                        btn2: function (index, layero) {
-                            /!*console.log(index);
-                            console.log(layero);
-                            layer.msg('取消按钮被点击');*!/
-                        },
-
-                        success: function (layero,index) {
-                            // layer.msg("成功弹出");
-                            //父页面调用子页面方法
-                            //得到iframe页的窗口对象，执行iframe页的方法：
-                            var iframeWin = window[layero.find('iframe')[0]['name']];
-                            iframeWin.initOrder(id);
-                        }
-
-                    });
-
-                    console.log(row.id);
-                },*/
-                /*'click #delete': function (e, value, row, index) {
-                    deleteInfo(row);
-                },*/
                 'click #details': function (e, value, row, index) {
                     var id = row.orderId;
                     layer.open({
@@ -363,7 +272,7 @@ $('#btn_add').click(function () {
                             };
                             $('#tableDemo').bootstrapTable('refresh', params);
                         }else{
-                            layer.error(res.msg);
+                            layer.alert(res.msg);
                         }
                     },
                     error:function (res) {

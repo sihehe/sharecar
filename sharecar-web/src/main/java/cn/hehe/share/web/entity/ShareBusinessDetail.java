@@ -28,7 +28,7 @@ public class ShareBusinessDetail implements Serializable {
     * 车型
 
     */
-    private String carType;
+    private Integer carType;
     /**
     * 单价
     */

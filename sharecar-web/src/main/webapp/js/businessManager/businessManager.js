@@ -41,7 +41,7 @@ function init() {
             valign: 'middle'
         },
         {
-            field: 'businessUnit',
+            field: 'businessUnitStr',
             title: '套餐类型',
             align: "center",
             halign: "center",

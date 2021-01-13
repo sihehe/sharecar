@@ -287,7 +287,7 @@ $('#querybtn').click(function () {
 
 /*初始化风格列表*/
 function initSelectStyleList() {
-    var content = '<option>' + '' + '</option>';
+    var content = '<option value="">' + '请选择' + '</option>';
     $.ajax({
         url: 'styleList',
         type: 'post',
@@ -349,6 +349,7 @@ $('#btn_add').click(function () {
                 var fuelType = $(window.frames[frameId].document).find("#fuelType").val();
                 var engineHorsepower = $(window.frames[frameId].document).find("#engineHorsepower").val();
                 var displacement = $(window.frames[frameId].document).find("#displacement").val();
+                var imageInfo = iframeWin.getFileList();
                 var car = {
                     name:name,
                     factoryOwn:factoryOwn,
@@ -368,7 +369,8 @@ $('#btn_add').click(function () {
                     gearbox:gearbox,
                     fuelType:fuelType,
                     engineHorsepower:engineHorsepower,
-                    displacement:displacement
+                    displacement:displacement,
+                    imageInfo:imageInfo
                 };
                 $.ajax({
                     type:'POST',

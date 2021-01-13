@@ -16,9 +16,13 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.ContextLoader;
+import org.springframework.web.context.WebApplicationContext;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.List;
 import java.util.Objects;
 
@@ -70,11 +74,6 @@ public class CarManagerController {
         return "carManager/carManager-details";
     }
 
-/*
-    @RequestMapping("/upload")
-    public String upload() {
-        return "carManager/upload";
-    }*/
 
     @PostMapping("/carList")
     @ResponseBody
@@ -156,23 +155,9 @@ public class CarManagerController {
 
     @PostMapping("/upload")
     @ResponseBody
-    public Result upload(HttpServletRequest request){
-//        return uploadService.uploadFile(name,type,file,size);
-        return null;
+    public Result upload(MultipartFile file, HttpServletRequest request){
+        return uploadService.uploadFile(file);
     }
 
-    /**
-     * 通过主键查询单条数据
-     *
-     * @param id 主键
-     * @return 单条数据
-     */
-   /* @GetMapping("/selectOne.do")
-    public ModelAndView selectOne(Integer id) {
-        ModelAndView mv = new ModelAndView();
-        mv.addObject("car",this.shareCarService.queryById(id));
-        mv.setViewName("car");
-        return mv;
-    }*/
 
 }

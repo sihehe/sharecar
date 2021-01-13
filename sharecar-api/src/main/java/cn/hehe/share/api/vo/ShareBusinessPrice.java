@@ -15,7 +15,7 @@ import java.math.BigDecimal;
 public class ShareBusinessPrice implements Serializable {
 
     private Integer id;
-    private String type;
+    private Integer type;
     private BigDecimal price;
     private BigDecimal outTimePrice;
     private BigDecimal cashPledge;

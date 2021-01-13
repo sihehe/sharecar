@@ -162,54 +162,16 @@
                 <div class="ibox-content">
                     <div class="carousel slide" id="carousel3">
                         <div class="carousel-inner">
-                            <div class="item gallery active left">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big2.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big3.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
-                                    </div>
-                                </div>
+                            <div class="item active">
+                                <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
                             </div>
-                            <div class="item gallery next left">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big3.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big2.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
-                                    </div>
-                                </div>
+                            <div class="item ">
+                                <img alt="image" class="img-responsive" src="../img/p_big3.jpg">
                             </div>
-                            <div class="item gallery">
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big2.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big3.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big1.jpg">
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <img alt="image" class="img-responsive" src="../img/p_big2.jpg">
-                                    </div>
-                                </div>
+                            <div class="item">
+                                <img alt="image" class="img-responsive" src="../img/p_big2.jpg">
                             </div>
+
                         </div>
                         <a data-slide="prev" href="carousel.html#carousel3" class="left carousel-control">
                             <span class="icon-prev"></span>

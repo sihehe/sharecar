@@ -18,7 +18,7 @@ public class PriceDetailsDTO implements Serializable {
 
     private Integer id;
 
-    private String carType;
+    private Integer carTypeId;
 
     private BigDecimal price;
 

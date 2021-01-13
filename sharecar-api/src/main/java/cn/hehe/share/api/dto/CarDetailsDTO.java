@@ -4,6 +4,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 /**
  * @program: sharecar
@@ -108,4 +109,6 @@ public class CarDetailsDTO implements Serializable {
      * 是否删除 Y删除 N不删除
      */
     private String isDel;
+
+
 }

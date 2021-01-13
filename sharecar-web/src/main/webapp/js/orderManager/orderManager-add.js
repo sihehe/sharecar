@@ -55,6 +55,7 @@ $('#businessSearch').click(function () {
     var typeId = $('#typeId').val();
     if(typeId == undefined || typeId.length == 0){
         layer.alert('请先选择车辆!!!');
+        return
     }
 
     layer.open({

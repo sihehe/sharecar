@@ -6,7 +6,7 @@
         <!--@Table share_business_detail-->
         <result property="id" column="ID" jdbcType="INTEGER"/>
         <result property="businessId" column="BUSINESS_ID" jdbcType="INTEGER"/>
-        <result property="carType" column="CAR_TYPE" jdbcType="VARCHAR"/>
+        <result property="carType" column="CAR_TYPE" jdbcType="INTEGER"/>
         <result property="price" column="PRICE" jdbcType="NUMERIC"/>
         <result property="cashPledge" column="CASH_PLEDGE" jdbcType="NUMERIC"/>
         <result property="timeOutPrice" column="TIME_OUT_PRICE" jdbcType="NUMERIC"/>

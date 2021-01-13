@@ -16,7 +16,6 @@
         <result property="orderTime" column="ORDER_TIME" jdbcType="TIMESTAMP"/>
         <result property="emptId" column="EMPT_ID" jdbcType="INTEGER"/>
         <result property="payType" column="PAY_TYPE" jdbcType="VARCHAR"/>
-        <result property="cashPledge" column="CASH_PLEDGE" jdbcType="DECIMAL"/>
         <result property="orderStatus" column="ORDER_STATUS" jdbcType="VARCHAR"/>
         <result property="isExpire" column="IS_EXPIRE" jdbcType="VARCHAR"/>
         <result property="expireNum" column="EXPIRE_NUM" jdbcType="INTEGER"/>
@@ -26,7 +25,7 @@
     </resultMap>
 
     <sql id="baseColumn">
-        ORDER_ID, ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, ORDER_STATUS, CASH_PLEDGE,IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL
+        ORDER_ID, ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, ORDER_STATUS,IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL
     </sql>
 
     <!--查询单个-->
@@ -87,9 +86,6 @@
             <if test="payType != null and payType != ''">
                 and PAY_TYPE = #{payType}
             </if>
-            <if test="cashPledge != null">
-                and CASH_PLEDGE = #{cashPledge}
-            </if>
 
             <if test="orderStatus != null and orderStatus != ''">
                 and ORDER_STATUS = #{orderStatus}
@@ -115,9 +111,8 @@
        cu.CUSTOMER_NAME customerName,
        c.ID carId ,
        c.NAME carName,
-       o.CASH_PLEDGE cashPledge,
        b.BUSINESS_ID businessId,
-       b.BUSINESS_NAME usinessName,
+       b.BUSINESS_NAME businessName,
        o.num,
        o.USE_START_TIME useStartTime,
        d.DEPT_ID emptId,
@@ -135,8 +130,8 @@ from share_order o
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="orderId" useGeneratedKeys="true">
-        insert into share_order(ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE, CASH_PLEDGE,ORDER_STATUS, IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL)
-        values (#{orderNum}, #{customerId}, #{carId}, #{orderAmt}, #{businessId}, #{num}, #{useStartTime}, #{useEndTime}, #{orderTime}, #{emptId}, #{payType},#{cashPledge}, #{orderStatus}, #{isExpire}, #{expireNum}, #{expireAmt},#{remark},#{isDel})
+        insert into share_order(ORDER_NUM, CUSTOMER_ID, CAR_ID, ORDER_AMT, BUSINESS_ID, NUM, USE_START_TIME, USE_END_TIME, ORDER_TIME, EMPT_ID, PAY_TYPE,ORDER_STATUS, IS_EXPIRE, EXPIRE_NUM, EXPIRE_AMT,REMARK,IS_DEL)
+        values (#{orderNum}, #{customerId}, #{carId}, #{orderAmt}, #{businessId}, #{num}, #{useStartTime}, #{useEndTime}, #{orderTime}, #{emptId}, #{payType}, #{orderStatus}, #{isExpire}, #{expireNum}, #{expireAmt},#{remark},#{isDel})
     </insert>
 
     <!--通过主键修改数据-->
@@ -175,10 +170,6 @@ from share_order o
             </if>
             <if test="payType != null and payType != ''">
                 PAY_TYPE = #{payType},
-            </if>
-
-            <if test="cashPledge != null">
-                CASH_PLEDGE = #{cashPledge},
             </if>
 
             <if test="orderStatus != null and orderStatus != ''">

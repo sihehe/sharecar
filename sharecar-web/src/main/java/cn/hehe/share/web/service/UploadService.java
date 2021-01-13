@@ -3,6 +3,9 @@ package cn.hehe.share.web.service;
 import cn.hehe.share.api.result.Result;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 /**
  * @program: sharecar
  * @description:
@@ -13,5 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 public interface UploadService {
 
 
-    Result uploadFile(String name, String type, MultipartFile file, Integer size);
+    Result uploadFile(MultipartFile file);
+
+    void image(String fileName, HttpServletRequest request, HttpServletResponse response);
+
 }

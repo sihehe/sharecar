@@ -29,7 +29,7 @@
 
             <div class="col-sm-3">
                 <select class="form-control m-b" name="account" id="queryStatus">
-                    <option value="">-- 请选择 --</option>
+                    <option value="">请选择</option>
                     <option value="N">待支付</option>
                     <option value="Y">已支付</option>
                     <option value="C">作废</option>

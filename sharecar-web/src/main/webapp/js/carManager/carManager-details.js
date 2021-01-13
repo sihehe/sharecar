@@ -85,6 +85,26 @@ function initCar(id) {
                 $("#fuelType").val(res.data.fuelType);
                 $("#engineHorsepower").val(res.data.engineHorsepower);
                 $("#displacement").val(res.data.displacement);
+                var iamgeStr = res.data.imageInfo;
+                if(iamgeStr != null && iamgeStr != ''){
+                    var imageNameArr = iamgeStr.split(',');
+                    var context = '';
+                    for(var i = 0; i < imageNameArr.length; i++){
+                        var element = imageNameArr[i];
+                        var image = '../upload/image/'+element;
+                        if(i == 0){
+                            context += '<div class="item active">' +
+                                '<img alt="image" class="img-responsive" style="width:1000;height: 563 " src='+image+'>' +
+                                '</div>';
+                        }else{
+                            context += '<div class="item">' +
+                                '<img alt="image" class="img-responsive" style="width:1000;height: 563 " src='+image+'>' +
+                                '</div>';
+                        }
+                    }
+                    $('.carousel-inner').html(context);
+                }
+
             }else{
                 layer.alert(res.msg);
             }

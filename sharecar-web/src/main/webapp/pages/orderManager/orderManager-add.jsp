@@ -85,11 +85,11 @@
                 <div class="form-group">
                     <label for="payType">支付方式 *</label>
                     <select class="form-control m-b" name="payType" id="payType" >
-                        <option>请选择</option>
-                        <option>银联</option>
-                        <option>微信</option>
-                        <option>支付宝</option>
-                        <option>其他</option>
+                        <option value="">请选择</option>
+                        <option value="银联">银联</option>
+                        <option value="微信">微信</option>
+                        <option value="支付宝">支付宝</option>
+                        <option value="其他">其他</option>
                     </select>
                 </div>
                 <div class="form-group">

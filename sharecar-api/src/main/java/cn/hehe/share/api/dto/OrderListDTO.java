@@ -54,6 +54,8 @@ public class OrderListDTO implements Serializable {
      * 订单状态
      */
     private String orderStatus;
+
+    private String orderStatusStr;
     /**
      * 支付方式
      */

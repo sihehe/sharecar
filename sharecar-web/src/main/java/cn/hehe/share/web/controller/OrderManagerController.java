@@ -56,7 +56,6 @@ public class OrderManagerController {
     }
 
 
-
     @PostMapping("/orderAdd")
     @ResponseBody
     public Result orderAdd(@RequestBody ShareOrder shareOrder) {

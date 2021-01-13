@@ -3,6 +3,7 @@ package cn.hehe.share.web.service.Impl;
 import cn.hehe.share.api.dto.BusinessDetailsDto;
 import cn.hehe.share.api.dto.BusinessListDto;
 import cn.hehe.share.api.dto.PriceDetailsDTO;
+import cn.hehe.share.api.enums.BuninessUntilEnums;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -43,6 +44,9 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
     public PageResp<BusinessListDto> businessList(Integer pageIndex, Integer pageSize, String name, String type) {
         PageHelper.startPage(pageIndex, pageSize);
         List<BusinessListDto> businessList = shareBusinessDao.businessList(name,type);
+        for (BusinessListDto businessListDto : businessList) {
+            businessListDto.setBusinessUnitStr(BuninessUntilEnums.getValue(businessListDto.getBusinessUnit()));
+        }
         PageInfo pageInfo = new PageInfo(businessList);
         PageResp<BusinessListDto> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
         return pageResp;
@@ -76,7 +80,7 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         for (ShareBusinessDetail businessDetail : shareBusinessDetails) {
             PriceDetailsDTO priceDetailsDTO = new PriceDetailsDTO();
             priceDetailsDTO.setId(businessDetail.getId());
-            priceDetailsDTO.setCarType(businessDetail.getCarType());
+            priceDetailsDTO.setCarTypeId(businessDetail.getCarType());
             priceDetailsDTO.setPrice(businessDetail.getPrice());
             priceDetailsDTO.setTimeOutPrice(businessDetail.getTimeOutPrice());
             priceDetailsDTO.setCashPledge(businessDetail.getCashPledge());
@@ -95,7 +99,7 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
         SahreBusiness sahreBusiness = new SahreBusiness();
         sahreBusiness.setBusinessName(shareAddBusiness.getName());
         sahreBusiness.setBusinessUnit(shareAddBusiness.getBusinessUnit());
-        sahreBusiness.setTimeOutUnit(shareAddBusiness.getBusinessUnit());
+        sahreBusiness.setTimeOutUnit(shareAddBusiness.getBusinessTimeOutUnit());
         sahreBusiness.setBusinessStatus(DBStatusEnums.A.getKey());
         sahreBusiness.setCreateTime(new Date());
 //        sahreBusiness.setCreateUser();

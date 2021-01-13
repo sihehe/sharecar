@@ -4,17 +4,19 @@ import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.enums.ISDELStatusEnums;
+import cn.hehe.share.api.enums.OrderStatus;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.api.utils.OrderUtils;
-import cn.hehe.share.web.entity.ShareOrder;
-import cn.hehe.share.web.dao.ShareOrderDao;
+import cn.hehe.share.web.dao.*;
+import cn.hehe.share.web.entity.*;
 import cn.hehe.share.web.service.ShareOrderService;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -33,6 +35,22 @@ public class ShareOrderServiceImpl implements ShareOrderService {
     @Resource
     private ShareOrderDao shareOrderDao;
 
+    @Resource
+    private ShareCustomerDao shareCustomerDao;
+
+
+    @Resource
+    private ShareCarDao shareCarDao;
+
+    @Resource
+    private ShareDeptDao shareDeptDao;
+
+
+    @Resource
+    private SahreBusinessDao sahreBusinessDao;
+
+    @Resource
+    private ShareBusinessDetailDao shareBusinessDetailDao;
     /**
      * 通过ID查询单条数据
      *
@@ -104,12 +122,39 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         for (ShareOrder order : shareOrders) {
             OrderListDTO orderListDTO = new OrderListDTO();
             BeanUtils.copyProperties(order,orderListDTO);
+            String orderStatus = orderListDTO.getOrderStatus();
+            orderListDTO.setOrderStatusStr(OrderStatus.getValue(orderStatus));
 //            查询套餐名称
             Integer businessId = order.getBusinessId();
+            SahreBusiness sahreBusiness = sahreBusinessDao.queryById(businessId);
+            String businessName = sahreBusiness.getBusinessName();
+            orderListDTO.setBusinessName(businessName);
 //             查询车辆名称
             Integer carId = order.getCarId();
+            ShareCar shareCar = shareCarDao.queryById(carId);
+            orderListDTO.setCarName(shareCar.getName());
 //              查询客户名称
             Integer customerId = order.getCustomerId();
+            ShareCustomer shareCustomer = shareCustomerDao.queryById(customerId);
+            Integer emptId = order.getEmptId();
+            ShareDept shareDept = shareDeptDao.queryById(emptId);
+            orderListDTO.setEmpName(shareDept.getDeptName());
+            orderListDTO.setCustomerName(shareCustomer.getCustomerName());
+
+            ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
+            queryShareBusinessDetail.setCarType(shareCar.getTypeId());
+            queryShareBusinessDetail.setBusinessId(sahreBusiness.getBusinessId());
+            queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
+            List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
+            if(!CollectionUtils.isEmpty(shareBusinessDetails)){
+                if(shareBusinessDetails.size() == 1){
+
+                    ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
+                    // 押金
+                    BigDecimal cashPledge = shareBusinessDetail.getCashPledge();
+                    orderListDTO.setCashPledge(cashPledge);
+                }
+            }
 
             orderListDTOList.add(orderListDTO);
         }
@@ -126,16 +171,45 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         String orderNum = OrderUtils.getOrderCode(i);
         shareOrder.setOrderNum(orderNum);
 //        校验客户是否存在
-
+        ShareCustomer shareCustomer = shareCustomerDao.queryById(shareOrder.getCustomerId());
+        if(Objects.isNull(shareCustomer)){
+            return ResultUtils.fail("客户信息不存在");
+        }
 //        校验车辆信息是否存在
-
+        ShareCar shareCar = shareCarDao.queryById(shareOrder.getCarId());
+        if(Objects.isNull(shareCar)){
+            return ResultUtils.fail("车辆信息不存在");
+        }
 //        校验职工信息是否存在
-
+        ShareDept shareDept = shareDeptDao.queryById(shareOrder.getEmptId());
+        if(Objects.isNull(shareDept)){
+            return ResultUtils.fail("职工信息不存在");
+        }
 //        校验套餐id是否存在
+        SahreBusiness sahreBusiness = sahreBusinessDao.queryById(shareOrder.getBusinessId());
+        if(Objects.isNull(sahreBusiness)){
+            return ResultUtils.fail("套餐信息不存在");
+        }
+        ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
+        queryShareBusinessDetail.setCarType(shareCar.getTypeId());
+        queryShareBusinessDetail.setBusinessId(sahreBusiness.getBusinessId());
+        queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
+        List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
+        if(CollectionUtils.isEmpty(shareBusinessDetails)){
+            return ResultUtils.fail("套餐信息不存在");
+        }
+        if(shareBusinessDetails.size() > 1){
+            return ResultUtils.fail("套餐信息设置有误");
+        }
+        ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
+        // 押金
+        BigDecimal cashPledge = shareBusinessDetail.getCashPledge();
+        shareOrder.setCashPledge(cashPledge);
+        BigDecimal price = shareBusinessDetail.getPrice();
+        Integer num = shareOrder.getNum();
 //        计算订单金额
-
-//
-
+        BigDecimal orderAmt = price.multiply(BigDecimal.valueOf(num)).add(cashPledge);
+        shareOrder.setOrderAmt(orderAmt);
         String useStartTime = shareOrder.getUseStartTime();
         String[] split = useStartTime.split(" ~ ");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -146,10 +220,10 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        shareOrder.setOrderAmt(BigDecimal.ONE);
         shareOrder.setOrderTime(new Date());
         shareOrder.setOrderStatus(DBStatusEnums.N.getKey());
         shareOrder.setIsDel(0);
+
         this.shareOrderDao.insert(shareOrder);
         return ResultUtils.success();
     }
@@ -169,6 +243,24 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         if(Objects.isNull(orderDetails)){
             return ResultUtils.fail("查询不到订单");
         }
+        Integer businessId = orderDetails.getBusinessId();
+        // 查询业务
+        Integer carId = orderDetails.getCarId();
+        ShareCar shareCar = shareCarDao.queryById(carId);
+        Integer typeId = shareCar.getTypeId();
+        ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
+        queryShareBusinessDetail.setCarType(typeId);
+        queryShareBusinessDetail.setBusinessId(businessId);
+        queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
+        List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
+        if(CollectionUtils.isEmpty(shareBusinessDetails)){
+            return ResultUtils.fail("套餐信息不存在");
+        }
+        if(shareBusinessDetails.size() > 1){
+            return ResultUtils.fail("套餐信息设置有误");
+        }
+        ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
+        orderDetails.setCashPledge(shareBusinessDetail.getCashPledge());
         Result result = ResultUtils.success();
         result.setData(orderDetails);
         return result;

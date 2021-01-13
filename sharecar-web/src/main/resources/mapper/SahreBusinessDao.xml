@@ -97,6 +97,8 @@
         on sb.BUSINESS_ID = sbd.BUSINESS_ID
         where
         sbd.CAR_TYPE = #{carType}
+        and sbd.IS_DEL = 'N'
+        and sb.BUSINESS_STATUS = 'A'
           <if test="name != null and name != '' ">
               and sb.businessName like concat('%',#{name},'%')
           </if>

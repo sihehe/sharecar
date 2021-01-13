@@ -202,3 +202,22 @@ function citychange() {
     console.log('选择的城市:'+region);
     $('#region').val(region);
 }
+
+function getFileList(){
+   // var fileList = new Array();
+    var name = '';
+    var liList = $('.fileList').children('li');
+    if(liList.length == 0){
+        layer.alert('请上传图片');
+    }
+    for (var i = 0; i < liList.length; i++) {
+        var fileName = $(liList.eq(i).find('p')[0]).text();
+       // fileList.push(fileName);
+        name += fileName;
+        if(i != liList.length-1){
+            name += ',';
+        }
+    }
+    console.log(name);
+    return name;
+}

@@ -27,6 +27,11 @@ public class WelcomController {
         return "welcome";
     }
 
+    @RequestMapping("/404")
+    public String error404(){
+        return "error/404";
+    }
+
     @RequestMapping("/login")
     public String login(){
         return "login";
