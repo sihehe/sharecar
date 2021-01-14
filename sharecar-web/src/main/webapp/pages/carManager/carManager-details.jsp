@@ -48,6 +48,11 @@
                     <label for="ownerId">车主 *</label>
                     <input id="ownerId"  name="ownerId" type="text" class="form-control " disabled>
                 </div>
+                <div class="form-group">
+                    <label for="cashPledge">押金 *</label>
+                    <input id="cashPledge"  name="cashPledge" type="text" class="form-control " disabled>
+                </div>
+
             </div>
             <div class="col-sm-5">
                 <div class="form-group">

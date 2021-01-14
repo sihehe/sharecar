@@ -24,14 +24,13 @@ $('#carSearch').click(function () {
                $('#carId').val(carInfo.id);
                $('#carName').val(carInfo.name);
                $('#typeId').val(carInfo.typeId);
+               $('#cashPledge').val(carInfo.cashPledge);
 
                // 清空数量 清空套餐
                 $('#num').val('');
                 $('#price').val('');
                 $('#businessId').val('');
                 $('#businessName').val('');
-                //押金输入框赋值
-                $('#cashPledge').val('');
                layer.close(index);
             }else{
                 layer.alert("请选择车辆信息");
@@ -80,8 +79,6 @@ $('#businessSearch').click(function () {
                 console.log(businessInfo);
                 $('#businessId').val(businessInfo.businessId);
                 $('#businessName').val(businessInfo.businessName);
-                //押金输入框赋值
-                $('#cashPledge').val(businessInfo.cashPledge);
                 $('#price').val(businessInfo.price);
                 // 清空套餐
                 $('#num').val('');
@@ -114,7 +111,7 @@ function numChange(){
     $('#orderAmt').empty();
     var cashPledge = $('#cashPledge').val();
     if(cashPledge == undefined || cashPledge.length == 0){
-        layer.alert('请选择套餐');
+        layer.alert('请选择车辆');
     }
     var price = $('#price').val();
     if(price == undefined || price.length == 0){

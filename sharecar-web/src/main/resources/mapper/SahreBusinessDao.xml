@@ -91,8 +91,8 @@
         sb.BUSINESS_ID businessId,
         sb.BUSINESS_NAME businessName,
         sb.BUSINESS_UNIT businessUnit,
-        sbd.PRICE price,
-        sbd.CASH_PLEDGE cashPledge from share_business sb
+        sbd.PRICE price
+        from share_business sb
         inner join share_business_detail sbd
         on sb.BUSINESS_ID = sbd.BUSINESS_ID
         where

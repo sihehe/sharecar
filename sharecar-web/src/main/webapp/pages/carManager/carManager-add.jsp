@@ -50,6 +50,12 @@
                     <select data-size="6" class="form-control selectpicker show-tick" data-live-search="true" title="请输入客户名称"  id="ownerId" name="ownerId" data-selectNameUrl="${pageContext.request.contextPath}/customerManager/customerList" >
                     </select>
                 </div>
+                <div class="form-group">
+                    <label for="cashPledge">押金 *</label>
+                    <select class="form-control m-b" name="cashPledge" id="cashPledge">
+                    </select>
+                </div>
+
             </div>
             <div class="col-sm-5">
                 <div class="form-group">
@@ -63,6 +69,7 @@
                     <select class="form-control m-b" name="type" id="type">
                     </select>
                 </div>
+
                 <div class="form-group">
                     <label for="descr">介绍描述 </label>
                     <textarea id="descr" name="descr" class="form-control" rows="3"></textarea>

@@ -103,6 +103,8 @@ public class ShareCar implements Serializable {
     */
     private String descr;
 
+    private BigDecimal cashPledge;
+
     /**
      * 是否删除 Y删除 N不删除
      */

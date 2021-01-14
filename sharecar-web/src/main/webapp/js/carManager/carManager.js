@@ -85,6 +85,14 @@ function init() {
             valign: 'middle'
         },
         {
+            field: 'cashPledge',
+            title: '押金',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+
+        {
             field: 'operate',
             title: '操作',
             align: 'center',
@@ -117,6 +125,7 @@ function init() {
                             var plate = $(window.frames[frameId].document).find("#plate").val();
                             var region = $(window.frames[frameId].document).find("#region").val();
                             var descr = $(window.frames[frameId].document).find("#descr").val();
+                            var cashPledge = $(window.frames[frameId].document).find("#cashPledge").val();
                             var style = $(window.frames[frameId].document).find("#style").val();
                             var typeId = $(window.frames[frameId].document).find("#type").val();
                             var seats = $(window.frames[frameId].document).find("#seats").val();
@@ -138,6 +147,7 @@ function init() {
                                 plate:plate,
                                 region:region,
                                 descr:descr,
+                                cashPledge:cashPledge,
                                 style:style,
                                 seats:seats,
                                 color:color,

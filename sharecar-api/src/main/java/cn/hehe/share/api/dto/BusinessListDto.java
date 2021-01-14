@@ -28,6 +28,5 @@ public class BusinessListDto implements Serializable {
 
     private String timeOutPrice;
 
-    private BigDecimal cashPledge;
 
 }

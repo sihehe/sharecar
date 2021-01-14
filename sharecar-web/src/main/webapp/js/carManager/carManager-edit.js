@@ -9,6 +9,7 @@ window.onload = function () {
             factoryOwn:{ required: true},
             plate:{ required: true},
             region:{ required: true},
+            cashPledge:{ cashPledge: true,number:true},
             style:{ required: true},
             type:{ required: true},
             seats:{ required: true},
@@ -36,6 +37,7 @@ window.onload = function () {
             color:{required:"不能为空"},
             door:{required:"不能为空",digits:"必须为正数",max:"最大不能超过99"},
             length:{required:"不能为空",number:"必须为数字"},
+            cashPledge:{required:"不能为空",number:"必须为数字"},
             width:{required:"不能为空",number:"必须为数字"},
             hight:{required:"不能为空",number:"必须为数字"},
             weight:{required:"不能为空",number:"必须为数字"},
@@ -99,6 +101,7 @@ function initCar(id) {
                 $("#plate").val(res.data.plate);
                 $("#ownerId").val(res.data.ownerId);
                 $("#region").val(res.data.region);
+                $("#cashPledge").val(res.data.cashPledge);
                 $("#descr").val(res.data.descr);
                 $("#style").val(res.data.style);
                 $("#type").val(res.data.typeId);

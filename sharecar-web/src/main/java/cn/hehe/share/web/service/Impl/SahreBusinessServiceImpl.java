@@ -83,7 +83,6 @@ public class SahreBusinessServiceImpl  implements SahreBusinessService {
             priceDetailsDTO.setCarTypeId(businessDetail.getCarType());
             priceDetailsDTO.setPrice(businessDetail.getPrice());
             priceDetailsDTO.setTimeOutPrice(businessDetail.getTimeOutPrice());
-            priceDetailsDTO.setCashPledge(businessDetail.getCashPledge());
             priceDetailsDTOList.add(priceDetailsDTO);
         }
         businessDetailsDto.setPriceDetailsDTOList(priceDetailsDTOList);

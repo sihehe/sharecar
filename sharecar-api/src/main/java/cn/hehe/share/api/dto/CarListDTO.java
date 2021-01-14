@@ -2,6 +2,8 @@ package cn.hehe.share.api.dto;
 
 import lombok.Data;
 
+import java.math.BigDecimal;
+
 
 /**
  * @program: sharecar
@@ -48,4 +50,6 @@ public class CarListDTO {
      * 地区
      */
     private String region;
+
+    private BigDecimal cashPledge;
 }

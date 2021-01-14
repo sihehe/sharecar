@@ -159,5 +159,10 @@ public class CarManagerController {
         return uploadService.uploadFile(file);
     }
 
+    @PostMapping("/portalCarList")
+    @ResponseBody
+    public Result portalCarList(MultipartFile file, HttpServletRequest request){
+        return uploadService.uploadFile(file);
+    }
 
 }

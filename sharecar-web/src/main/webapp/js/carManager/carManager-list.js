@@ -70,7 +70,15 @@ function init() {
             align: "center",
             halign: "center",
             valign: 'middle'
-        }];
+        },
+        {
+            field: 'cashPledge',
+            title: '押金',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        }
+        ];
 
     $('#tableDemo').bootstrapTable({
         url: "carList",
