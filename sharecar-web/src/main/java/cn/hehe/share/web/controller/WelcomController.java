@@ -36,4 +36,9 @@ public class WelcomController {
     public String login(){
         return "login";
     }
+
+    @RequestMapping("/portal")
+    public String protal(){
+        return "portal/portal";
+    }
 }

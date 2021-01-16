@@ -59,5 +59,9 @@
         <property name="dataSource" ref="dataSource"/>
     </bean>
 
+    <!-- 切入类bin -->
+    <bean id="requestLogAop" class="cn.hehe.share.web.aop.RequestLogAop"></bean>
+
+
     <tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

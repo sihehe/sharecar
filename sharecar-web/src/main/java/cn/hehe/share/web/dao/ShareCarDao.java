@@ -1,9 +1,12 @@
 package cn.hehe.share.web.dao;
 
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.vo.PortalCarListVO;
 import cn.hehe.share.web.entity.ShareCar;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -65,4 +68,10 @@ public interface ShareCarDao {
 
 
     List<CarListDTO> carList(ShareCar shareCar);
+
+    List<ShareCar> portalCarList(@Param("query") PortalCarListVO portalCarListVO,
+                                 @Param("seatsNum") Integer seats,
+                                 @Param("cashPledgeMin") BigDecimal cashPledgeMin,
+                                 @Param("cashPledgeMax") BigDecimal cashPledgeMax);
+
 }

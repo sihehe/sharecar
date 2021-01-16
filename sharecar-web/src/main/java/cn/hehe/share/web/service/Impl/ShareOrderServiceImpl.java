@@ -140,22 +140,7 @@ public class ShareOrderServiceImpl implements ShareOrderService {
             ShareDept shareDept = shareDeptDao.queryById(emptId);
             orderListDTO.setEmpName(shareDept.getDeptName());
             orderListDTO.setCustomerName(shareCustomer.getCustomerName());
-
-            ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
-            queryShareBusinessDetail.setCarType(shareCar.getTypeId());
-            queryShareBusinessDetail.setBusinessId(sahreBusiness.getBusinessId());
-            queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
-            List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
-            if(!CollectionUtils.isEmpty(shareBusinessDetails)){
-                if(shareBusinessDetails.size() == 1){
-
-                    ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
-                    // 押金
-                    BigDecimal cashPledge = shareBusinessDetail.getCashPledge();
-                    orderListDTO.setCashPledge(cashPledge);
-                }
-            }
-
+            orderListDTO.setCashPledge(shareCar.getCashPledge());
             orderListDTOList.add(orderListDTO);
         }
         PageInfo pageInfo = new PageInfo(shareOrders);
@@ -203,7 +188,7 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         }
         ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
         // 押金
-        BigDecimal cashPledge = shareBusinessDetail.getCashPledge();
+        BigDecimal cashPledge = shareCar.getCashPledge();
         shareOrder.setCashPledge(cashPledge);
         BigDecimal price = shareBusinessDetail.getPrice();
         Integer num = shareOrder.getNum();
@@ -243,24 +228,10 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         if(Objects.isNull(orderDetails)){
             return ResultUtils.fail("查询不到订单");
         }
-        Integer businessId = orderDetails.getBusinessId();
         // 查询业务
         Integer carId = orderDetails.getCarId();
         ShareCar shareCar = shareCarDao.queryById(carId);
-        Integer typeId = shareCar.getTypeId();
-        ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
-        queryShareBusinessDetail.setCarType(typeId);
-        queryShareBusinessDetail.setBusinessId(businessId);
-        queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
-        List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
-        if(CollectionUtils.isEmpty(shareBusinessDetails)){
-            return ResultUtils.fail("套餐信息不存在");
-        }
-        if(shareBusinessDetails.size() > 1){
-            return ResultUtils.fail("套餐信息设置有误");
-        }
-        ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
-        orderDetails.setCashPledge(shareBusinessDetail.getCashPledge());
+        orderDetails.setCashPledge(shareCar.getCashPledge());
         Result result = ResultUtils.success();
         result.setData(orderDetails);
         return result;

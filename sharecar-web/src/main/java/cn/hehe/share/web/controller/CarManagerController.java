@@ -2,10 +2,12 @@ package cn.hehe.share.web.controller;
 
 import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.dto.PortalCarListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
+import cn.hehe.share.api.vo.PortalCarListVO;
 import cn.hehe.share.web.entity.ShareCar;
 import cn.hehe.share.web.entity.ShareType;
 import cn.hehe.share.web.service.ShareCarService;
@@ -161,8 +163,13 @@ public class CarManagerController {
 
     @PostMapping("/portalCarList")
     @ResponseBody
-    public Result portalCarList(MultipartFile file, HttpServletRequest request){
-        return uploadService.uploadFile(file);
+    public Result<PageResp<PortalCarListDTO>> portalCarList(@RequestBody PortalCarListVO portalCarListVO){
+       List<PortalCarListDTO> portalCarListDTOList = shareCarService.portalCarList(portalCarListVO);
+        PageInfo pageInfo = new PageInfo(portalCarListDTOList);
+        PageResp<PortalCarListDTO> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
+        Result<PageResp<PortalCarListDTO>> success = ResultUtils.success();
+        success.setData(pageResp);
+        return success;
     }
 
 }

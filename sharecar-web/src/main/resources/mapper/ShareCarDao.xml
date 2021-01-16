@@ -192,6 +192,10 @@
             <if test="descr != null and descr != ''">
                 DESCR = #{descr},
             </if>
+
+            <if test="cashPledge != null and cashPledge != ''">
+                CASH_PLEDGE = #{cashPledge},
+            </if>
             <if test="isDel != null and isDel != ''">
                 IS_DEL = #{isDel},
             </if>
@@ -224,6 +228,40 @@
             </if>
             <if test="isDel != null and isDel != ''">
                 and sc.IS_DEL = #{isDel}
+            </if>
+        </where>
+    </select>
+
+    <select id="portalCarList" resultMap="BaseResultMap">
+        select <include refid="baseColumn"/>
+        from share_car
+        <where>
+            <if test="query.factoryOwn != null and query.factoryOwn != ''" >
+                and FACTORY_OWN = #{query.factoryOwn}
+            </if>
+            <if test="cashPledgeMin != null and cashPledgeMax != null " >
+                and CASH_PLEDGE between #{cashPledgeMin} and #{cashPledgeMax}
+            </if>
+            <if test="query.color != null and query.color != ''" >
+                and COLOR = #{query.color}
+            </if>
+            <if test="query.displacement != null and query.displacement != ''" >
+                and DISPLACEMENT = #{query.displacement}
+            </if>
+            <if test="query.fuelType != null and query.fuelType != ''" >
+                and FUEL_TYPE = #{query.fuelType}
+            </if>
+            <if test="query.gearbox != null and query.gearbox != ''" >
+                and GEARBOX = #{query.gearbox}
+            </if>
+            <if test="query.keyword != null and query.keyword != ''" >
+                and NAME  like concat('%',#{query.keyword},'%')
+            </if>
+            <if test="query.region != null and query.region != ''" >
+                and REGION  = #{query.region}
+            </if>
+            <if test="seatsNum != null " >
+                and SEATS  = #{seatsNum}
             </if>
         </where>
     </select>

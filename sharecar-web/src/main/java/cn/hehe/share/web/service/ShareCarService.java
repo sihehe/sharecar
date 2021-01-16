@@ -2,7 +2,10 @@ package cn.hehe.share.web.service;
 
 import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.dto.PortalCarListDTO;
+import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.PortalCarListVO;
 import cn.hehe.share.web.entity.ShareCar;
 import java.util.List;
 
@@ -59,4 +62,6 @@ public interface ShareCarService {
     List<CarListDTO> carList(ShareCar shareCar);
 
     Result<CarDetailsDTO> carDetails(Integer id);
+
+    List<PortalCarListDTO> portalCarList(PortalCarListVO portalCarListVO);
 }
