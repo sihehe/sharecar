@@ -2,6 +2,7 @@ package cn.hehe.share.web.service.Impl;
 
 import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.dto.PortalCarDetailDTO;
 import cn.hehe.share.api.dto.PortalCarListDTO;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
@@ -9,8 +10,10 @@ import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.api.vo.PortalCarListVO;
 import cn.hehe.share.web.dao.ShareCarDao;
 import cn.hehe.share.web.dao.ShareCustomerDao;
+import cn.hehe.share.web.dao.ShareTypeDao;
 import cn.hehe.share.web.entity.ShareCar;
 import cn.hehe.share.web.entity.ShareCustomer;
+import cn.hehe.share.web.entity.ShareType;
 import cn.hehe.share.web.service.ShareCarService;
 import cn.hehe.share.web.service.ShareCustomerService;
 import com.github.pagehelper.PageHelper;
@@ -38,6 +41,9 @@ public class ShareCarServiceImpl implements ShareCarService {
     private ShareCarDao shareCarDao;
     @Resource
     private ShareCustomerDao shareCustomerDao;
+
+    @Resource
+    private ShareTypeDao shareTypeDao;
 
     /**
      * 通过ID查询单条数据
@@ -127,11 +133,11 @@ public class ShareCarServiceImpl implements ShareCarService {
     }
 
     @Override
-    public  List<PortalCarListDTO> portalCarList(PortalCarListVO portalCarListVO) {
+    public  PageInfo<ShareCar> portalCarList(PortalCarListVO portalCarListVO) {
         String seatsStr = portalCarListVO.getSeats();
         Integer seats = null;
         if(!StringUtils.isEmpty(seatsStr)){
-            Integer.valueOf(seatsStr.substring(0,1));
+            seats = Integer.valueOf(seatsStr.substring(0,1));
         }
 
         String cashPledge = portalCarListVO.getCashPledge();
@@ -142,26 +148,19 @@ public class ShareCarServiceImpl implements ShareCarService {
             cashPledgeMin = new BigDecimal(split[0]);
             cashPledgeMax = new BigDecimal(split[1]);
         }
-
         PageHelper.startPage(portalCarListVO.getPageNum(),portalCarListVO.getPageSize());
         List<ShareCar> shareCarList = shareCarDao.portalCarList(portalCarListVO,seats,cashPledgeMin,cashPledgeMax);
-        List<PortalCarListDTO> portalCarListDTOList = new ArrayList<>();
-        if(!CollectionUtils.isEmpty(shareCarList)){
-            for (ShareCar shareCar : shareCarList) {
-                PortalCarListDTO portalCarListDTO = new PortalCarListDTO();
-                portalCarListDTO.setCarName(shareCar.getName());
-                portalCarListDTO.setRegion(shareCar.getRegion());
-                portalCarListDTO.setFuelType(shareCar.getFuelType());
-                portalCarListDTO.setSeats(shareCar.getSeats());
-                portalCarListDTO.setCashPledge(shareCar.getCashPledge());
-                String imageInfo = shareCar.getImageInfo();
-                if(!StringUtils.isEmpty(imageInfo)){
-                    String[] split1 = imageInfo.split(",");
-                    portalCarListDTO.setImage(split1[0]);
-                }
-                portalCarListDTOList.add(portalCarListDTO);
-            }
-        }
-        return portalCarListDTOList;
+        PageInfo<ShareCar> pageInfo = new PageInfo(shareCarList);
+        return pageInfo;
+    }
+
+    @Override
+    public PortalCarDetailDTO portalCarDetail(Integer id) {
+        ShareCar shareCar = this.shareCarDao.queryById(id);
+        PortalCarDetailDTO portalCarDetailDTO = new PortalCarDetailDTO();
+        BeanUtils.copyProperties(shareCar,portalCarDetailDTO);
+        ShareType shareType = shareTypeDao.queryById(shareCar.getTypeId());
+        portalCarDetailDTO.setTypeName(shareType.getTypeName());
+        return portalCarDetailDTO;
     }
 }

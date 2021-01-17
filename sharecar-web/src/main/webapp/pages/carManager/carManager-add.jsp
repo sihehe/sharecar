@@ -52,8 +52,7 @@
                 </div>
                 <div class="form-group">
                     <label for="cashPledge">押金 *</label>
-                    <select class="form-control m-b" name="cashPledge" id="cashPledge">
-                    </select>
+                    <input class="form-control m-b" name="cashPledge" id="cashPledge">
                 </div>
 
             </div>

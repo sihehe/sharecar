@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 10/01/2021 22:27:44
+ Date: 17/01/2021 19:56:59
 */
 
 SET NAMES utf8mb4;
@@ -32,19 +32,22 @@ CREATE TABLE `share_business`  (
   `UPDATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
   `UPDATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`BUSINESS_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of share_business
 -- ----------------------------
-INSERT INTO `share_business` VALUES (1, '测试套餐1', '日', '日', 'C', '2020-12-03 07:56:30', 'si', NULL, NULL);
-INSERT INTO `share_business` VALUES (2, '111', 'H', 'H', 'N', '2020-12-19 13:24:05', NULL, NULL, NULL);
-INSERT INTO `share_business` VALUES (3, '2222', 'H', 'H', 'C', '2020-12-19 13:27:10', NULL, NULL, NULL);
-INSERT INTO `share_business` VALUES (4, '222', 'D', 'D', 'C', '2020-12-26 12:00:49', NULL, NULL, NULL);
-INSERT INTO `share_business` VALUES (5, '444', 'M', 'M', 'C', '2020-12-26 12:02:15', NULL, NULL, NULL);
-INSERT INTO `share_business` VALUES (6, '一日套餐', 'D', 'D', 'A', '2020-12-26 12:06:02', NULL, '2020-12-26 20:56:04', NULL);
-INSERT INTO `share_business` VALUES (7, '小时套餐', 'H', 'H', 'A', '2020-12-26 21:50:48', NULL, '2020-12-26 21:52:09', NULL);
-INSERT INTO `share_business` VALUES (8, '测试2', 'H', 'H', 'C', '2020-12-30 11:41:05', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (9, '租车小时套餐', 'H', 'H', 'A', '2021-01-11 14:37:38', NULL, '2021-01-13 10:55:54', NULL);
+INSERT INTO `share_business` VALUES (10, '租车日套餐', 'D', 'D', 'A', '2021-01-11 14:39:07', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (11, '租车月套餐', 'M', 'M', 'A', '2021-01-12 19:10:27', NULL, '2021-01-13 11:12:53', NULL);
+INSERT INTO `share_business` VALUES (12, '111', 'M', 'M', 'C', '2021-01-13 10:14:11', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (13, '111', 'M', 'M', 'C', '2021-01-13 10:14:36', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (14, '1111', 'M', 'D', 'C', '2021-01-13 10:16:19', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (15, '租车季度套餐', 'Q', 'Q', 'A', '2021-01-13 11:07:49', NULL, '2021-01-13 11:13:00', NULL);
+INSERT INTO `share_business` VALUES (16, '21212121', 'D', 'H', 'C', '2021-01-13 11:09:41', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (17, '21323', 'H', 'H', 'C', '2021-01-13 11:10:22', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (18, '322', 'H', 'H', 'C', '2021-01-13 11:11:09', NULL, NULL, NULL);
+INSERT INTO `share_business` VALUES (19, '345344', 'D', 'D', 'C', '2021-01-13 11:12:36', NULL, NULL, NULL);
 
 -- ----------------------------
 -- Table structure for share_business_detail
@@ -63,27 +66,30 @@ CREATE TABLE `share_business_detail`  (
   `UPDATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新日期',
   `UPDATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 47 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of share_business_detail
 -- ----------------------------
-INSERT INTO `share_business_detail` VALUES (1, 1, '1', 10.00, 500.00, 1.00, 'Y', '2020-12-09 09:12:58', 'si', NULL, NULL);
-INSERT INTO `share_business_detail` VALUES (2, 2, '1', 1.00, 500.00, 1.00, 'Y', '2020-12-19 13:24:14', NULL, NULL, NULL);
-INSERT INTO `share_business_detail` VALUES (3, 3, '1', 1.00, 500.00, 1.00, 'Y', '2020-12-19 13:27:18', NULL, '2020-12-26 12:04:20', NULL);
-INSERT INTO `share_business_detail` VALUES (4, 4, '22', 22.00, NULL, 2.00, 'Y', '2020-12-26 12:00:49', NULL, '2020-12-26 12:04:21', NULL);
-INSERT INTO `share_business_detail` VALUES (5, 4, '3', 3.00, NULL, 3.00, 'Y', '2020-12-26 12:00:49', NULL, '2020-12-26 12:04:21', NULL);
-INSERT INTO `share_business_detail` VALUES (6, 5, '5', 5.00, NULL, 5.00, 'Y', '2020-12-26 12:02:15', NULL, '2020-12-26 12:04:22', NULL);
-INSERT INTO `share_business_detail` VALUES (7, 5, '6', 6.00, NULL, 6.00, 'Y', '2020-12-26 12:02:15', NULL, '2020-12-26 12:04:22', NULL);
-INSERT INTO `share_business_detail` VALUES (8, 6, '经济型轿车', 300.00, NULL, 300.00, 'N', '2020-12-26 12:06:02', NULL, '2020-12-26 20:56:06', NULL);
-INSERT INTO `share_business_detail` VALUES (9, 6, '大众型轿车', 400.00, NULL, 400.00, 'N', '2020-12-26 12:06:02', NULL, '2020-12-26 20:56:06', NULL);
-INSERT INTO `share_business_detail` VALUES (10, 6, '豪华型', 500.00, NULL, 500.00, 'N', '2020-12-26 12:06:02', NULL, '2020-12-26 20:56:06', NULL);
-INSERT INTO `share_business_detail` VALUES (41, 6, '特型', 600.00, NULL, 600.00, 'Y', '2020-12-26 20:55:46', NULL, '2020-12-26 20:56:06', NULL);
-INSERT INTO `share_business_detail` VALUES (42, 7, '普通车型', 350.00, NULL, 350.00, 'N', '2020-12-26 21:50:48', NULL, '2020-12-26 21:52:08', NULL);
-INSERT INTO `share_business_detail` VALUES (43, 7, '大众车型', 450.00, NULL, 450.00, 'N', '2020-12-26 21:50:48', NULL, '2020-12-26 21:52:08', NULL);
-INSERT INTO `share_business_detail` VALUES (44, 7, '豪华车型', 550.00, NULL, 550.00, 'N', '2020-12-26 21:50:49', NULL, '2020-12-26 21:52:08', NULL);
-INSERT INTO `share_business_detail` VALUES (45, 8, '1', 2.00, 500.00, 3.00, 'Y', '2020-12-30 11:41:06', NULL, '2020-12-30 11:41:31', NULL);
-INSERT INTO `share_business_detail` VALUES (46, 8, '5', 6.00, 8.00, 7.00, 'Y', '2020-12-30 11:41:06', NULL, '2020-12-30 11:41:31', NULL);
+INSERT INTO `share_business_detail` VALUES (47, 9, '1', 50.00, 500.00, 30.00, 'N', '2021-01-11 14:37:38', NULL, '2021-01-13 10:55:53', NULL);
+INSERT INTO `share_business_detail` VALUES (48, 9, '2', 60.00, 600.00, 40.00, 'N', '2021-01-11 14:37:38', NULL, '2021-01-13 10:55:53', NULL);
+INSERT INTO `share_business_detail` VALUES (49, 9, '3', 70.00, 700.00, 50.00, 'N', '2021-01-11 14:37:38', NULL, '2021-01-13 10:55:53', NULL);
+INSERT INTO `share_business_detail` VALUES (50, 10, '1', 300.00, 500.00, 300.00, 'N', '2021-01-11 14:39:07', NULL, NULL, NULL);
+INSERT INTO `share_business_detail` VALUES (51, 10, '2', 400.00, 600.00, 400.00, 'N', '2021-01-11 14:39:07', NULL, NULL, NULL);
+INSERT INTO `share_business_detail` VALUES (52, 10, '3', 500.00, 700.00, 500.00, 'N', '2021-01-11 14:39:07', NULL, NULL, NULL);
+INSERT INTO `share_business_detail` VALUES (53, 11, '1', 3000.00, 1000.00, 200.00, 'N', '2021-01-12 19:10:27', NULL, '2021-01-13 11:12:53', NULL);
+INSERT INTO `share_business_detail` VALUES (54, 11, '2', 4000.00, 1200.00, 300.00, 'N', '2021-01-12 19:10:27', NULL, '2021-01-13 11:12:53', NULL);
+INSERT INTO `share_business_detail` VALUES (55, 11, '3', 5000.00, 1300.00, 400.00, 'N', '2021-01-12 19:10:27', NULL, '2021-01-13 11:12:53', NULL);
+INSERT INTO `share_business_detail` VALUES (56, 12, NULL, 1.00, 1.00, 1.00, 'Y', '2021-01-13 10:14:11', NULL, '2021-01-13 10:14:17', NULL);
+INSERT INTO `share_business_detail` VALUES (57, 13, NULL, 1.00, 1.00, 1.00, 'Y', '2021-01-13 10:14:37', NULL, '2021-01-13 10:16:06', NULL);
+INSERT INTO `share_business_detail` VALUES (58, 14, NULL, 1.00, 1.00, 1.00, 'Y', '2021-01-13 10:16:19', NULL, '2021-01-13 10:16:23', NULL);
+INSERT INTO `share_business_detail` VALUES (59, 15, '1', 2500.00, 3300.00, 200.00, 'N', '2021-01-13 11:07:49', NULL, '2021-01-13 11:12:59', NULL);
+INSERT INTO `share_business_detail` VALUES (60, 15, '2', 3000.00, 3500.00, 350.00, 'N', '2021-01-13 11:07:49', NULL, '2021-01-13 11:12:59', NULL);
+INSERT INTO `share_business_detail` VALUES (61, 15, '3', 3500.00, 4000.00, 500.00, 'N', '2021-01-13 11:07:49', NULL, '2021-01-13 11:12:59', NULL);
+INSERT INTO `share_business_detail` VALUES (62, 16, NULL, 23.00, 23.00, 23.00, 'Y', '2021-01-13 11:09:41', NULL, '2021-01-13 11:10:37', NULL);
+INSERT INTO `share_business_detail` VALUES (63, 17, NULL, 23.00, 23.00, 23.00, 'Y', '2021-01-13 11:10:22', NULL, '2021-01-13 11:10:36', NULL);
+INSERT INTO `share_business_detail` VALUES (64, 18, NULL, NULL, 123.00, 213.00, 'Y', '2021-01-13 11:11:09', NULL, '2021-01-13 11:11:52', NULL);
+INSERT INTO `share_business_detail` VALUES (65, 19, NULL, NULL, 234.00, 234.00, 'Y', '2021-01-13 11:12:36', NULL, '2021-01-13 11:12:37', NULL);
 
 -- ----------------------------
 -- Table structure for share_car
@@ -110,24 +116,21 @@ CREATE TABLE `share_car`  (
   `FUEL_TYPE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '燃油类型',
   `REGION` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '地区',
   `OWNER_ID` int(11) NOT NULL COMMENT '拥有人id',
+  `CASH_PLEDGE` decimal(8, 2) NULL DEFAULT NULL COMMENT '押金',
   `IMAGE_INFO` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '车辆图片',
   `DESCR` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '描述',
   `IS_DEL` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否删除 (Y-删除 N-不删除)',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 10 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of share_car
 -- ----------------------------
-INSERT INTO `share_car` VALUES (1, 2, '奔驰测试车辆3', '奔驰', '豫A000000', '宽敞', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '郑州', 1, '', '备注', 'N');
-INSERT INTO `share_car` VALUES (2, 1, '宝马测试车辆', '宝马', '豫A111111', '适中', '白色', '自动', 5, 2, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '120', '1.0', '充电', '郑州', 1, '', '备注', 'N');
-INSERT INTO `share_car` VALUES (3, 1, '奥迪测试车辆', '奥迪', '豫A22222', '紧凑', '黑色', '手动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '燃油', '120', '1.4', '汽油', '郑州', 1, '', '备注', 'N');
-INSERT INTO `share_car` VALUES (4, 1, '比亚迪测试车辆', '比亚迪', '豫A22223', '适中', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '燃油', '184', '1.5', '汽油', '郑州', 1, NULL, '备注', 'Y');
-INSERT INTO `share_car` VALUES (5, 1, '别克测试车辆', '别克', '豫A22224', '适中', '黑色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '郑州', 1, NULL, '备注', 'Y');
-INSERT INTO `share_car` VALUES (6, 1, '雪佛兰测试车辆', '雪佛兰', '豫A22225', '适中', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '郑州', 1, NULL, '备注', 'Y');
-INSERT INTO `share_car` VALUES (7, 1, 'yxx', '测试', '测试0000', '000', '000', '自动', 2, 2, 5000.00, 2000.00, 1800.00, 1500.00, '电动', '220', '2.0', '#97', '测试', 1, NULL, '备注', 'N');
-INSERT INTO `share_car` VALUES (8, 3, '111', '奔驰', 'A111', '经济', '黑色', '自动', 2, 2, 500.00, 2500.00, 1500.00, 1500.00, '电动', '120', '1.4', '充电', '北京市西城区', 1, NULL, '备注', 'N');
-INSERT INTO `share_car` VALUES (9, 1, '测试哈哈', '宝马', 'A3333', '经济型', '黑色', '自动', 2, 2, 5000.00, 2500.00, 1500.00, 1500.00, '电动', '100', '0.8', '充电', '', 1, NULL, '哈哈哈哈', 'Y');
+INSERT INTO `share_car` VALUES (1, 2, '奔驰测试车辆3', '奔驰', '豫A000000', '宽敞', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '郑州', 1, 2001.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (2, 1, '宝马测试车辆', '宝马', '豫A111111', '适中', '白色', '自动', 5, 2, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '120', '1.0', '充电', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (3, 1, '奥迪测试车辆', '奥迪', '豫A22222', '紧凑', '黑色', '手动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '燃油', '120', '1.4', '汽油', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (12, 1, '111', '奥迪', '豫A22222', '紧凑', '黑色', '自动', 2, 2, 1.00, 1.00, 1.00, 1.00, '电动', '100', '1.0', '充电', '北京市崇文区', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '11', 'N');
+INSERT INTO `share_car` VALUES (13, 1, '奔驰测试车辆', '奔驰', '豫AS00000', '经济', '白色', '自动', 2, 2, 5000.00, 2500.00, 1500.00, 1500.00, '电动', '120', '1.8', '充电', '北京市东城区', 1, 1000.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '豪华', 'N');
 
 -- ----------------------------
 -- Table structure for share_customer
@@ -193,7 +196,6 @@ CREATE TABLE `share_order`  (
   `EMPT_ID` int(11) NOT NULL COMMENT '订单服务职工id',
   `PAY_TYPE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付方式 (W-微信 Z-支付宝 Y-银联 P-POS机 C-现金)',
   `ORDER_STATUS` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态 (N-待支付 Y-已支付 C-作废)',
-  `CASH_PLEDGE` decimal(8, 2) NULL DEFAULT NULL COMMENT '押金',
   `IS_EXPIRE` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否过期(N-未过期 Y-已过期)',
   `EXPIRE_NUM` int(11) NULL DEFAULT NULL COMMENT '过期数',
   `EXPIRE_AMT` decimal(8, 2) NULL DEFAULT NULL COMMENT '过期支付金额',
@@ -201,14 +203,15 @@ CREATE TABLE `share_order`  (
   `IS_DEL` int(11) NOT NULL DEFAULT 0 COMMENT '删除标记 0不删除 1删除',
   PRIMARY KEY (`ORDER_ID`) USING BTREE,
   UNIQUE INDEX `SHARE_ORDER_ORDER_NUM_uindex`(`ORDER_NUM`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '共享管理订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '共享管理订单表' ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of share_order
 -- ----------------------------
-INSERT INTO `share_order` VALUES (1, '1234567890', 1, 1, 100.00, 1, 1, '20201126155959', '20201231125959', '2020-11-26 07:18:39', 1, NULL, 'N', 1200.00, 'N', 0, 0.00, NULL, 0);
-INSERT INTO `share_order` VALUES (2, '2020120917430731678367858066463', 1, 1, 1.00, 1, 1, '20201208000000', '20201224000000', '2020-12-09 17:43:07', 2, '银联', 'N', NULL, NULL, NULL, NULL, '', 0);
-INSERT INTO `share_order` VALUES (3, '2021011022254114966577049849342', 1, 2, 1.00, 8, 22, '20210106000000', '20210108000000', '2021-01-10 22:25:41', 4, '银联', 'N', NULL, NULL, NULL, NULL, '穷鬼', 0);
+INSERT INTO `share_order` VALUES (8, '2021011613213580738426142335142', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 13:21:36', 4, '银联', 'N', NULL, NULL, NULL, '12日还车', 0);
+INSERT INTO `share_order` VALUES (9, '2021011614225113825553646296006', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:22:51', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
+INSERT INTO `share_order` VALUES (10, '2021011614253304099783458537908', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:26:46', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
+INSERT INTO `share_order` VALUES (11, '2021011614274792379868761229234', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:28:09', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
 
 -- ----------------------------
 -- Table structure for share_type

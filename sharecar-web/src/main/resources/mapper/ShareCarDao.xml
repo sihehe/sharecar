@@ -236,6 +236,7 @@
         select <include refid="baseColumn"/>
         from share_car
         <where>
+             IS_DEL = 'N'
             <if test="query.factoryOwn != null and query.factoryOwn != ''" >
                 and FACTORY_OWN = #{query.factoryOwn}
             </if>

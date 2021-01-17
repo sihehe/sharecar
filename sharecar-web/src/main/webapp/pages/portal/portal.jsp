@@ -12,6 +12,7 @@
         outline: none;
     }</style>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen"/>
     <meta name="renderer" content="webkit">
     <title>哈哈共享汽车租赁--首页</title>
     <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
@@ -5363,9 +5364,9 @@
         <div class="search js-search">
             <div class="search-box suggestion_widget" data-default-count="9">
                 <input type="text" class="search-input js_search_input_index" placeholder="搜索您想要的车"
-                       data-role="keywordInput" name="keyword" autocomplete="off" data-domain="sh">
+                       data-role="keywordInput" name="keyword" autocomplete="off" data-domain="sh" id="keyword">
                 <button class="search-btn" data-gzlog="tracking_type=click&amp;eventid=0020070000000022"
-                        type="button"></button>
+                        type="button" id="searchBtn" onclick="searchBtnClick()"></button>
                 <input type="hidden" value="sh" name="hiddenCity">
             </div>
         </div>
@@ -5435,10 +5436,13 @@
                             排量 </p>
                         <div class="dd-option">
                             <a onclick="displacementSelect(this)">不限</a>
-                            <a href="javascript:void(0);" onclick="displacementSelect(this)"><1.0</a>
-                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.0-1.6</a>
-                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.6-2.0</a>
-                            <a href="javascript:void(0);" onclick="displacementSelect(this)">2.0-3.0</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">0.8</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.0</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.2</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.4</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.6</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">1.8</a>
+                            <a href="javascript:void(0);" onclick="displacementSelect(this)">2.0</a>
                         </div>
                     </li>
                     <!-- 座位数 -->
@@ -5451,7 +5455,7 @@
                             <a onclick="seatsSelect(this)">4座</a>
                             <a onclick="seatsSelect(this)">5座</a>
                             <a onclick="seatsSelect(this)">6座</a>
-                            <a onclick="seatsSelect(this)">7座及以上</a>
+                            <a onclick="seatsSelect(this)">7座</a>
                         </div>
                     </li>
                     <!-- 燃油类型 -->
@@ -5521,19 +5525,21 @@
     </div>
     <!-- 车源展示 -->
     <!-- 车源列表 -->
-    <ul class="carlist clearfix js-top" id="carListBox">
-
+    <ul class="carlist clearfix js-top" id="carListBox" style="width: 1220px;height: 634px">
+        <li style="width:100%;height:100%;text-align: center">
+            <h3>抱歉没有符合条件的车辆</h3>
+        </li>
     </ul>
     <!-- 分页展示 -->
     <div class="pageBox">
-        <ul class="pageLink clearfix">
-            <li class="link-on"><a><span>1</span></a></li>
+        <ul class="pageLink clearfix" id="pageBox">
+            <li><a href="javascript:void(0);" class="prev"><span>上一页</span><em>&gt;</em></a></li>
+            <li><a href="javascript:void(0);"><span>1</span></a></li>
             <li><a href="javascript:void(0);"><span>2</span></a></li>
-            <li><a href="javascript:void(0);"><span>3</span></a></li>
+            <li><a class="link-on"><span>3</span></a></li>
             <li><a href="javascript:void(0);"><span>4</span></a></li>
             <li><a href="javascript:void(0);"><span>5</span></a></li>
             <li><a href="javascript:void(0);"><span>6</span></a></li>
-            <li><a href="javascript:void(0);"><span>7</span></a></li>
             <li class="point"><a><span>...</span></a></li>
             <li><a href="javascript:void(0);"><span>50</span></a></li>
             <li><a href="javascript:void(0);" class="next"><span>下一页</span><em>&gt;</em></a></li>

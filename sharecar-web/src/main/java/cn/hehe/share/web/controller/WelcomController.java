@@ -41,4 +41,9 @@ public class WelcomController {
     public String protal(){
         return "portal/portal";
     }
+
+    @RequestMapping("/carDetail")
+    public String carDetail(){
+        return "portal/detail";
+    }
 }

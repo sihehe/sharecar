@@ -13,6 +13,7 @@ import java.math.BigDecimal;
  **/
 @Data
 public class PortalCarListDTO implements Serializable {
+    private Integer carId;
     private String carName;
     private String region;
     private String fuelType;

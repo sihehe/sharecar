@@ -2,6 +2,7 @@ package cn.hehe.share.web.controller;
 
 import cn.hehe.share.api.dto.CarDetailsDTO;
 import cn.hehe.share.api.dto.CarListDTO;
+import cn.hehe.share.api.dto.PortalCarDetailDTO;
 import cn.hehe.share.api.dto.PortalCarListDTO;
 import cn.hehe.share.api.enums.DBStatusEnums;
 import cn.hehe.share.api.page.PageResp;
@@ -17,6 +18,8 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.ContextLoader;
 import org.springframework.web.context.WebApplicationContext;
@@ -25,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -164,11 +168,38 @@ public class CarManagerController {
     @PostMapping("/portalCarList")
     @ResponseBody
     public Result<PageResp<PortalCarListDTO>> portalCarList(@RequestBody PortalCarListVO portalCarListVO){
-       List<PortalCarListDTO> portalCarListDTOList = shareCarService.portalCarList(portalCarListVO);
-        PageInfo pageInfo = new PageInfo(portalCarListDTOList);
-        PageResp<PortalCarListDTO> pageResp = new PageResp(pageInfo.getTotal(),pageInfo.getList());
+        PageInfo<ShareCar> shareCarPageInfo = shareCarService.portalCarList(portalCarListVO);
+        List<PortalCarListDTO> portalCarListDTOList = new ArrayList<>();
+        List<ShareCar> shareCarList = shareCarPageInfo.getList();
+        if(!CollectionUtils.isEmpty(shareCarList)){
+            for (ShareCar shareCar : shareCarList) {
+                PortalCarListDTO portalCarListDTO = new PortalCarListDTO();
+                portalCarListDTO.setCarName(shareCar.getName());
+                portalCarListDTO.setRegion(shareCar.getRegion());
+                portalCarListDTO.setFuelType(shareCar.getFuelType());
+                portalCarListDTO.setSeats(shareCar.getSeats());
+                portalCarListDTO.setCashPledge(shareCar.getCashPledge());
+                portalCarListDTO.setCarId(shareCar.getId());
+                String imageInfo = shareCar.getImageInfo();
+                if(!StringUtils.isEmpty(imageInfo)){
+                    String[] split1 = imageInfo.split(",");
+                    portalCarListDTO.setImage(split1[0]);
+                }
+                portalCarListDTOList.add(portalCarListDTO);
+            }
+        }
+        PageResp<PortalCarListDTO> pageResp = new PageResp(shareCarPageInfo.getTotal(),portalCarListDTOList);
         Result<PageResp<PortalCarListDTO>> success = ResultUtils.success();
         success.setData(pageResp);
+        return success;
+    }
+
+    @GetMapping("/portalCarDetail")
+    @ResponseBody
+    public Result<PortalCarDetailDTO> portalCarDetail(Integer id){
+        PortalCarDetailDTO portalCarDetailDTO = shareCarService.portalCarDetail(id);
+        Result success = ResultUtils.success();
+        success.setData(portalCarDetailDTO);
         return success;
     }
 
