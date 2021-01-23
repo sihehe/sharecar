@@ -303,6 +303,26 @@ function searchBtnClick(){
     getCarList(query);
 }
 
+function login(){
+    var phone = $('#phone').val();
+    var code = $('#code').val();
+    var loginParam = {
+        phone:phone,
+        code:code
+    }
+
+    $.ajax({
+        type: 'post',
+        url: '',
+        data: loginParam,
+        dataType: "Json",
+        success: function (res) {
+
+        }
+    })
+
+}
+
 $(function () {
     getCarList(query);
 })

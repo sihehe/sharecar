@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html><!-- head -->
+<html>
 <head>
     <style type="text/css">object {
         outline: none;
@@ -5270,91 +5270,12 @@
 </head>
 <script src="${pageContext.request.contextPath}/js/portal/protal.js"/>
 <!-- 加载js/css-->
+<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
+<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/detail_v4.5d908af3a4c5d35cb1fa.js"></script>
+<!-- 加载js/css-->
+<!-- 加载js/css-->
 <body class="list">
-<!-- 春节放假公告 s -->
-<!-- 春节放假公告 e -->
-<!-- 头部 -->
-<input type="hidden" id="skipKindNew" value="0">
-<!--<input type="hidden" id="firstSubLogin" value="0">-->
-<input type="hidden" id="clueData" data-puid="" data-city-id="13">
-
-<!-- 春节放假公告 s -->
-<!-- 春节放假公告 e -->
-<!-- 头部吸顶菜单 s -->
-<div id="jstop" class="j-header header-2 ">
-    <div class="header">
-        <div class="city">
-            <!-- 鼠标悬停 .city添加class名active -->
-            <p class="city-curr">
-                上海<i></i>
-            </p>
-        </div>
-        <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
-            <a href="javascript:" class="uc-my" id="js-login-new">登录</a>
-            <div class="uc-app" style="display:none">
-                <a href="javascript:;" class="js-logout js-loginElem4"
-                   data-gzlog="tracking_type=click&amp;eventid=1015123400000007">退出</a>
-                <i></i>
-            </div>
-        </div>
-        <div class="header-phone">
-            <!--电话判断，当页面处于汽车金融则显示汽车金融电话  -->
-            热线电话 400-000-0000
-        </div>
-    </div>
-</div>
-<!-- 头部吸顶菜单 e -->
-
-<!-- 登录弹层  s -->
-<!-- 登录弹框  s -->
-<!-- 使用时class加show -->
-<div class="pop-box pop-login" id="login1">
-    <form action="https://www.guazi.com/passport/login" method="post" onsubmit="return window.web_sso_login_check()"
-          target="guazi_login">
-        <div class="pop-close" id="closeLogin1"></div>
-        <p class="pop-tit js-logintitle">哈哈共享汽车租赁</p>
-        <ul class="phone-login">
-            <li>
-                <p class="phone-login-tit">手机号码</p>
-                <input name="phone" class="phone-login-input js-phoneNum1" placeholder="">
-            </li>
-            <li>
-                <p class="phone-login-tit">&emsp;验证码</p>
-                <input name="code" class="phone-login-input phone-login-code js-code1" placeholder="">
-                <button class="get-code">获取验证码</button>
-            </li>
-        </ul>
-        <p class="p-error" id="loginError1"></p>
-        <button data-track-phone="#login1 .js-phoneNum1" class="sub-btn  js-checkcode" type="submit">登录</button>
-        <p class="free-phone">免费咨询400-000-0000</p>
-        <p class="agree-text">登录即视为同意<a
-                href="https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf"
-                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《用户使用协议》</a>及<a
-                href="https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf"
-                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《隐私权条款》</a></p>
-
-        <input type="hidden" name="source" value="2">
-        <input type="hidden" name="staticPage" value="https://www.guazi.com/ssoJump.php">
-        <input type="hidden" name="callBack" value="parent.web_login_callback">
-    </form>
-</div>
-<iframe name="guazi_login" style="display: none;"></iframe>
-<!-- 使用时class加active -->
-<div class="pop-mask "></div>
-<script>
-    $('#js-login-new').click(function () {
-        $('#login1').addClass('show');
-        $('.pop-mask').addClass('active');
-    })
-
-    $('#closeLogin1').click(function () {
-        $('#login1').removeClass('show');
-        $('.pop-mask').removeClass('active');
-    });
-</script>
-<!-- 登录弹层  e -->
-<!-- 登录弹框  e -->
-
+<jsp:include   page="heard.jsp" flush="true"/>
 <!-- 列表页内容区域 -->
 <div class="list-wrap js-post">
     <!-- 面包屑，搜索框 -->
@@ -5547,66 +5468,7 @@
     </div>
 </div>
 
-<!-- 尾部 -->
-<div class="footer">
-    <!--加载footer 信息部分 -->
-    <div class="company-info clearfix">
-        <div class="instructions-guazi-name">瓜子®/瓜子二手车®等带有®标记的内容均是车好多旧机动车经纪（北京）有限公司的注册商标。</div>
-        <div class="footer-logo"></div>
-
-        <div class="phone-email">
-            <p>
-                咨询电话：<i>400-000-0000</i><span>（周一至周日 8:00-21:00）</span>
-                <br> 服务监督热线：
-                <i>400-066-8780</i><span>（周一至周日 9:00-18:00）</span>
-            </p>
-            <p>互联网违法或不良信息举报联系方式：
-                <br> 邮箱：
-                <i>jubao@guazi.com</i>&nbsp;&nbsp;电话：<i>010-89191670</i>
-            </p>
-        </div>
-
-
-        <div class="basic-info">
-            <div class="info-link">
-                <a rel="nofollow" href="https://www.guazi.com/sh/aboutus/" target="_blank">关于瓜子</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/aboutusGroup/" target="_blank">集团介绍</a>
-                <a rel="nofollow" href="https://job.guazi.com" target="_blank">加入我们</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/contact/" target="_blank">联系我们</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/intro/" target="_blank">服务保障</a>
-                <a rel="nofollow"
-                   href="https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf"
-                   target="_blank">隐私声明</a>
-                <a rel="nofollow"
-                   href="https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf"
-                   target="_blank">服务条款</a>
-                <a rel="nofollow"
-                   href="https://image1.guazistatic.com/qn200508160345ba369b606d82c8bbaa612d0c7e98b96b.jpg"
-                   target="_blank">营业执照</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/intro/terms" target="_blank">环评公示</a>
-            </div>
-            <p class="arc-info">Copyright 2021 www.guazi.com All Rights Reserved</p>
-            <!--        <p class="arc-info">京ICP备15053955号  ICP证151071号 </p>-->
-            <a class="arc-info" rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/" style="color: #939393">京ICP备15053955号-1
-                ICP证151071号 </a>
-            <div class="protect clearfix">
-                <a class="police" rel="nofollow" target="_blank"
-                   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037713">京公网安备11010502037713号</a>
-            </div>
-        </div>
-    </div>
-
-    <!--公司信息-->
-    <p style="text-align:center;line-height:20px;font-size:12px;color:#666; padding-top:20px;">
-    </p></div>
-
-
-<input type="hidden" class="hide_gich" value="">
-<div style="display:none;" class="js-check-post-code" data-str="c21de4f2fd8fc7e987fbd9a4fa9cb975"
-     data-time="1610543050"></div>
-<input type="text" name="js-waf-seo-referer" value="" style="display:none;"><input type="hidden" data-role="dataSource"
-                                                                                   class="dataSourceButton"
-                                                                                   data-source="[]">
+<jsp:include   page="footer.jsp" flush="true"/>
 
 
 </body>
