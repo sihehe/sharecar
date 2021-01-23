@@ -2,16 +2,23 @@ package cn.hehe.share.web.controller;
 
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.result.ResultUtils;
+import cn.hehe.share.api.vo.CustomerLoginVO;
 import cn.hehe.share.api.vo.ShareAddCustomer;
 import cn.hehe.share.api.vo.ShareUpdateCustomer;
 import cn.hehe.share.web.entity.ShareCustomer;
 import cn.hehe.share.web.service.ShareCustomerService;
 import com.github.pagehelper.Page;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * (ShareCustomer)表控制层
@@ -79,6 +86,14 @@ public class ShareCustomerController {
         return shareCustomerService.addCustomer(shareAddCustomer);
     }
 
+
+    @PostMapping("/login")
+    @ResponseBody
+    public Result login(@RequestBody CustomerLoginVO customerLoginVO, HttpServletRequest request, HttpServletResponse response){
+        return  shareCustomerService.login(customerLoginVO);
+    }
+
+
     @PostMapping("/customerDetails")
     @ResponseBody
     public Result<ShareCustomer> customerDetails(Integer customerId){
@@ -89,6 +104,18 @@ public class ShareCustomerController {
     @ResponseBody
     public Result updateCustomer(@RequestBody ShareUpdateCustomer shareUpdateCustomer){
         return shareCustomerService.updateCustomer(shareUpdateCustomer);
+    }
+
+    @PostMapping("/portalUpdateCustomer")
+    @ResponseBody
+    public Result portalUpdateCustomer(@RequestBody ShareUpdateCustomer shareUpdateCustomer){
+        return shareCustomerService.portalUpdateCustomer(shareUpdateCustomer);
+    }
+
+    @PostMapping("/portalGetCustomer")
+    @ResponseBody
+    public Result<ShareCustomer> portalGetCustomer(String phone){
+        return shareCustomerService.portalGetCustomer(phone);
     }
 
 }

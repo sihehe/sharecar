@@ -22,6 +22,8 @@
         <result property="engineHorsepower" column="ENGINE_HORSEPOWER" jdbcType="VARCHAR"/>
         <result property="displacement" column="DISPLACEMENT" jdbcType="VARCHAR"/>
         <result property="fuelType" column="FUEL_TYPE" jdbcType="VARCHAR"/>
+        <result property="province" column="PROVINCE" jdbcType="VARCHAR"/>
+        <result property="city" column="CITY" jdbcType="VARCHAR"/>
         <result property="region" column="REGION" jdbcType="VARCHAR"/>
         <result property="ownerId" column="OWNER_ID" jdbcType="INTEGER"/>
         <result property="imageInfo" column="IMAGE_INFO" jdbcType="VARCHAR"/>
@@ -31,7 +33,7 @@
     </resultMap>
 
     <sql id="baseColumn">
-        ID, TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO,CASH_PLEDGE, DESCR,IS_DEL
+        ID, TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE,PROVINCE,CITY, REGION, OWNER_ID, IMAGE_INFO,CASH_PLEDGE, DESCR,IS_DEL
     </sql>
 
     <!--查询单个-->
@@ -121,8 +123,8 @@
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="id" useGeneratedKeys="true">
-        insert into share_car(TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE, REGION, OWNER_ID, IMAGE_INFO, CASH_PLEDGE,DESCR,IS_DEL)
-        values (#{typeId}, #{name}, #{factoryOwn}, #{plate}, #{style},#{color}, #{gearbox}, #{seats},#{door}, #{length}, #{width}, #{hight}, #{weight}, #{engineType}, #{engineHorsepower}, #{displacement}, #{fuelType}, #{region}, #{ownerId}, #{imageInfo},#{cashPledge}, #{descr},#{isDel})
+        insert into share_car(TYPE_ID, NAME, FACTORY_OWN, PLATE, STYLE,COLOR, GEARBOX, SEATS,DOOR, LENGTH, WIDTH, HIGHT, WEIGHT, ENGINE_TYPE, ENGINE_HORSEPOWER, DISPLACEMENT, FUEL_TYPE,PROVINCE,CITY, REGION, OWNER_ID, IMAGE_INFO, CASH_PLEDGE,DESCR,IS_DEL)
+        values (#{typeId}, #{name}, #{factoryOwn}, #{plate}, #{style},#{color}, #{gearbox}, #{seats},#{door}, #{length}, #{width}, #{hight}, #{weight}, #{engineType}, #{engineHorsepower}, #{displacement}, #{fuelType},#{province},#{city}, #{region}, #{ownerId}, #{imageInfo},#{cashPledge}, #{descr},#{isDel})
     </insert>
 
     <!--通过主键修改数据-->
@@ -179,6 +181,12 @@
             </if>
             <if test="fuelType != null and fuelType != ''">
                 FUEL_TYPE = #{fuelType},
+            </if>
+            <if test="province != null and region != ''">
+                PROVINCE = #{province},
+            </if>
+            <if test="city != null and city != ''">
+                CITY = #{city},
             </if>
             <if test="region != null and region != ''">
                 REGION = #{region},
@@ -258,8 +266,11 @@
             <if test="query.keyword != null and query.keyword != ''" >
                 and NAME  like concat('%',#{query.keyword},'%')
             </if>
-            <if test="query.region != null and query.region != ''" >
-                and REGION  = #{query.region}
+            <if test="query.province != null and query.province != ''" >
+                and PROVINCE  = #{query.province}
+            </if>
+            <if test="query.city != null and query.city != ''" >
+                and CITY = #{query.city}
             </if>
             <if test="seatsNum != null " >
                 and SEATS  = #{seatsNum}

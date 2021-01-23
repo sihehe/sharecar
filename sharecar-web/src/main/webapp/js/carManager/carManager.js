@@ -344,6 +344,8 @@ $('#btn_add').click(function () {
                 var factoryOwn = $(window.frames[frameId].document).find("#factoryOwn").val();
                 var plate = $(window.frames[frameId].document).find("#plate").val();
                 var ownerId = $(window.frames[frameId].document).find("#ownerId").val();
+                var province = $(window.frames[frameId].document).find("#param_province").val();
+                var city = $(window.frames[frameId].document).find("#param_city").val();
                 var region = $(window.frames[frameId].document).find("#region").val();
                 var descr = $(window.frames[frameId].document).find("#descr").val();
                 var style = $(window.frames[frameId].document).find("#style").val();
@@ -366,6 +368,8 @@ $('#btn_add').click(function () {
                     factoryOwn:factoryOwn,
                     plate:plate,
                     ownerId:ownerId,
+                    city:city,
+                    province:province,
                     region:region,
                     descr:descr,
                     cashPledge:cashPledge,

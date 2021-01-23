@@ -5412,6 +5412,24 @@
                             <a href="javascript:void(0);" onclick="colorSelect(this)">其它</a>
                         </div>
                     </li>
+
+                    <!-- 地区 -->
+                    <li class="js-hover" onmouseover="palyerOption(this)" onmouseout="displayOption(this)">
+                        <p class="dd-sel"><i></i>
+                            省份 </p>
+                        <div class="dd-option" id="province">
+                            <a onclick="regionSelect(this)">不限</a>
+                        </div>
+                    </li>
+
+                    <!-- 地区 -->
+                    <li class="js-hover" onmouseover="palyerOption(this)" onmouseout="displayOption(this)">
+                        <p class="dd-sel"><i></i>
+                            城市 </p>
+                        <div class="dd-option" id="city">
+                            <a href="javascript:void(0);" onclick="citySelect(this)">不限</a>
+                        </div>
+                    </li>
                     <!-- 车牌所在地 -->
                   <%--  <li class="js-hover" onmouseover="palyerOption(this)" onmouseout="displayOption(this)">
                         <p class="dd-sel dd-sel-100"><i></i>

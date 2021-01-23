@@ -86,6 +86,10 @@ public class ShareCar implements Serializable {
     * 燃油类型
     */
     private String fuelType;
+
+    private String province;
+
+    private String city;
     /**
     * 地区
     */

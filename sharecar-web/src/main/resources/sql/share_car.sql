@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 17/01/2021 19:56:59
+ Date: 23/01/2021 16:57:31
 */
 
 SET NAMES utf8mb4;
@@ -114,6 +114,8 @@ CREATE TABLE `share_car`  (
   `ENGINE_HORSEPOWER` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '引擎马力',
   `DISPLACEMENT` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '排量',
   `FUEL_TYPE` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '燃油类型',
+  `PROVINCE` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '省份',
+  `CITY` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '地区',
   `REGION` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '地区',
   `OWNER_ID` int(11) NOT NULL COMMENT '拥有人id',
   `CASH_PLEDGE` decimal(8, 2) NULL DEFAULT NULL COMMENT '押金',
@@ -126,11 +128,11 @@ CREATE TABLE `share_car`  (
 -- ----------------------------
 -- Records of share_car
 -- ----------------------------
-INSERT INTO `share_car` VALUES (1, 2, '奔驰测试车辆3', '奔驰', '豫A000000', '宽敞', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '郑州', 1, 2001.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
-INSERT INTO `share_car` VALUES (2, 1, '宝马测试车辆', '宝马', '豫A111111', '适中', '白色', '自动', 5, 2, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '120', '1.0', '充电', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
-INSERT INTO `share_car` VALUES (3, 1, '奥迪测试车辆', '奥迪', '豫A22222', '紧凑', '黑色', '手动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '燃油', '120', '1.4', '汽油', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
-INSERT INTO `share_car` VALUES (12, 1, '111', '奥迪', '豫A22222', '紧凑', '黑色', '自动', 2, 2, 1.00, 1.00, 1.00, 1.00, '电动', '100', '1.0', '充电', '北京市崇文区', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '11', 'N');
-INSERT INTO `share_car` VALUES (13, 1, '奔驰测试车辆', '奔驰', '豫AS00000', '经济', '白色', '自动', 2, 2, 5000.00, 2500.00, 1500.00, 1500.00, '电动', '120', '1.8', '充电', '北京市东城区', 1, 1000.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '豪华', 'N');
+INSERT INTO `share_car` VALUES (1, 2, '奔驰测试车辆3', '奔驰', '豫A000000', '宽敞', '白色', '自动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '184', '1.5', '', '河南省', '郑州', '郑州', 1, 2001.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (2, 1, '宝马测试车辆', '宝马', '豫A111111', '适中', '白色', '自动', 5, 2, 5078.00, 1860.00, 1484.00, 1850.00, '电动', '120', '1.0', '充电', '河南省', '郑州', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (3, 1, '奥迪测试车辆', '奥迪', '豫A22222', '紧凑', '黑色', '手动', 5, 4, 5078.00, 1860.00, 1484.00, 1850.00, '燃油', '120', '1.4', '汽油', '河南省', '郑州', '郑州', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '备注', 'N');
+INSERT INTO `share_car` VALUES (12, 1, '111', '奥迪', '豫A22222', '紧凑', '黑色', '自动', 2, 2, 1.00, 1.00, 1.00, 1.00, '电动', '100', '1.0', '充电', '北京市', '崇文区', '北京市崇文区', 1, 1800.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '11', 'N');
+INSERT INTO `share_car` VALUES (13, 1, '奔驰测试车辆', '奔驰', '豫AS00000', '经济', '白色', '自动', 2, 2, 5000.00, 2500.00, 1500.00, 1500.00, '电动', '120', '1.8', '充电', '北京市', '东城区', '北京市东城区', 1, 1000.00, '1-1.jpg,1-2.jpg,1-3.jpg,1-4.jpg,1-5.jpg,1-6.jpg,1-7.jpg,1-8.jpg,1-9.jpg,1-10.jpg,1-11.jpg,1-12.jpg,1-13.jpg,1-14.jpg,1-15.jpg,1-16.jpg,1-17.jpg,1-18.jpg', '豪华', 'N');
 
 -- ----------------------------
 -- Table structure for share_customer
@@ -146,7 +148,7 @@ CREATE TABLE `share_customer`  (
   `CUSTOMER_ADDRESS` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户地址',
   `is_del` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否删除',
   PRIMARY KEY (`CUSTOMER_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of share_customer
@@ -154,6 +156,17 @@ CREATE TABLE `share_customer`  (
 INSERT INTO `share_customer` VALUES (1, '曹操', '男', '202012', '12345678901', '411423123515987', '河南省郑州市西亚斯', 'N');
 INSERT INTO `share_customer` VALUES (2, '李白', '男', '202012', '12345678902', '411423123515988', '河南省郑州市西亚斯', 'N');
 INSERT INTO `share_customer` VALUES (3, '蔡文姬', '女', '202007', '135569374800', '4123271998123101234', '河南省郑州市金水区100号', 'N');
+INSERT INTO `share_customer` VALUES (4, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (5, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (6, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (7, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (8, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (9, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (10, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (11, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (12, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (13, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (14, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
 
 -- ----------------------------
 -- Table structure for share_dept

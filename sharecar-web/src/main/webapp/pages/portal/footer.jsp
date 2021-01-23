@@ -6,8 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<body>
 <!-- 尾部 -->
 <div class="footer">
     <!--加载footer 信息部分 -->
@@ -63,6 +61,3 @@
 <input type="text" name="js-waf-seo-referer" value="" style="display:none;"><input type="hidden" data-role="dataSource"
                                                                                    class="dataSourceButton"
                                                                                    data-source="[]">
-
-</body>
-</html>

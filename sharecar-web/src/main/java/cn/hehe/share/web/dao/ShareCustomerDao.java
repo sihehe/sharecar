@@ -62,4 +62,5 @@ public interface ShareCustomerDao {
      */
     int deleteById(Integer customerId);
 
+    ShareCustomer queryByPhone(@Param("phone") String customerPhone);
 }

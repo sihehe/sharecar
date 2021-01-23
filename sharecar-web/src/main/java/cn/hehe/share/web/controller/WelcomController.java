@@ -46,4 +46,10 @@ public class WelcomController {
     public String carDetail(){
         return "portal/detail";
     }
+
+    @RequestMapping("/personInfo")
+    public String personInfo(){
+        return "portal/personInfo";
+    }
+
 }

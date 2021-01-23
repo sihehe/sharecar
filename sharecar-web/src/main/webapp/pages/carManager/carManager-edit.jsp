@@ -58,7 +58,7 @@
             <div class="col-sm-5">
                 <div class="form-group">
                     <label for="region">地区 *</label>
-                    <input id="region" name="region" type="text" class="form-control " >
+                    <input id="region" name="region" type="text" class="form-control " disabled >
                 </div>
                 <div class="form-group">
                     <label for="type">类型 *</label>

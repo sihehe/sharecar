@@ -2,6 +2,7 @@ package cn.hehe.share.web.service;
 
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.CustomerLoginVO;
 import cn.hehe.share.api.vo.ShareAddCustomer;
 import cn.hehe.share.api.vo.ShareUpdateCustomer;
 import cn.hehe.share.web.entity.ShareCustomer;
@@ -25,5 +26,11 @@ public interface ShareCustomerService {
     Result<ShareCustomer> customerDetails(Integer customerId);
 
     Result updateCustomer(ShareUpdateCustomer shareUpdateCustomer);
+
+    Result portalUpdateCustomer(ShareUpdateCustomer shareUpdateCustomer);
+
+    Result login(CustomerLoginVO customerLoginVO);
+
+    Result<ShareCustomer> portalGetCustomer(String phone);
 
 }

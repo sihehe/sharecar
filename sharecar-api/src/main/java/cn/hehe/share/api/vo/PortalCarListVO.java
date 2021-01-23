@@ -28,7 +28,9 @@ public class PortalCarListVO implements Serializable {
     // 颜色
     private String color;
     // 地区
-    private String region;
+    private String city;
+
+    private String province;
     // 关键字
     private String keyword;
     // 排序字段
