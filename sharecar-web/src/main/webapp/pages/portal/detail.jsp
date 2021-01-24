@@ -6,67 +6,97 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!doctype html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>哈哈共享汽车租赁--汽车详情</title>
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen"/>
+    <link href="${pageContext.request.contextPath}/js/portal/detail.css" rel="stylesheet">
 </head>
-<script src="${pageContext.request.contextPath}/js/portal/detail.js"/>
 <!-- 加载js/css-->
-<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
-<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/detail_v4.5d908af3a4c5d35cb1fa.js"></script>
+<%--<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
+<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/detail_v4.5d908af3a4c5d35cb1fa.js"></script>--%>
 <body class="detail">
-<jsp:include   page="heard.jsp" flush="true"/>
+
+
+<!-- 头部 -->
+<input type="hidden" id="skipKindNew" value="0">
+<!--<input type="hidden" id="firstSubLogin" value="0">-->
+<input type="hidden" id="clueData" data-puid="3013499160" data-city-id="155">
+
+<!-- 头部吸顶菜单 s -->
+<div id="jstop" class="j-header header-2 ">
+    <div class="header">
+        <div class="city">
+            <!-- 鼠标悬停 .city添加class名active -->
+            <p class="city-curr">
+                <a href="portal">首页</a><%--<i></i>--%>
+            </p>
+
+        </div>
+
+        <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
+            <a href="javascript:" class="uc-my" id="js-login-new">登录</a>
+            <a href="javascript:" class="uc-my" id="user" style="display:none"></a>
+            <div class="uc-app" style="display:none" id="cancel">
+                <a href="personInfo" class="js-logout js-loginElem4">个人设置</a>
+                <a href="javascript:;" class="js-logout js-loginElem4" id="logout">退出</a>
+                <i></i>
+            </div>
+        </div>
+        <div class="header-phone">
+            <!--电话判断，当页面处于汽车金融则显示汽车金融电话  -->
+            热线电话 400-000-0000
+        </div>
+    </div>
+</div>
+<!-- 头部吸顶菜单 e -->
+
+<!-- 登录弹层  s -->
+<!-- 登录弹框  s -->
+<!-- 使用时class加show -->
+<div class="pop-box pop-login" id="login1">
+    <%--<form action="https://www.guazi.com/passport/login" method="post" onsubmit="return window.web_sso_login_check()"--%>
+    <form onsubmit="return false" action="##" method="post">
+        <div class="pop-close" id="closeLogin1"></div>
+        <p class="pop-tit js-logintitle">哈哈共享汽车租赁</p>
+        <ul class="phone-login">
+            <li>
+                <p class="phone-login-tit">手机号码</p>
+                <input id="phone" name="phone" class="phone-login-input js-phoneNum1" placeholder="">
+            </li>
+            <li>
+                <p class="phone-login-tit">&emsp;验证码</p>
+                <input id="code" name="code" class="phone-login-input phone-login-code js-code1" placeholder="">
+                <button class="get-code">获取验证码</button>
+            </li>
+        </ul>
+        <p class="p-error" id="loginError1"></p>
+        <button class="sub-btn  js-checkcode" id="login">登录</button>
+        <p class="free-phone">免费咨询400-000-0000</p>
+        <p class="agree-text">登录即视为同意<a
+                href="https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf"
+                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《用户使用协议》</a>及<a
+                href="https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf"
+                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《隐私权条款》</a></p>
+
+        <%-- <input type="hidden" name="source" value="2">
+         <input type="hidden" name="staticPage" value="https://www.guazi.com/ssoJump.php">
+         <input type="hidden" name="callBack" value="parent.web_login_callback">--%>
+    </form>
+</div>
+<iframe name="guazi_login" style="display: none;"></iframe>
+
+<!-- 使用时class加active -->
+<div class="pop-mask "></div>
+<!-- 登录弹层  e -->
+<!-- 登录弹框  e -->
 
 <input type="hidden" class="js-loandata" source-id="13788103" city-domain="ty" user-city-id="13">
 
+
 <div class="center js-center detail">
 
-    <!--   <div class="top-nav" style="display: none;">
-           <div class="center">
-               <div class="basic-infor-header active clearfix">
-                   <ul class="nav-l clearfix">
-                       <li data-role="item" data-id=#base><a href="#base"
-                                                             data-gzlog="tracking_type=click&eventid=0090000000000077">基本信息</a>
-                       </li>
-
-                       <li data-role="item" data-id=#pic><a href="#pic"
-                                                            data-gzlog="tracking_type=click&eventid=0090000000000078">车辆图片</a>
-                       </li>
-
-                       <li data-role="item" data-id=#report>
-                           <a href="#report" data-gzlog="tracking_type=click&eventid=0090000000000079">
-                               检测报告
-                           </a>
-                       </li>
-
-                       <li data-role="item" data-id=#recommend><a href="#recommend"
-                                                                  data-gzlog="tracking_type=click&eventid=0220050000099054">猜你喜欢</a>
-                       </li>
-                       <li data-role="item" data-id=#qa><a href="#qa"
-                                                           data-gzlog="tracking_type=click&eventid=0220050000099055">购车问答</a>
-                       </li>
-                   </ul>
-                   <div class="nav-r">
-                       <a rel="nofollow" href="javascript:" class="orgbtn js-apt"
-                          data-gzlog="tracking_type=click&eventid=0460310000000074&position=2&carid=106211604">我要预约 <span
-                               class="layer-tip bottom-layer js-layer-tip" style="width:233px;height:43px;display: none;">
-                           <i class="icon-small-sanjiao"></i>
-                               此车已有<i class="fc-green">9</i>人关注，预计很快售出，建议尽快<i class="fc-green js-apt"
-                                                                              data-gzlog="tracking_type=click&eventid=0460310000000074&carid=106211604">预约看车</i>
-                       </span>
-                       </a>
-                       <a rel="nofollow" href="javascript:;" class="greenbtn borderbtn js-bargain"
-                          data-gzlog="tracking_type=click&eventid=0460310000000075&position=2&carid=36691">我要砍价</a>
-                       <a href="javascript:;" data-gzlog="tracking_type=click&eventid=92747112&position=2&carid=106211604"
-                          class="freephonebtn js-freePhone">免费咨询</a>
-                   </div>
-               </div>
-           </div>
-       </div>-->
     <div class="placeon clearfix">
         <div class="left-nav" style="display: none;">
             <a rel="nofollow" href="//www.guazi.com/ty/"
@@ -98,11 +128,11 @@
             </h1>
 
             <ul class="assort clearfix">
-                <li class="one" ><span id="region">xxxx</span>地区</li>
-                <li class="two"><span  id="displacement">1.8L</span>排量</li>
-                <li class="three" ><span id="engineType">自动</span>变速箱</li>
-                <li class="four" ><span id="color">白色</span>颜色</li>
-                <li class="last" ><span id="typeName">豪华型</span>类评</li>
+                <li class="one"><span id="region">xxxx</span>地区</li>
+                <li class="two"><span id="displacement">1.8L</span>排量</li>
+                <li class="three"><span id="engineType">自动</span>变速箱</li>
+                <li class="four"><span id="color">白色</span>颜色</li>
+                <li class="last"><span id="typeName">豪华型</span>类评</li>
             </ul>
 
 
@@ -139,19 +169,19 @@
 
             <div class="btnbox clearfix">
                 <a rel="nofollow" href="javascript:" class="orgbtn js-apt"
-                   data-gzlog="tracking_type=click&eventid=0460310000000074&position=1&carid=106211604">我要租车
+                   data-gzlog="tracking_type=click&eventid=0460310000000074&position=1&carid=106211604" id="myBook">我要租车
                 </a>
                 <a href="javascript:;" data-gzlog="tracking_type=click&eventid=92747112&position=1&carid=106211604"
-                   class="freephonebtn js-freePhone">免费咨询</a>
+                   class="freephonebtn js-freePhone" id="freeAsk">免费咨询</a>
             </div>
         </div>
         <!--    详情页右上方车源基本信息-->
     </div>
     <div class="car-picture-infor">
-        <h2 class="titlediv"><span ><span id="name">xxx车辆名称</span>&nbsp;基本信息</span></h2>
+        <h2 class="titlediv"><span><span id="name">xxx车辆名称</span>&nbsp;基本信息</span></h2>
         <ul class="basic-eleven clearfix">
             <li class="one">
-                    <div class="typebox" id="plate2">豫A</div>
+                <div class="typebox" id="plate2">豫A</div>
                 牌照
             </li>
             <li class="two">
@@ -250,7 +280,7 @@
     <div class="car-picture-infor">
         <h2 class="titlediv"><span>xxx车辆名称&nbsp;车辆图片</span></h2>
         <div id="pic">
-            <ul class="carpic-big clearfix"  >
+            <ul class="carpic-big clearfix">
                 <li class="fl js-bigpic" data-index="0"
                     data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=0"><img
                         src="https://image1.guazistatic.com/qn21011317493007cb1a7b79299f404df82aa351cdd3f8.jpg?imageView2/1/w/600/h/400/q/88">
@@ -384,8 +414,54 @@
 
     </div>
 </div>
+<div class="pop-box pop-ask-phone" id="phonefree">
+    <div class="pop-close" id="closePhone"></div>
+    <p class="pop-tit js-logintitle">免费咨询</p>
+    <ul class="ask-phone-you">
+        <li class="p-entry-input">
+            <span class="lable">手机号码</span>
+            <input class="phone-login-input js-phoneNum-text " value="">
+        </li>
+        <li class="p-entry-input js-captcha-li">
+            <span class="lable">验证码</span>
+            <input class="phone-login-input width200 js-phoneNum1 js-captcha">
+            <!-- 添加active为点击后状态 不可点击状态 -->
+            <div class="button js-get-code">获取验证码</div>
+        </li>
+        <li class="p-error" id="loginError1"></li>
+        <li>
+            <button class="sub-btn js-checkcode " id="phoneFreeDefind">确定</button>
+        </li>
+        <%--  <li class="p-workonline js-customService">
+              <span></span>
+              <a href="javascript:;" data-position="pc_detail_basic_info" data-city-id="13" data-clue-id="106465503">24小时客服在线</a>
+          </li>--%>
+        <li class="p-worktime">免费咨询 400-000-0000</li>
+    </ul>
+</div>
 
-<jsp:include   page="footer.jsp" flush="true"/>
+<div class="pop-box pop-order-time-succ pop-order-time js-appoint-see-car" id="myBookBox">
+    <div class="pop-close" id="pop-close"></div>
+    <div class="pop-title-left">我要租车</div>
+    <div class="pop-bottom">
+        <div class="pop-con">预约<i class="js-appoint-time-desc">今天</i>，即享优惠</div>
+        <div class="pop-address">
+            看车方式            <span>
+                到店服务            </span>
+        </div>
+        <div class="pop-time">选择时间
+            <div id="appoint-time">
+                <span class="js-select-time active" onclick="cselectBookTime(this)">今天</span>
+                <span class="js-select-time" onclick="cselectBookTime(this)" >明天</span>
+                <span class="js-select-time" onclick="cselectBookTime(this)" >后天</span>
+            </div>
+        </div>
+        <input name="selected_time" type="hidden" value="1611474469">
+    </div>
+    <div class="pop-btn" data-gzlog="tracking_type=click&amp;eventid=92334677" data-val="106408634" data-type="3" id="nowBook">立即预约</div>
+</div>
+<script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/portal/detail.js"></script>
 </body>
 </html>
 

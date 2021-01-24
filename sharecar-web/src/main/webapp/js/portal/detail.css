@@ -1,45 +1,4 @@
-<!doctype html>
-<html>
-
-<head _tracker="{&quot;pagetype&quot;:&quot;detail&quot;,&quot;carid&quot;:&quot;106465503&quot;,&quot;is_baomai&quot;:&quot;0&quot;,&quot;city&quot;:&quot;sh&quot;,&quot;line&quot;:&quot;c2c&quot;,&quot;platform&quot;:&quot;web&quot;,&quot;ca_city&quot;:&quot;sh&quot;}">
-    <style type="text/css">object {
-        outline: none;
-    }</style>
-
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>哈哈共享汽车租赁--汽车详情</title>
-    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.0.js"></script>
-    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen"/>
-    <script src="https://hm.baidu.com/hm.js?bf3ee5b290ce731c7a4ce7a617256354"></script>
-    <script>
-        var logged = false;
-        var host = 'www.guazi.com';
-        var termUrl = 'https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf';
-        var privacyUrl = 'https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf';
-        window.userPhone = '';
-        window.phone400 = '400-069-7632';
-    </script>
-    <script>
-        var _hmt = _hmt || [];
-        (function () {
-            var hm = document.createElement("script");
-            hm.src = "https://hm.baidu.com/hm.js?bf3ee5b290ce731c7a4ce7a617256354";
-            var s = document.getElementsByTagName("script")[0];
-            s.parentNode.insertBefore(hm, s);
-        })();
-    </script>
-    <script>
-        var touFangFlag = 0;
-        var imUrl = "\/zq_im\/?clueId=106465503&cityId=13";
-        var imVersion = "A";
-
-        window.outerSurfaceShowNew = [];
-    </script>
-    <link rel="canonical" href="https://www.guazi.com/sh/15951ebdec7d35aax.htm">
-    <link rel="stylesheet" href="">
-    <script src=""></script>
-    <script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
-    <style>
+ 
         .announcement {
         height: 34px;
         line-height: 34px;
@@ -66,8 +25,8 @@
     .icon-close-gb {
         background: url(//cli-sta.guazistatic.com/c2c_web/close_icon.6a60703de9f824a8cff6eef325440588.png) no-repeat;
         margin-left: 10px
-    }</style>
-    <style>
+    }
+  
         body .ie7-pop {
         height: 432px;
         margin-top: -216px;
@@ -148,8 +107,8 @@
 
     .guide-ewm-app {
         background-position: 0 -135px
-    }</style>
-    <style>
+    }
+  
         a, abbr, acronym, address, applet, b, big, blockquote, body, caption, center, cite, code, dd, del, dfn, div, dl, dt, em, fieldset, font, form, h1, h2, h3, h4, h5, h6, html, i, iframe, img, ins, kbd, label, legend, li, object, ol, p, pre, q, s, samp, small, span, strike, strong, sub, sup, table, tbody, td, tfoot, th, thead, tr, tt, u, ul, var {
         margin: 0;
         padding: 0;
@@ -232,8 +191,8 @@
     a:hover {
         text-decoration: underline;
         color: #c00
-    }</style>
-    <style>
+    }
+  
         .city-curr i, .header h1 a, .uc, .uc:hover {
         background-image: url(//cli-sta.guazistatic.com/c2c_web/icon_@2x_s.5dfd8e0395d1a3188c98507b746b6df4.png);
         background-size: 451px 300px
@@ -764,8 +723,8 @@
 
     .top-header .nav-list a:hover {
         color: #22ac38
-    }</style>
-    <style>
+    }
+  
         .footer {
         padding: 50px 0 30px;
         background: #2a2c37
@@ -1023,8 +982,8 @@
         width: 1070px;
         overflow: hidden;
         display: block
-    }</style>
-    <style>
+    }
+  
         .list-infoBox {
         position: relative;
         float: left;
@@ -1699,8 +1658,8 @@
 
     .history-source .info-price {
         padding: 0 10px
-    }</style>
-    <style>
+    }
+  
         .pop-box-feed {
         margin: -275px 0 0 -400px;
         width: 800px;
@@ -1862,8 +1821,8 @@
         text-align: center;
         font-size: 14px;
         color: #ff7e00
-    }</style>
-    <style>
+    }
+  
         .pop-box {
         position: fixed;
         top: 50%;
@@ -2066,8 +2025,8 @@
         right: 34px;
         bottom: -24px;
         color: #22ac38
-    }</style>
-    <style>
+    }
+  
         .pop-tit em {
         color: #22ac38
     }
@@ -2923,8 +2882,8 @@
         padding-left: 20px;
         font-size: 14px;
         color: #495056
-    }</style>
-    <style>
+    }
+  
         .infor-main {
         margin-bottom: 31px
     }
@@ -4562,8 +4521,8 @@
 
     .no-finance .pricebox {
         margin-bottom: 20px
-    }</style>
-    <style>
+    }
+  
         .basic-infor .people-infor {
         margin-bottom: 28px
     }
@@ -5990,8 +5949,8 @@
 
     .surface .ul-tab-tit {
         border-bottom: 0
-    }</style>
-    <style>
+    }
+  
         .small-tit-center {
         font-size: 16px;
         text-align: center;
@@ -6247,8 +6206,8 @@
     .icon-new {
         background-position: 0 -130px;
         line-height: 34px
-    }</style>
-    <style>
+    }
+  
         .aq-list dd, .aq-list dt, .aq-list li {
         float: left
     }
@@ -6347,8 +6306,8 @@
 
     .icon-men8 {
         background-position: -429px -176px
-    }</style>
-    <style>
+    }
+  
         body {
         font-family: Microsoft Yahei
     }
@@ -6953,8 +6912,8 @@
 
     .check-list li .attach-text {
         color: #ffbb04
-    }</style>
-    <style>
+    }
+  
         .pop-box {
         position: fixed;
         top: 50%;
@@ -7163,8 +7122,8 @@
         right: 34px;
         bottom: -24px;
         color: #22ac38
-    }</style>
-    <style>
+    }
+  
         .pop-login {
         margin: -215px 0 0 -400px;
         width: 800px;
@@ -7294,8 +7253,8 @@
         background: #179500;
         color: #fff;
         text-decoration: none
-    }</style>
-    <style>
+    }
+  
         .pop-order-succ {
         height: 469px;
         margin: -234.5px 0 0 -400px
@@ -7507,8 +7466,8 @@
     .pop-order-time .pop-bottom {
         margin-top: 15px;
         box-shadow: unset
-    }</style>
-    <style>
+    }
+  
         .autocomplete {
         position: relative
     }
@@ -7559,8 +7518,8 @@
     .autocomplete .autocomplete-dropdown ul li.active {
         background: #22ac38;
         color: #fff
-    }</style>
-    <style>
+    }
+  
         .lpn_masked {
         position: static
     }
@@ -8587,7 +8546,7 @@
         background-image: url(//cli-sta.guazistatic.com/c2c_web/pop_bg.a5e854a9e1a9e0a9875b81b33788232b.png);
         color: #036;
         *background-position: 0 1px
-    }</style>
+    }
     <style type="text/css">
         .c-appearance[data-v-132af7f2] {
         position: relative
@@ -8735,8 +8694,8 @@
     .issue-dot-text[data-v-132af7f2] {
         font-size: 12px;
         line-height: 16px
-    }</style>
-    <style>
+    }
+  
         .slick-track[data-v-e4caeaf8] {
         position: relative;
         top: 0;
@@ -8835,569 +8794,4 @@
     .slick-list.dragging[data-v-3d1a4f76] {
         cursor: pointer;
         cursor: hand
-    }</style>
-
-
-</head>
-<script>
-    window.userPhone = '';
-    window.phone400 = '400-000-0000';
-</script>
-
-<script>
-    var _hmt = _hmt || [];
-    (function () {
-        var hm = document.createElement("script");
-        hm.src = "https://hm.baidu.com/hm.js?bf3ee5b290ce731c7a4ce7a617256354";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
-<script>
-    window.outerSurfaceShowNew = [];
-</script>
-<link rel="canonical" href="https://www.guazi.com/ty/bb3bc5814beaef23x.htm"/>
-<link rel="stylesheet" href=""/>
-<script src=""></script>
-<!-- 加载js/css-->
-<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
-<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/detail_v4.5d908af3a4c5d35cb1fa.js"></script>
-<body class="detail">
-<!-- 头部 -->
-<input type="hidden" id="skipKindNew" value="0">
-<!--<input type="hidden" id="firstSubLogin" value="0">-->
-<input type="hidden" id="clueData" data-puid="3013499160" data-city-id="155">
-
-<!-- 春节放假公告 s -->
-<!-- 春节放假公告 e -->
-<!-- 头部吸顶菜单 s -->
-<div id="jstop" class="j-header header-2 ">
-    <div class="header">
-        <div class="city">
-            <!-- 鼠标悬停 .city添加class名active -->
-            <p class="city-curr">
-                上海<i></i>
-            </p>
-        </div>
-        <div class="uc js-uc js-uc-new" data-gzlog="tracking_type=click&amp;eventid=1015123400000003">
-            <a href="javascript:" class="uc-my" id="js-login-new">登录</a>
-            <div class="uc-app" style="display:none">
-                <a href="javascript:;" class="js-logout js-loginElem4"
-                   data-gzlog="tracking_type=click&amp;eventid=1015123400000007">退出</a>
-                <i></i>
-            </div>
-        </div>
-        <div class="header-phone">
-            <!--电话判断，当页面处于汽车金融则显示汽车金融电话  -->
-            热线电话 400-000-0000
-        </div>
-    </div>
-</div>
-<!-- 头部吸顶菜单 e -->
-
-
-<!-- 登录弹层  s -->
-<!-- 登录弹框  s -->
-<!-- 使用时class加show -->
-<div class="pop-box pop-login" id="login1">
-    <form action="https://www.guazi.com/passport/login" method="post" onsubmit="return window.web_sso_login_check()"
-          target="guazi_login">
-        <div class="pop-close" id="closeLogin1"></div>
-        <p class="pop-tit js-logintitle">哈哈共享汽车租赁</p>
-        <ul class="phone-login">
-            <li>
-                <p class="phone-login-tit">手机号码</p>
-                <input name="phone" class="phone-login-input js-phoneNum1" placeholder="">
-            </li>
-            <li>
-                <p class="phone-login-tit">&emsp;验证码</p>
-                <input name="code" class="phone-login-input phone-login-code js-code1" placeholder="">
-                <button class="get-code">获取验证码</button>
-            </li>
-        </ul>
-        <p class="p-error" id="loginError1"></p>
-        <button data-track-phone="#login1 .js-phoneNum1" class="sub-btn  js-checkcode" type="submit">登录</button>
-        <p class="free-phone">免费咨询400-000-0000</p>
-        <p class="agree-text">登录即视为同意<a
-                href="https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf"
-                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《用户使用协议》</a>及<a
-                href="https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf"
-                data-gzlog="tracking_type=click&amp;eventid=92392518" target="_blank">《隐私权条款》</a></p>
-
-        <input type="hidden" name="source" value="2">
-        <input type="hidden" name="staticPage" value="https://www.guazi.com/ssoJump.php">
-        <input type="hidden" name="callBack" value="parent.web_login_callback">
-    </form>
-</div>
-<iframe name="guazi_login" style="display: none;"></iframe>
-<!-- 使用时class加active -->
-<div class="pop-mask "></div>
-<script>
-    $('#js-login-new').click(function () {
-        $('#login1').addClass('show');
-        $('.pop-mask').addClass('active');
-    })
-
-    $('#closeLogin1').click(function () {
-        $('#login1').removeClass('show');
-        $('.pop-mask').removeClass('active');
-    });
-</script>
-<!-- 登录弹层  e -->
-<!-- 登录弹框  e -->
-
-
-<input type="hidden" class="js-loandata" source-id="13788103" city-domain="ty" user-city-id="13">
-
-<div class="center js-center detail">
-
-    <!--   <div class="top-nav" style="display: none;">
-        <div class="center">
-            <div class="basic-infor-header active clearfix">
-                <ul class="nav-l clearfix">
-                    <li data-role="item" data-id=#base><a href="#base"
-                                                          data-gzlog="tracking_type=click&eventid=0090000000000077">基本信息</a>
-                    </li>
-
-                    <li data-role="item" data-id=#pic><a href="#pic"
-                                                         data-gzlog="tracking_type=click&eventid=0090000000000078">车辆图片</a>
-                    </li>
-
-                    <li data-role="item" data-id=#report>
-                        <a href="#report" data-gzlog="tracking_type=click&eventid=0090000000000079">
-                            检测报告
-                        </a>
-                    </li>
-
-                    <li data-role="item" data-id=#recommend><a href="#recommend"
-                                                               data-gzlog="tracking_type=click&eventid=0220050000099054">猜你喜欢</a>
-                    </li>
-                    <li data-role="item" data-id=#qa><a href="#qa"
-                                                        data-gzlog="tracking_type=click&eventid=0220050000099055">购车问答</a>
-                    </li>
-                </ul>
-                <div class="nav-r">
-                    <a rel="nofollow" href="javascript:" class="orgbtn js-apt"
-                       data-gzlog="tracking_type=click&eventid=0460310000000074&position=2&carid=106211604">我要预约 <span
-                            class="layer-tip bottom-layer js-layer-tip" style="width:233px;height:43px;display: none;">
-                        <i class="icon-small-sanjiao"></i>
-                            此车已有<i class="fc-green">9</i>人关注，预计很快售出，建议尽快<i class="fc-green js-apt"
-                                                                           data-gzlog="tracking_type=click&eventid=0460310000000074&carid=106211604">预约看车</i>
-                    </span>
-                    </a>
-                    <a rel="nofollow" href="javascript:;" class="greenbtn borderbtn js-bargain"
-                       data-gzlog="tracking_type=click&eventid=0460310000000075&position=2&carid=36691">我要砍价</a>
-                    <a href="javascript:;" data-gzlog="tracking_type=click&eventid=92747112&position=2&carid=106211604"
-                       class="freephonebtn js-freePhone">免费咨询</a>
-                </div>
-            </div>
-        </div>
-    </div>-->
-    <div class="placeon clearfix">
-        <div class="left-nav" style="display: none;">
-            <a rel="nofollow" href="//www.guazi.com/ty/"
-               data-gzlog="tracking_type=click&eventid=0220050000099000">首页</a>&gt;
-            <a href="//www.guazi.com/ty/buy/" data-gzlog="tracking_type=click&eventid=0220050000099000">太原二手车</a>&gt;
-            <a href="//www.guazi.com/ty/ford/" data-gzlog="tracking_type=click&eventid=0220050000099000">太原福特二手车</a>&gt;
-            <a href="//www.guazi.com/ty/fute-fukesi/" data-gzlog="tracking_type=click&eventid=0220050000099000">太原二手福特福克斯</a>&gt;
-            福特 福克斯 2011款 两厢 1.8L 自动时尚型
-        </div>
-    </div>
-
-    <div class="infor-main clearfix service-open">
-        <!--    详情页左上方的图片-->
-        <div class="product-detail" id="page-slide" data-group-count="4">
-            <div class="bigimgbox">
-                <!--  <div class="page-number"><span data-role="currentNumber" class="f20">1</span>/30</div>
-                <a href="javascript:"  class="prev"
-                   data-role="imgArrow"></a>
-                <a href="javascript:" class="next"
-                   data-role="imgArrow"></a>-->
-                <ul class="det-picside js-picside">
-                    <li class="js-bigpic" data-role="img" data-index="0" style="display: list-item;">
-                        <img src="https://image1.guazistatic.com/qn21011317493007cb1a7b79299f404df82aa351cdd3f8.jpg?imageView2/1/w/600/h/400/q/88">
-                    </li>
-                    <li class="js-bigpic" data-role="img" data-index="1" style="display: none;">
-                        <img src="https://image1.guazistatic.com/qn21011317493231e0fb2ea6a51f848efad80d2f7eb3ce.jpg?imageView2/1/w/600/h/400/q/88">
-                    </li>
-                </ul>
-            </div>
-            <!-- <div class="smallimgbox">
-                <div data-role="thumbWrapper" class="wrapper">
-                    <div data-role="thumbContainer">
-                        <ul class="clearfix" data-role="tabImgGroup" data-tab="1" style="position:relative;">
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317493007cb1a7b79299f404df82aa351cdd3f8.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317493231e0fb2ea6a51f848efad80d2f7eb3ce.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317493135fe8ee9f7db1ad21f6ca3983edf53bc.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113174933b02936d7bc14f723931045ff8ef4dd37.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113174932392720cf3e30e0bff7aaf33edccceb1b.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317493522f5723886715a4d8a0b7341aea1b497.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113174934497f1fede18c71fe577a2f3512659ea0.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951583c4e4eb5b2b8481452f09f73ba3b93.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739519e3b00ef058d735667af5fff5fc27143.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739516b06f9a26cf444e598ee187d6fe29e88.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951e1f17ce63a26555f629dc65b3827c8cc.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951882be51d03cd38971f316e6e50191025.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951f3d8ef17a356c9b3aa7f5395ae685f7b.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951bd5e58989adebe86efafc235f589809c.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951b87fa6b5248d4c224a42250d6666f8f4.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739513b1eed692968d594e096ff287d5a2e9e.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739519d631e805c86b459e978ea3d62b5229b.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739516ac8e0f58bb6e4371c481e04e16e0b2b.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317395167e59f512037d52ff941175ef5bc8a32.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951c445adc6e623489496761c9efbcd91f2.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739513f8526b336ce8c6cec9026276d6b9ec3.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951580f7681da9befdf17ae02ae915acd91.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951ee228c34d26a2ad5d37e98cbe8253006.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn21011317395124380a665a43cf8aed429e767e3540c7.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739515f6059621656c92afe7eb04a9d1d09c6.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951c1c779a5c3d71c432302617a01630c7d.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739513902e84612c8f26f720291ba597a7868.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739515d817385891b8f7770fa74cb8c4ac0a2.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn210113173951442df2ed7a74cf3d8f61f773766aeb5f.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                            <li class="js-hover" data-role="thumb" data-hover data-click>
-                                <span class="green-border"></span>
-                                <img src="https://image1.guazistatic.com/qn2101131739515b1d5178514d66ee25392052de7da80b.jpg?imageView2/1/w/120/h/80/q/88">
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <a href="javascript:" data-role="thumbArrowPrev" class="prev-smallimg disable"></span></a>
-                <a href="javascript:" data-role="thumbArrowNext" class="next-smallimg"></span></a>
-            </div>-->
-        </div>
-        <!--    详情页左上方的图片-->
-
-        <!--    详情页右上方车源基本信息 -->
-        <div class="product-textbox">
-            <h1 class="titlebox">
-                xxx车名称
-            </h1>
-
-            <ul class="assort clearfix">
-                <li class="one"><span>xxxx</span>地区</li>
-                <li class="two"><span>豫Axxxxx</span>车牌</li>
-                <li class="three"><span>1.8L</span>排量</li>
-                <li class="last"><span>自动</span>变速箱</li>
-            </ul>
-
-
-            <div class="pricebox js-disprice">
-                <i class="ico-type"></i>
-                <!-- 新版价格样式 start -->
-                <div class="price-title">押金</div>
-                <!--            右侧结构-->
-
-                <!--            价格-->
-                <div class="price-main">
-                    <span class="price-num">xxxx元</span>
-                    <!-- 金融-->
-
-                </div>
-                <!-- 新版价格样式 end -->
-            </div>
-
-
-            <div class="service-protect-vip">
-                <div class="service-protect-title clearfix">
-                    <i class="text-service">售后保障</i>
-                </div>
-                <ul class="service-protect-list clearfix">
-                    <li>
-                        <i class="icon-two"></i>
-                        <span>无忧退车</span>
-                    </li>
-                    <li>
-                        <i class="icon-30xiu-not"></i>
-                        <span>支持保修</span>
-                    </li>
-                </ul>
-            </div>
-
-
-            <div class="btnbox clearfix">
-                <a rel="nofollow" href="javascript:" class="orgbtn js-apt"
-                   data-gzlog="tracking_type=click&eventid=0460310000000074&position=1&carid=106211604">我要租车
-                </a>
-                <a href="javascript:;" data-gzlog="tracking_type=click&eventid=92747112&position=1&carid=106211604"
-                   class="freephonebtn js-freePhone">免费咨询</a>
-            </div>
-        </div>
-        <!--    详情页右上方车源基本信息-->
-    </div>
-
-    <div class="car-picture-infor" id="pic">
-        <h2 class="titlediv"><span>xxx车辆名称&nbsp;车辆图片</span></h2>
-        <ul class="carpic-big clearfix">
-            <li class="fl js-bigpic" data-index="0"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=0"><img
-                    src="https://image1.guazistatic.com/qn21011317493007cb1a7b79299f404df82aa351cdd3f8.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-            <li class="fl js-bigpic" data-index="1"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=1"><img
-                    src="https://image1.guazistatic.com/qn21011317493231e0fb2ea6a51f848efad80d2f7eb3ce.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-            <li class="fl js-bigpic" data-index="3"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=2"><img
-                    src="https://image1.guazistatic.com/qn210113174933b02936d7bc14f723931045ff8ef4dd37.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-            <li class="fl js-bigpic" data-index="5"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=3"><img
-                    src="https://image1.guazistatic.com/qn21011317493522f5723886715a4d8a0b7341aea1b497.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-        </ul>
-        <ul class="carpic-small clearfix">
-            <li class="js-bigpic" data-index="2"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=4">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn21011317493135fe8ee9f7db1ad21f6ca3983edf53bc.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="js-bigpic" data-index="4"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=5">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn210113174932392720cf3e30e0bff7aaf33edccceb1b.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="js-bigpic" data-index="6"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=6">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn210113174934497f1fede18c71fe577a2f3512659ea0.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="last js-bigpic" data-index="0"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099027&amp;position=7">
-                <div class="img-border"><img class="blur"
-                                             src="https://image1.guazistatic.com/qn21011317493007cb1a7b79299f404df82aa351cdd3f8.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-                <a class="morepic-text">查看10张<span class="f18">外观图</span></a></li>
-
-        </ul>
-        <ul class="carpic-big clearfix">
-            <li class="fl js-bigpic" data-index="12"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=0"><img
-                    src="https://image1.guazistatic.com/qn210113173951f3d8ef17a356c9b3aa7f5395ae685f7b.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-            <li class="fl js-bigpic" data-index="14"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=1"><img
-                    src="https://image1.guazistatic.com/qn210113173951b87fa6b5248d4c224a42250d6666f8f4.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-            <li class="fl js-bigpic  ddd2" data-index="19"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=2"><img
-                    src="https://image1.guazistatic.com/qn210113173951c445adc6e623489496761c9efbcd91f2.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-            <li class="fr js-bigpic  ddd3" data-index="20"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=3"><img
-                    src="https://image1.guazistatic.com/qn2101131739513f8526b336ce8c6cec9026276d6b9ec3.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-            <li class="fl js-bigpic" data-index="21"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=4"><img
-                    src="https://image1.guazistatic.com/qn210113173951580f7681da9befdf17ae02ae915acd91.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-            <li class="fl js-bigpic" data-index="22"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=5"><img
-                    src="https://image1.guazistatic.com/qn210113173951ee228c34d26a2ad5d37e98cbe8253006.jpg?imageView2/1/w/600/h/400/q/88">
-            </li>
-
-        </ul>
-        <ul class="carpic-small clearfix">
-            <li class="js-bigpic" data-index="16"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=6">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn2101131739519d631e805c86b459e978ea3d62b5229b.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="js-bigpic" data-index="17"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=7">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn2101131739516ac8e0f58bb6e4371c481e04e16e0b2b.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="js-bigpic" data-index="18"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=8">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn21011317395167e59f512037d52ff941175ef5bc8a32.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-            <li class="js-bigpic" data-index="12"
-                data-gzlog="tracking_type=click&amp;eventid=0220050000099033&amp;position=9">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn210113173951f3d8ef17a356c9b3aa7f5395ae685f7b.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-        </ul>
-        <ul class="carpic-small clearfix">
-            <li class="js-bigpic" data-index="23" data-gzlog="tracking_type=click&amp;eventid=0220050000099041">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn21011317395124380a665a43cf8aed429e767e3540c7.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-
-            <li class="js-bigpic" data-index="28" data-gzlog="tracking_type=click&amp;eventid=0220050000099041">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn210113173951442df2ed7a74cf3d8f61f773766aeb5f.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-
-            <li class="js-bigpic" data-index="29" data-gzlog="tracking_type=click&amp;eventid=0220050000099041">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn2101131739515b1d5178514d66ee25392052de7da80b.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-
-            <li class="js-bigpic" data-index="23" data-gzlog="tracking_type=click&amp;eventid=0220050000099044">
-                <div class="img-border"><img
-                        src="https://image1.guazistatic.com/qn21011317395124380a665a43cf8aed429e767e3540c7.jpg?imageView2/1/w/600/h/400/q/88">
-                </div>
-            </li>
-
-        </ul>
-    </div>
-</div>
-
-
-<!-- 尾部 -->
-<div class="footer">
-    <!--加载footer 信息部分 -->
-    <div class="company-info clearfix">
-        <div class="instructions-guazi-name">哈哈共享汽车有限公司的注册商标。</div>
-        <!--<div class="footer-logo"></div>-->
-
-        <div class="phone-email">
-            <p>
-                咨询电话：<i>400-000-0000</i><span>（周一至周日 8:00-21:00）</span>
-                <br> 服务监督热线：
-                <i>400-000-0000</i><span>（周一至周日 9:00-18:00）</span>
-            </p>
-            <p>互联网违法或不良信息举报联系方式：
-                <br> 邮箱：
-                <i>jubao@xxx.com</i>&nbsp;&nbsp;电话：<i>010-000000</i>
-            </p>
-        </div>
-
-
-        <div class="basic-info">
-            <div class="info-link">
-                <a rel="nofollow" href="https://www.guazi.com/sh/aboutus/" target="_blank">关于共享</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/aboutusGroup/" target="_blank">关于介绍</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/contact/" target="_blank">联系我们</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/intro/" target="_blank">服务保障</a>
-                <a rel="nofollow"
-                   href="https://image1.guazistatic.com/qn201030102530dbb0915e8dd42688d8191b3a5f60b3e2.pdf"
-                   target="_blank">隐私声明</a>
-                <a rel="nofollow"
-                   href="https://image.guazistatic.com/gz01190926/17/21/21c7f57e0f6b77e4b7dd3b608e44d04f.pdf"
-                   target="_blank">服务条款</a>
-                <a rel="nofollow"
-                   href="https://image1.guazistatic.com/qn200508160345ba369b606d82c8bbaa612d0c7e98b96b.jpg"
-                   target="_blank">营业执照</a>
-                <a rel="nofollow" href="https://www.guazi.com/sh/intro/terms" target="_blank">环评公示</a>
-            </div>
-            <p class="arc-info">Copyright 2021 www.guazi.com All Rights Reserved</p>
-            <!--        <p class="arc-info">京ICP备15053955号  ICP证151071号 </p>-->
-            <a class="arc-info" rel="nofollow" target="_blank" href="https://beian.miit.gov.cn/" style="color: #939393">京ICP备15053955号-1
-                ICP证151071号 </a>
-            <div class="protect clearfix">
-                <a class="police" rel="nofollow" target="_blank"
-                   href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11010502037713">京公网安备11010502037713号</a>
-            </div>
-        </div>
-    </div>
-
-</div>
-
-</body>
-</html>
+    }

@@ -40,12 +40,12 @@
                         <span><img alt="image" class="img-circle" src="${pageContext.request.contextPath}/img/profile_small.jpg" /></span>
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 									<span class="clear">
-										<span class="block m-t-xs"><strong class="font-bold">Beaut-zihan</strong></span>
+										<span class="block m-t-xs"><strong class="font-bold"><span id="userName"></span></strong></span>
 										<span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>
 									</span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a href="login">安全退出</a></li>
+                            <li><a href="javascript:" id="logOut">安全退出</a></li>
                         </ul>
                     </div>
                     <div class="logo-element">CAR</div>
@@ -322,5 +322,33 @@
 
 <!-- 第三方插件 -->
 <script src="${pageContext.request.contextPath}/js/plugins/pace/pace.min.js"></script>
+
+<script>
+
+    $(function () {
+        $.ajax({
+            url:'shareUser/queryUser',
+            type: "post",
+            success:function (res) {
+                if(res.status){
+                    $('#userName').text(res.data);
+                }
+            }
+        })
+
+    })
+    $('#logOut').click(function () {
+        $.ajax({
+            url:'shareUser/logout',
+            type: "GET",
+            success:function (res) {
+
+            }
+        })
+        window.location.href='login';
+    })
+
+
+</script>
 </body>
 </html>

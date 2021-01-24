@@ -45,6 +45,16 @@ $('#define').click(function () {
 
 })
 
+$('#quxiao').click(function () {
+    $('#customerName').attr("disabled",true);
+    $('#customerGrad').attr("disabled",true);
+    $('#customerBrithYear').attr("disabled",true);
+    $('#customerCardNum').attr("disabled",true);
+    $('#customerAddress').attr("disabled",true);
+    $('#okOption').attr('style','display:none;margin-left: 65%');
+    $('#editOption').attr('style','margin-left: 65%')
+})
+
 //编辑触发事件
 $('#edit').click(function () {
     $('#customerName').removeAttr("disabled");

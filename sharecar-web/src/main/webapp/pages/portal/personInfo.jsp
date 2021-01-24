@@ -3438,7 +3438,7 @@
         <p class="user-info">个人中心<span>手机号：<span id="phone"></span></span></p>
         <ul class="user-menu" id="menu">
             <li ><a  class="active" href="javascript:" onclick="selectContent(this)">编辑信息</a></li>
-            <li><a href="javascript:" onclick="selectContent(this)">订单列表</a></li>
+            <%--<li><a href="javascript:" onclick="selectContent(this)">订单列表</a></li>--%>
         </ul>
     </div>    <!-- 左菜单 e -->
 
@@ -3519,7 +3519,7 @@
 </div>
 <script src="${pageContext.request.contextPath}/js/portal/personInfo.js"></script>
 
-<jsp:include page="footer.jsp" flush="true"/>
+
 
 </body>
 

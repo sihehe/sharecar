@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class WelcomController {
 
-    @RequestMapping("/")
+    @RequestMapping("/manager")
     public String index(){
         return "index";
     }
@@ -32,7 +32,7 @@ public class WelcomController {
         return "error/404";
     }
 
-    @RequestMapping("/login")
+    @RequestMapping(value = {"/login","/"})
     public String login(){
         return "login";
     }

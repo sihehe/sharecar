@@ -38,20 +38,20 @@
         </div>
         <h3>欢迎使用 CAR</h3>
 
-        <form class="m-t" role="form" action="index.html">
+        <form class="m-t" role="form" onsubmit="return false" action="##" method="post">
             <div class="form-group">
-                <input type="email" class="form-control" placeholder="用户名" required="">
+                <input  class="form-control" placeholder="用户名" required="" id="userName">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="密码" required="">
+                <input type="password" class="form-control" placeholder="密码" required="" id="passWord">
             </div>
-            <button type="submit" class="btn btn-primary block full-width m-b">登 录</button>
+            <button class="btn btn-primary block full-width m-b" id="login">登 录</button>
 
-
-            <p class="text-muted text-center"><a href="login">
+            <p id="error" style="text-align: center;color: red"></p>
+          <%--  <p class="text-muted text-center"><a href="javascript:">
                 <small>忘记密码了？</small>
             </a> | <a href="register">注册一个新账号</a>
-            </p>
+            </p>--%>
 
         </form>
     </div>
@@ -60,7 +60,35 @@
 <!-- 全局js -->
 <script src="${pageContext.request.contextPath}/js/jquery.min.js?v=2.1.4"></script>
 <script src="${pageContext.request.contextPath}/js/bootstrap.min.js?v=3.3.7"></script>
-
+<script src="${pageContext.request.contextPath}/js/plugins/layer/layer.min.js?v=1.0.0"></script>
+<script>
+    $('#login').click(function () {
+      var  userName = $('#userName').val();
+       var passWord = $('#passWord').val();
+       var user = {
+           username:userName,
+           password:passWord
+       }
+       $.ajax({
+           url: "shareUser/dologin",
+           type: "POST",
+           dataType: 'json',
+           contentType: 'application/json;charset=UTF-8',
+           data: JSON.stringify(user),
+           success:function (res) {
+               if(res.status){
+                    layer.msg("成功");
+                    window.location.href='manager';
+               }else{
+                   layer.alert(res.msg);
+               }
+           },
+           error:function (res) {
+               layer.alert("系统异常,请重试!");
+           }
+       })
+    })
+</script>
 
 </body>
 </html>
