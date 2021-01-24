@@ -11,7 +11,7 @@
  Target Server Version : 50726
  File Encoding         : 65001
 
- Date: 23/01/2021 16:57:31
+ Date: 24/01/2021 20:21:02
 */
 
 SET NAMES utf8mb4;
@@ -148,7 +148,7 @@ CREATE TABLE `share_customer`  (
   `CUSTOMER_ADDRESS` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户地址',
   `is_del` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否删除',
   PRIMARY KEY (`CUSTOMER_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 15 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of share_customer
@@ -156,17 +156,7 @@ CREATE TABLE `share_customer`  (
 INSERT INTO `share_customer` VALUES (1, '曹操', '男', '202012', '12345678901', '411423123515987', '河南省郑州市西亚斯', 'N');
 INSERT INTO `share_customer` VALUES (2, '李白', '男', '202012', '12345678902', '411423123515988', '河南省郑州市西亚斯', 'N');
 INSERT INTO `share_customer` VALUES (3, '蔡文姬', '女', '202007', '135569374800', '4123271998123101234', '河南省郑州市金水区100号', 'N');
-INSERT INTO `share_customer` VALUES (4, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (5, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (6, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (7, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (8, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (9, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (10, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (11, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (12, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (13, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
-INSERT INTO `share_customer` VALUES (14, '访问用户', '男', NULL, '13569374832', NULL, '北京市朝阳区', 'N');
+INSERT INTO `share_customer` VALUES (18, '嘶嘶嘶', '男', '201901', '13569374832', '2342', '12323', 'N');
 
 -- ----------------------------
 -- Table structure for share_dept
@@ -242,5 +232,24 @@ CREATE TABLE `share_type`  (
 INSERT INTO `share_type` VALUES (1, '普通型');
 INSERT INTO `share_type` VALUES (2, '大众型');
 INSERT INTO `share_type` VALUES (3, '豪华型');
+
+-- ----------------------------
+-- Table structure for share_user
+-- ----------------------------
+DROP TABLE IF EXISTS `share_user`;
+CREATE TABLE `share_user`  (
+  `username` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `password` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `age` int(3) NULL DEFAULT NULL,
+  `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `role` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`username`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of share_user
+-- ----------------------------
+INSERT INTO `share_user` VALUES ('admin', '123456', NULL, NULL, 'admin');
+INSERT INTO `share_user` VALUES ('user', '123456', NULL, NULL, 'admin');
 
 SET FOREIGN_KEY_CHECKS = 1;
