@@ -6,6 +6,8 @@ import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.vo.ProtalAddOrderVO;
 import cn.hehe.share.web.entity.ShareOrder;
+
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -63,7 +65,7 @@ public interface ShareOrderService {
 
     Result orderDel(Integer orderId);
 
-    Result<OrderDetailsDTO>  orderDetails(Integer orderId);
+    Result<OrderDetailsDTO>  orderDetails(Integer orderId) throws ParseException;
 
     Result orderEdit(ShareOrder shareOrder);
 

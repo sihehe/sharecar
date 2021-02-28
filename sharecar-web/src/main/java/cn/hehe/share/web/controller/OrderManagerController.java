@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.text.ParseException;
+
 
 /**
  * @program: sharecar
@@ -78,7 +80,7 @@ public class OrderManagerController {
 
     @PostMapping("/orderDetails")
     @ResponseBody
-    public Result<OrderDetailsDTO> orderDetails(Integer orderId) {
+    public Result<OrderDetailsDTO> orderDetails(Integer orderId) throws ParseException {
         return shareOrderService.orderDetails(orderId);
     }
 

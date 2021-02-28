@@ -53,6 +53,9 @@ public class OrderDetailsDTO implements Serializable {
      * 开始结束时间
      */
   private String useStartTime;
+
+
+  private String useEndTime;
     /**
      * 职工id
      */

@@ -115,6 +115,7 @@
        b.BUSINESS_NAME businessName,
        o.num,
        o.USE_START_TIME useStartTime,
+       o.USE_END_TIME useEndTime,
        d.DEPT_ID emptId,
        d.DEPT_NAME emptName,
        o.ORDER_AMT orderAmt,

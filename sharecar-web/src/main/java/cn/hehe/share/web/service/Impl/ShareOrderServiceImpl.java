@@ -227,7 +227,7 @@ public class ShareOrderServiceImpl implements ShareOrderService {
     }
 
     @Override
-    public Result<OrderDetailsDTO>  orderDetails(Integer orderId) {
+    public Result<OrderDetailsDTO>  orderDetails(Integer orderId) throws ParseException {
         OrderDetailsDTO orderDetails = this.shareOrderDao.orderDetails(orderId);
         if(Objects.isNull(orderDetails)){
             return ResultUtils.fail("查询不到订单");
@@ -236,6 +236,15 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         Integer carId = orderDetails.getCarId();
         ShareCar shareCar = shareCarDao.queryById(carId);
         orderDetails.setCashPledge(shareCar.getCashPledge());
+
+        String useStartTime = orderDetails.getUseStartTime();
+        String useEndTime = orderDetails.getUseEndTime();
+
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyyMMddHHmmss");
+        SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        useStartTime = simpleDateFormat2.format(simpleDateFormat1.parse(useStartTime));
+        useEndTime = simpleDateFormat2.format(simpleDateFormat1.parse(useEndTime));
+        orderDetails.setUseStartTime(useStartTime.concat("~").concat(useEndTime));
         Result result = ResultUtils.success();
         result.setData(orderDetails);
         return result;
