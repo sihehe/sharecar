@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : aliyun
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 50726
- Source Host           : sunmingyang.top:3306
+ Source Server Version : 50626
+ Source Host           : localhost:3306
  Source Schema         : si
 
  Target Server Type    : MySQL
- Target Server Version : 50726
+ Target Server Version : 50626
  File Encoding         : 65001
 
- Date: 24/01/2021 20:21:02
+ Date: 28/02/2021 13:12:39
 */
 
 SET NAMES utf8mb4;
@@ -27,12 +27,12 @@ CREATE TABLE `share_business`  (
   `BUSINESS_UNIT` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '业务单位(H-小时 D-日 M-月 Q-季度)',
   `TIME_OUT_UNIT` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '超时单位(H-小时 D-天)',
   `BUSINESS_STATUS` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '业务状态(A-使用中 C-失效)',
-  `CREATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `CREATE_TIME` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `CREATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `UPDATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新时间',
+  `UPDATE_TIME` datetime NULL DEFAULT NULL COMMENT '更新时间',
   `UPDATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`BUSINESS_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 20 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_business
@@ -61,12 +61,12 @@ CREATE TABLE `share_business_detail`  (
   `CASH_PLEDGE` decimal(8, 2) NULL DEFAULT NULL COMMENT '押金',
   `TIME_OUT_PRICE` decimal(8, 2) NULL DEFAULT NULL COMMENT '超时单价(按照业务类型规则计算)',
   `IS_DEL` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否删除(N-不删除Y-删除)',
-  `CREATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '创建时间',
+  `CREATE_TIME` datetime NULL DEFAULT NULL COMMENT '创建时间',
   `CREATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '创建人',
-  `UPDATE_TIME` datetime(0) NULL DEFAULT NULL COMMENT '更新日期',
+  `UPDATE_TIME` datetime NULL DEFAULT NULL COMMENT '更新日期',
   `UPDATE_USER` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '更新人',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 66 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_business_detail
@@ -123,7 +123,7 @@ CREATE TABLE `share_car`  (
   `DESCR` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '描述',
   `IS_DEL` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT 'N' COMMENT '是否删除 (Y-删除 N-不删除)',
   PRIMARY KEY (`ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
+) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Records of share_car
@@ -148,7 +148,7 @@ CREATE TABLE `share_customer`  (
   `CUSTOMER_ADDRESS` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '客户地址',
   `is_del` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否删除',
   PRIMARY KEY (`CUSTOMER_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 19 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_customer
@@ -172,7 +172,7 @@ CREATE TABLE `share_dept`  (
   `DEPT_ADDRESS` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '员工地址',
   `IS_DEL` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '是否删除',
   PRIMARY KEY (`DEPT_ID`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_dept
@@ -180,6 +180,7 @@ CREATE TABLE `share_dept`  (
 INSERT INTO `share_dept` VALUES (1, '职工1', '男', '2000', '13569334833', '41142312345678', '河南省郑州市', 'N');
 INSERT INTO `share_dept` VALUES (2, '职工2', '男', '2000', '13569334830', '41142312345679', '河南省郑州市', 'N');
 INSERT INTO `share_dept` VALUES (4, '切克闹', '女', '201412', '12345678900', '1213456687881222', '河南省郑州市管城回族区100号', 'N');
+INSERT INTO `share_dept` VALUES (5, '系统', '男', '2000', '00000', '00000', '00000', 'N');
 
 -- ----------------------------
 -- Table structure for share_order
@@ -195,7 +196,7 @@ CREATE TABLE `share_order`  (
   `NUM` int(11) NOT NULL COMMENT '套餐数量',
   `USE_START_TIME` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '租车开始时间',
   `USE_END_TIME` varchar(14) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '租车结束时间',
-  `ORDER_TIME` datetime(0) NOT NULL COMMENT '订单时间',
+  `ORDER_TIME` datetime NOT NULL COMMENT '订单时间',
   `EMPT_ID` int(11) NOT NULL COMMENT '订单服务职工id',
   `PAY_TYPE` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '支付方式 (W-微信 Z-支付宝 Y-银联 P-POS机 C-现金)',
   `ORDER_STATUS` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '订单状态 (N-待支付 Y-已支付 C-作废)',
@@ -206,7 +207,7 @@ CREATE TABLE `share_order`  (
   `IS_DEL` int(11) NOT NULL DEFAULT 0 COMMENT '删除标记 0不删除 1删除',
   PRIMARY KEY (`ORDER_ID`) USING BTREE,
   UNIQUE INDEX `SHARE_ORDER_ORDER_NUM_uindex`(`ORDER_NUM`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '共享管理订单表' ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 16 CHARACTER SET = utf8 COLLATE = utf8_general_ci COMMENT = '共享管理订单表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_order
@@ -215,6 +216,10 @@ INSERT INTO `share_order` VALUES (8, '2021011613213580738426142335142', 1, 1, 24
 INSERT INTO `share_order` VALUES (9, '2021011614225113825553646296006', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:22:51', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
 INSERT INTO `share_order` VALUES (10, '2021011614253304099783458537908', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:26:46', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
 INSERT INTO `share_order` VALUES (11, '2021011614274792379868761229234', 1, 1, 2401.00, 10, 1, '20210101000000', '20210102000000', '2021-01-16 14:28:09', 4, '银联', 'N', NULL, NULL, NULL, '', 0);
+INSERT INTO `share_order` VALUES (12, '2021022812513127313143584692881', 18, 1, 2121.00, 9, 2, '20210201000000', '20210205000000', '2021-02-28 12:51:31', 5, '微信', 'Y', NULL, NULL, NULL, '111', 0);
+INSERT INTO `share_order` VALUES (13, '2021022812562848707650387023423', 18, 1, 2061.00, 9, 1, '20210201000000', '20210205000000', '2021-02-28 12:56:28', 5, '微信', 'Y', NULL, NULL, NULL, '111', 0);
+INSERT INTO `share_order` VALUES (14, '2021022812580448936448483075069', 18, 1, 2121.00, 9, 2, '20210201000000', '20210227000000', '2021-02-28 12:58:04', 5, '微信', 'Y', NULL, NULL, NULL, '111', 0);
+INSERT INTO `share_order` VALUES (15, '2021022813000921823191972876712', 18, 1, 2121.00, 9, 2, '20210104000000', '20210121000000', '2021-02-28 13:00:09', 5, '微信', 'Y', NULL, NULL, NULL, '111', 0);
 
 -- ----------------------------
 -- Table structure for share_type
@@ -224,7 +229,7 @@ CREATE TABLE `share_type`  (
   `type_id` int(11) NOT NULL AUTO_INCREMENT COMMENT '类型id',
   `type_name` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '类型主键',
   PRIMARY KEY (`type_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_type
@@ -244,7 +249,7 @@ CREATE TABLE `share_user`  (
   `name` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `role` varchar(40) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`username`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of share_user
