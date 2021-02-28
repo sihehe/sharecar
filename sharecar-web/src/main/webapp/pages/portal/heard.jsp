@@ -77,7 +77,7 @@
 <iframe name="guazi_login" style="display: none;"></iframe>
 
 <!-- 使用时class加active -->
-<div class="pop-mask "></div>
+<div class="pop-mask "></div>--
 <script>
     $('#js-login-new').click(function () {
         $('#login1').addClass('show');

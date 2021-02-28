@@ -9,6 +9,7 @@ import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
 import cn.hehe.share.api.result.ResultUtils;
 import cn.hehe.share.api.utils.OrderUtils;
+import cn.hehe.share.api.vo.ProtalAddOrderVO;
 import cn.hehe.share.web.dao.*;
 import cn.hehe.share.web.entity.*;
 import cn.hehe.share.web.service.ShareOrderService;
@@ -166,10 +167,13 @@ public class ShareOrderServiceImpl implements ShareOrderService {
             return ResultUtils.fail("车辆信息不存在");
         }
 //        校验职工信息是否存在
-        ShareDept shareDept = shareDeptDao.queryById(shareOrder.getEmptId());
-        if(Objects.isNull(shareDept)){
-            return ResultUtils.fail("职工信息不存在");
+        if(!Objects.isNull(shareOrder.getEmptId())){
+            ShareDept shareDept = shareDeptDao.queryById(shareOrder.getEmptId());
+            if(Objects.isNull(shareDept)){
+                return ResultUtils.fail("职工信息不存在");
+            }
         }
+
 //        校验套餐id是否存在
         SahreBusiness sahreBusiness = sahreBusinessDao.queryById(shareOrder.getBusinessId());
         if(Objects.isNull(sahreBusiness)){
@@ -245,6 +249,73 @@ public class ShareOrderServiceImpl implements ShareOrderService {
             return ResultUtils.fail("更新失败");
         }
         this.shareOrderDao.update(shareOrder);
+        return ResultUtils.success();
+    }
+
+    @Override
+    public Result protalAddOrder(ProtalAddOrderVO protalAddOrderVO) {
+        //         生产订单编号
+        ShareOrder shareOrder = new ShareOrder();
+        Random random = new Random();
+        int i = random.nextInt(100);
+        String orderNum = OrderUtils.getOrderCode(i);
+        shareOrder.setOrderNum(orderNum);
+//        校验客户是否存在
+        ShareCustomer shareCustomer = shareCustomerDao.queryByPhone(protalAddOrderVO.getPhone());
+        if(Objects.isNull(shareCustomer)){
+            return ResultUtils.fail("客户信息不存在");
+        }
+        shareOrder.setCustomerId(shareCustomer.getCustomerId());
+//        校验车辆信息是否存在
+        ShareCar shareCar = shareCarDao.queryById(protalAddOrderVO.getCarId());
+        if(Objects.isNull(shareCar)){
+            return ResultUtils.fail("车辆信息不存在");
+        }
+        shareOrder.setCarId(shareCar.getId());
+//        校验套餐id是否存在
+        SahreBusiness sahreBusiness = sahreBusinessDao.queryById(protalAddOrderVO.getBusinessId());
+        if(Objects.isNull(sahreBusiness)){
+            return ResultUtils.fail("套餐信息不存在");
+        }
+        shareOrder.setBusinessId(sahreBusiness.getBusinessId());
+        ShareBusinessDetail queryShareBusinessDetail = new ShareBusinessDetail();
+        queryShareBusinessDetail.setCarType(shareCar.getTypeId());
+        queryShareBusinessDetail.setBusinessId(sahreBusiness.getBusinessId());
+        queryShareBusinessDetail.setIsDel(DBStatusEnums.N.getKey());
+        List<ShareBusinessDetail> shareBusinessDetails = shareBusinessDetailDao.queryAll(queryShareBusinessDetail);
+        if(CollectionUtils.isEmpty(shareBusinessDetails)){
+            return ResultUtils.fail("套餐信息不存在");
+        }
+        if(shareBusinessDetails.size() > 1){
+            return ResultUtils.fail("套餐信息设置有误");
+        }
+        ShareBusinessDetail shareBusinessDetail = shareBusinessDetails.get(0);
+        // 押金
+        BigDecimal cashPledge = shareCar.getCashPledge();
+        shareOrder.setCashPledge(cashPledge);
+        BigDecimal price = shareBusinessDetail.getPrice();
+        Integer num = protalAddOrderVO.getNum();
+        shareOrder.setNum(num);
+//        计算订单金额
+        BigDecimal orderAmt = price.multiply(BigDecimal.valueOf(num)).add(cashPledge);
+        shareOrder.setOrderAmt(orderAmt);
+        String useStartTime = protalAddOrderVO.getUseStartTime();
+        String[] split = useStartTime.split(" ~ ");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat simpleDateFormat1 = new SimpleDateFormat("yyyyMMddHHmmss");
+        try {
+            shareOrder.setUseStartTime(simpleDateFormat1.format(simpleDateFormat.parse(split[0])));
+            shareOrder.setUseEndTime(simpleDateFormat1.format(simpleDateFormat.parse(split[1])));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        shareOrder.setOrderTime(new Date());
+        shareOrder.setOrderStatus(DBStatusEnums.Y.getKey());
+        shareOrder.setIsDel(0);
+        shareOrder.setPayType("微信");
+        shareOrder.setRemark(protalAddOrderVO.getRemark());
+        shareOrder.setEmptId(5);
+        this.shareOrderDao.insert(shareOrder);
         return ResultUtils.success();
     }
 }

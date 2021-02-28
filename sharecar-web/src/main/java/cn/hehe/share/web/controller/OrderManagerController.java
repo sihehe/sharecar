@@ -4,6 +4,7 @@ import cn.hehe.share.api.dto.OrderDetailsDTO;
 import cn.hehe.share.api.dto.OrderListDTO;
 import cn.hehe.share.api.page.PageResp;
 import cn.hehe.share.api.result.Result;
+import cn.hehe.share.api.vo.ProtalAddOrderVO;
 import cn.hehe.share.web.entity.ShareOrder;
 import cn.hehe.share.web.service.ShareOrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,12 @@ public class OrderManagerController {
     @ResponseBody
     public Result orderAdd(@RequestBody ShareOrder shareOrder) {
         return shareOrderService.orderAdd(shareOrder);
+    }
+
+    @PostMapping("/protalAddOrder")
+    @ResponseBody
+    public Result protalAddOrder(@RequestBody ProtalAddOrderVO protalAddOrderVO) {
+        return shareOrderService.protalAddOrder(protalAddOrderVO);
     }
 
     @PostMapping("/orderDel")

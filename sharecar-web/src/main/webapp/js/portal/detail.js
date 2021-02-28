@@ -28,6 +28,7 @@ var car = {
 $(function () {
     var id = getQueryVariable('id');
     getDetail(id);
+
 })
 
 // 绑定数据
@@ -85,6 +86,7 @@ function getDetail(id) {
             if(res.status){
                  car = res.data;
                 bindData();
+                getBuninessList();
             }
         },
         error:function (res) {
@@ -141,15 +143,99 @@ $('#nowBook').click(function () {
     $('.pop-mask').removeClass('active');
 })
 
-function cselectBookTime(e){
-    var elementArr = $('#appoint-time').children();
+function selectBusiness(e){
+    var elementArr = $('#businessList').children();
     for(var i =0;i<elementArr.length;i++){
         $(elementArr[i]).removeClass('active');
     }
     $(e).addClass('active');
+    calculatePayAmt();
 }
 
+function calculatePayAmt() {
+    var selectBuniness = getBusinessActive();
+    var price = parseFloat($(selectBuniness).attr('price'));
+    var cashPledge = parseFloat(car.cashPledge);
+    var num = parseInt($('#businessNum').text());
+    $('#price').text(cashPledge + num * price);
+}
 
+function getBusinessActive() {
+    var elementArr = $('#businessList').children();
+
+    for(var i =0;i<elementArr.length;i++){
+        if( $(elementArr[i]).hasClass('active')){
+            return elementArr[i];
+        }
+    }
+}
+
+function addBusinessNum(){
+    var business = $('#businessNum').text();
+    var businessNum = parseInt(business);
+    businessNum++;
+    if(businessNum >= 100){
+        businessNum = 100;
+    }
+    $('#businessNum').text(businessNum);
+    calculatePayAmt();
+}
+function reduceBusinessNum(){
+    var business = $('#businessNum').text();
+    var businessNum = parseInt(business);
+    businessNum--;
+    if(businessNum <= 1){
+        businessNum = 1;
+    }
+    $('#businessNum').text(businessNum);
+    calculatePayAmt();
+}
+
+/* 日期选择组件 */
+laydate.render({
+    elem: '#useStartTime'
+    ,type: 'datetime'
+    ,range: '~'
+    ,format: 'yyyy-MM-dd HH:mm:ss'
+});
+function commitOrder() {
+    $('#myBookBox').removeClass('active');
+    $('#payCode').addClass('active');
+}
+function createOrder(){
+
+    var order = {
+        phone:getCookie('phone'),
+        carId:car.id,
+        businessId:$(getBusinessActive()).attr('value'),
+        num:$('#businessNum').text(),
+        useStartTime:$('#useStartTime').val(),
+        remark:$('#remark').val()
+    };
+    $.ajax({
+        type:'POST',
+        url:'orderManager/protalAddOrder',
+        dataType:'json',
+        contentType:'application/json;charset=UTF-8',
+        data:JSON.stringify(order),
+        success:function (res) {
+            console.log(res);
+            if(res.status){
+                $('#payCode').removeClass('active');
+                $('.pop-mask').removeClass('active');
+                alert('成功!')
+            }else{
+                $('#payCode').removeClass('active');
+                $('.pop-mask').removeClass('active');
+                alert('失败,请重试!')
+            }
+        },
+        error:function (res) {
+            alert("系统错误,请重试!");
+        }
+    })
+
+}
 
 $('#js-login-new').click(function () {
     $('#login1').addClass('show');
@@ -214,6 +300,40 @@ $('#logout').click(function () {
     window.location.reload();
 });
 
+
+// 获取符合车辆类型的套餐列表
+function getBuninessList() {
+//    /sharecar/businessManager/queryBusinessList
+    var queryParam = {
+        'pageSize':5,
+        'pageIndex':0,
+        'carType':car.typeId
+    };
+
+    $.ajax({
+        type: 'post',
+        url: 'businessManager/queryBusinessList',
+        data: queryParam,
+        dataType: "Json",
+        contentType: 'application/x-www-form-urlencoded',
+        success: function (res) {
+            var rows = res.rows;
+            if(rows.length > 0){
+                var content = '';
+                for(var i = 0;i<rows.length;i++){
+                    if(i == 0){
+                        content += ' <span class="js-select-time active" onclick="selectBusiness(this)" price='+rows[i].price+' value='+rows[i].businessId+'>'+rows[i].businessName+'</span>';
+                    }else{
+                        content += '<span class="js-select-time" onclick="selectBusiness(this)" price='+rows[i].price+' value='+rows[i].businessId+' >'+rows[i].businessName+'</span>';
+                    }
+                }
+                $('#businessList').html(content);
+                calculatePayAmt();
+            }
+        }
+    })
+}
+
 // 设置cookie
 function setCookie(c_name, value, expiredays) {
     var exdate = new Date();
@@ -262,4 +382,5 @@ $(function () {
         $('#user').text(phone);
         $('#js-login-new').attr('style', 'display:none');
     }
+
 })

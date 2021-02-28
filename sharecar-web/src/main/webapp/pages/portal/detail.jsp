@@ -12,6 +12,7 @@
     <title>哈哈共享汽车租赁--汽车详情</title>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" media="screen"/>
     <link href="${pageContext.request.contextPath}/js/portal/detail.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/bootstrap.min.css?v=3.3.7" rel="stylesheet">
 </head>
 <!-- 加载js/css-->
 <%--<script type="text/javascript" src="//cli-sta.guazistatic.com/c2c_web/base.84c6ec1831ce28e4c7a5.js"></script>
@@ -444,23 +445,54 @@
     <div class="pop-close" id="pop-close"></div>
     <div class="pop-title-left">我要租车</div>
     <div class="pop-bottom">
-        <div class="pop-con">预约<i class="js-appoint-time-desc">今天</i>，即享优惠</div>
+        <div class="pop-con">预计支付金额<i class="js-appoint-time-desc" id="price" style="color: red">?</i>元</div>
         <div class="pop-address">
-            看车方式            <span>
-                到店服务            </span>
+            租车日期
+            <span>
+                <input id="useStartTime" class="search-input js_search_input_index" style="height: 21px;width: 300px;">
+            </span>
+
         </div>
-        <div class="pop-time">选择时间
-            <div id="appoint-time">
-                <span class="js-select-time active" onclick="cselectBookTime(this)">今天</span>
-                <span class="js-select-time" onclick="cselectBookTime(this)" >明天</span>
-                <span class="js-select-time" onclick="cselectBookTime(this)" >后天</span>
+        <div class="pop-time">选择套餐
+            <div id="businessList">
+                <span class="js-select-time active" onclick="selectBusiness(this)">套餐1</span>
+                <span class="js-select-time" onclick="selectBusiness(this)" >套餐2</span>
             </div>
         </div>
-        <input name="selected_time" type="hidden" value="1611474469">
+        <div class="pop-address">
+            套餐数量
+            <span>
+                <a class="glyphicon glyphicon-minus" style="color: #9b9b9b" onclick="reduceBusinessNum()"></a>
+                &nbsp;<a id="businessNum">1</a>&nbsp;
+                <a class="glyphicon glyphicon-plus" style="color: #9b9b9b" onclick="addBusinessNum()"></a>
+            </span>
+        </div>
+        <div class="pop-address">
+            下单备注             <span> <input class="search-input js_search_input_index" id="remark" style="height: 21px"></span>
+        </div>
+        <div class="pop-address">
+            支付方式            <span>
+                在线支付            </span>
+        </div>
+        <input name="selected_time" type="hidden" >
     </div>
-    <div class="pop-btn" data-gzlog="tracking_type=click&amp;eventid=92334677" data-val="106408634" data-type="3" id="nowBook">立即预约</div>
+    <div class="pop-btn" data-gzlog="tracking_type=click&amp;eventid=92334677" data-val="106408634" data-type="3" id="commitOrder" onclick="commitOrder()">提交订单</div>
 </div>
+
+<div class="pop-box pop-order-time-succ pop-order-time js-appoint-see-car" id="payCode">
+    <div class="pop-close" id="pop-close-payCode"></div>
+    <div class="pop-title-left" style="margin-left: 38%;font-size: 15px" >请扫描二维码进行订单支付</div>
+    <img src="img/payCode.png" style="width: 200px;height: 200px;margin-left: 37%">
+    <div class="pop-btn" data-gzlog="tracking_type=click&amp;eventid=92334677" data-val="106408634" data-type="3"  onclick="createOrder()">我已支付</div>
+</div>
+
 <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
+
+<!-- 自定义js -->
+<script src="${pageContext.request.contextPath}/js/plugins/layer/layer.min.js?v=1.0.0"></script>
+<%-- layerDate --%>
+<script src="${pageContext.request.contextPath}/js/plugins/layer/laydate_v5.0.9/laydate.js"></script>
+
 <script src="${pageContext.request.contextPath}/js/portal/detail.js"></script>
 </body>
 </html>
