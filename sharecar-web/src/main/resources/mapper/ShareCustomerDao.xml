@@ -12,11 +12,13 @@
         <result property="customerCardNum" column="CUSTOMER_CARD_NUM" jdbcType="VARCHAR"/>
         <result property="customerAddress" column="CUSTOMER_ADDRESS" jdbcType="VARCHAR"/>
         <result property="isDel" column="is_del" jdbcType="VARCHAR"/>
+        <result property="isBlack" column="IS_BLACK" jdbcType="VARCHAR"/>
+        <result property="credit" column="CREDIT" jdbcType="INTEGER"/>
     </resultMap>
     
     
     <sql id="baseColumn">
-        CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS,is_del
+        CUSTOMER_ID, CUSTOMER_NAME, CUSTOMER_GRAD, CUSTOMER_BRITH_YEAR, CUSTOMER_PHONE, CUSTOMER_CARD_NUM, CUSTOMER_ADDRESS,is_del,IS_BLACK,CREDIT
     </sql>
     
     <!--查询单个-->
@@ -104,6 +106,12 @@
             </if>
             <if test=" isDel != null and isDel != ''">
                 is_del = #{isDel},
+            </if>
+            <if test=" isBlack != null and isBlack != ''">
+                IS_BLACK = #{isBlack},
+            </if>
+            <if test=" credit != null ">
+                CREDIT = #{credit}
             </if>
         </set>
         where CUSTOMER_ID = #{customerId}

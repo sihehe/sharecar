@@ -46,6 +46,10 @@ public class ShareCustomer implements Serializable {
 
     private String isDel;
 
+    private String isBlack;
+
+    private Integer credit;
+
 
 
 }

@@ -84,8 +84,19 @@ public class ShareCustomerServiceImpl implements ShareCustomerService {
     @Override
     public Result updateCustomer(ShareUpdateCustomer shareUpdateCustomer) {
         ShareCustomer shareCustomer = new ShareCustomer();
-        BeanUtils.copyProperties(shareUpdateCustomer,shareCustomer);
+        BeanUtils.copyProperties(shareUpdateCustomer,shareCustomer,"credit");
         shareCustomer.setCustomerId(shareUpdateCustomer.getCustomerId());
+        Integer credit = shareUpdateCustomer.getCredit();
+        if(!Objects.isNull(credit)){
+            // 查询
+            ShareCustomer shareCustomer1 = shareCustomerDao.queryById(shareUpdateCustomer.getCustomerId());
+            Integer credit1 = shareCustomer1.getCredit();
+            credit = credit1 -credit;
+            if(credit <0){
+                return ResultUtils.fail("扣减失败");
+            }
+            shareCustomer.setCredit(credit);
+        }
         shareCustomerDao.update(shareCustomer);
         return ResultUtils.success();
     }

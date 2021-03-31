@@ -15,7 +15,7 @@
     <link href="${pageContext.request.contextPath}/css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/animate.css" rel="stylesheet">
     <link href="${pageContext.request.contextPath}/css/style.css?v=4.1.0" rel="stylesheet">
-
+    <link href="${pageContext.request.contextPath}/js/plugins/layer/layer.css" rel="stylesheet">
 
 </head>
 <body>
@@ -68,8 +68,6 @@
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
-
-
 
 <!-- Peity -->
 <script src="${pageContext.request.contextPath}/js/customerManager/customerManager.js"></script>

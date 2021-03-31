@@ -159,6 +159,8 @@ function init() {
                 result += '<button id="details" class="btn btn-primary" data-toggle="modal" data-target="#detailsModal">详情</button>';
                 if(row.orderStatusStr == '待支付'){
                     result += '<button id="pay" class="btn btn-info" data-toggle="modal" data-target="#payModal" style="margin-left:10px;">结算</button>';
+                }else{
+                    result += '<button id="pay1" class="btn btn-default" style="margin-left:10px;">已结算</button>';
                 }
                 // result += '<button id="delete" class="btn btn-danger" style="margin-left:10px;">删除</button>';
                 return result;

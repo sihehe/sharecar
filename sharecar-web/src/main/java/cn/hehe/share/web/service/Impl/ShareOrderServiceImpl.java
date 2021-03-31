@@ -18,6 +18,7 @@ import com.github.pagehelper.PageInfo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import java.math.BigDecimal;
@@ -161,6 +162,10 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         if(Objects.isNull(shareCustomer)){
             return ResultUtils.fail("客户信息不存在");
         }
+        if("Y".equals(shareCustomer.getIsBlack())){
+            return ResultUtils.fail("客户处于黑名单中");
+        }
+
 //        校验车辆信息是否存在
         ShareCar shareCar = shareCarDao.queryById(shareOrder.getCarId());
         if(Objects.isNull(shareCar)){
@@ -274,6 +279,11 @@ public class ShareOrderServiceImpl implements ShareOrderService {
         if(Objects.isNull(shareCustomer)){
             return ResultUtils.fail("客户信息不存在");
         }
+        // 效验客户是否是黑名单用户
+        if("Y".equals(shareCustomer.getIsBlack())){
+            return ResultUtils.fail("下单失败,请联系管理员");
+        }
+
         shareOrder.setCustomerId(shareCustomer.getCustomerId());
 //        校验车辆信息是否存在
         ShareCar shareCar = shareCarDao.queryById(protalAddOrderVO.getCarId());

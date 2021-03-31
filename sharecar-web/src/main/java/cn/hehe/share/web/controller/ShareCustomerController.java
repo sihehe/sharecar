@@ -61,6 +61,10 @@ public class ShareCustomerController {
         return "customerManager/customerManager-details";
     }
 
+    @RequestMapping("/reduct")
+    public String reduct() {
+        return "customerManager/reduct";
+    }
 
 
 

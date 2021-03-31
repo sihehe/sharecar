@@ -258,3 +258,10 @@ INSERT INTO `share_user` VALUES ('admin', '123456', NULL, NULL, 'admin');
 INSERT INTO `share_user` VALUES ('user', '123456', NULL, NULL, 'admin');
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+ALTER TABLE `share_customer`
+ADD COLUMN `IS_BLACK` char(1) NULL DEFAULT 'N' COMMENT '是否拉黑(N-否Y-是)' AFTER `is_del`,
+ADD COLUMN `CREDIT` int(11) NULL COMMENT '信用分' AFTER `IS_BLACK`;
+ALTER TABLE `share_customer`
+MODIFY COLUMN `CREDIT` int(11) NULL DEFAULT 100 COMMENT '信用分' AFTER `IS_BLACK`;

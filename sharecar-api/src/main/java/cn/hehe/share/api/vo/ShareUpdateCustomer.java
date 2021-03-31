@@ -42,4 +42,14 @@ public class ShareUpdateCustomer implements Serializable {
      */
     private String customerAddress;
 
+    /**
+     * 奖励值
+     */
+    private Integer credit;
+
+    /**
+     * 拉黑
+     */
+    private String isBlack;
+
 }

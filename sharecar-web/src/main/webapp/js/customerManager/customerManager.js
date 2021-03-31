@@ -66,11 +66,26 @@ function init() {
             valign: 'middle'
         },
         {
+            field: 'credit',
+            title: '客户信用分',
+            align: "center",
+            halign: "center",
+            valign: 'middle'
+        },
+        {
+            field: 'isBlack',
+            title: '是否加入黑名单',
+            align: "center",
+            halign: "center",
+            valign: 'middle',
+            visible: false
+        },
+        {
             field: 'operate',
             title: '操作',
             align: 'center',
             valign: 'middle',
-            width: 250,
+            width: 360,
             events: {
                 'click #edit': function (e, value, row, index) {
                     var id = row.customerId;
@@ -152,6 +167,110 @@ function init() {
 
                     });
                 },
+                'click #reduceCredit': function (e, value, row, index) {
+                    var id = row.customerId;
+                    //默认prompt
+                    //页面层-自定义
+
+                    var index= layer.open({
+                        type: 2,
+                        title: '输入扣减值',
+                        area: ['312px', '176px'],
+                        maxmin: true, //打开全屏
+                        resize: true, //开启拉伸
+                        scrollbar: true, //屏蔽滚动
+                        btnAlign: 'c', //按钮居中对齐
+                        btn: ['确定','取消'],
+                        content: "reduct",
+                        yes: function (index,layero){
+                            var frameId = $(layero).find("iframe").attr("id");
+                            // 父页面获取子页面指定的id数据
+                            var val = $(window.frames[frameId].document).find("#btn").val();
+                            var customer = {
+                                'customerId': id,
+                                'credit': val
+                            }
+                            //获取到值 向后端发送
+                            $.ajax({
+                                url: "updateCustomer",
+                                type: "POST",
+                                dataType: 'json',
+                                contentType: 'application/json;charset=UTF-8',
+                                data: JSON.stringify(customer),
+                                success:function (res) {
+                                    retryQueryTable(res,index);
+                                },
+                                error:function (res) {
+                                    layer.alert("系统异常,请重试!");
+                                }
+                            });
+                            },
+                        btn2: function (index, layero) {
+
+                        },
+                        success: function (layero,index) {
+                        }
+
+                    });
+
+                    layer.prompt(function(val, index){
+                        var customer = {
+                            'customerId': id,
+                            'credit': val
+                        }
+
+                    });
+
+                },
+                'click #black': function (e, value, row, index) {
+                    var id = row.customerId;
+                        var customer = {
+                            'customerId': id,
+                            'isBlack': 'Y'
+                        }
+                        //获取到值 向后端发送
+                        $.ajax({
+                            url: "updateCustomer",
+                            type: "POST",
+                            dataType: 'json',
+                            contentType: 'application/json;charset=UTF-8',
+                            data: JSON.stringify(customer),
+                            success:function (res) {
+                                retryQueryTable(res,index);
+                            },
+                            error:function (res) {
+                                layer.alert("系统异常,请重试!");
+                            }
+                        });
+                        layer.msg("成功");
+                        layer.close(index);
+
+                },
+                'click #cancelBlacked': function (e, value, row, index) {
+                    var id = row.customerId;
+                    //默认prompt
+                        var customer = {
+                            'customerId': id,
+                            'isBlack': 'N'
+                        }
+                        //获取到值 向后端发送
+                        $.ajax({
+                            url: "updateCustomer",
+                            type: "POST",
+                            dataType: 'json',
+                            contentType: 'application/json;charset=UTF-8',
+                            data: JSON.stringify(customer),
+                            success:function (res) {
+                                retryQueryTable(res,index);
+                            },
+                            error:function (res) {
+                                layer.alert("系统异常,请重试!");
+                            }
+                        });
+                        layer.msg("成功");
+                        layer.close(index);
+
+                },
 
             },
             formatter: function (value, row, index) {
@@ -159,6 +278,14 @@ function init() {
                 result += '<button id="details" class="btn btn-primary" data-toggle="modal" data-target="#detailsModal">详情</button>';
                 result += '<button id="edit" class="btn btn-info" data-toggle="modal" data-target="#editModal" style="margin-left:10px;">编辑</button>';
                 result += '<button id="delete" class="btn btn-danger" style="margin-left:10px;">删除</button>';
+                result += '<button id="reduceCredit" class="btn btn-success" style="margin-left:10px;">扣分</button>';
+                // 判断该用户是否已经被拉黑
+                if(row.isBlack == 'N'){
+                    result += '<button id="black" class="btn btn-default" style="margin-left:10px;">拉黑</button>';
+                }else{
+                    result += '<button id="cancelBlacked" class="btn btn-warning" style="margin-left:10px;">取消拉黑</button>';
+                }
+
                 return result;
             }
         }];
